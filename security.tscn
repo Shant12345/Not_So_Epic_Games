@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0rvrp0m6pcj7"]
+
+[ext_resource type="Script" uid="uid://bp57ygku81xrj" path="res://security.gd" id="1_225ps"]
+
+[sub_resource type="Gradient" id="Gradient_no3jk"]
+offsets = PackedFloat32Array(0.03, 0.5733333, 0.58, 0.99666667)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0.007843138, 1, 1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mnca5"]
+gradient = SubResource("Gradient_no3jk")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypdsa"]
+
+[node name="Security" type="CharacterBody2D"]
+position = Vector2(173, 339)
+script = ExtResource("1_225ps")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.6293945e-06, 0)
+scale = Vector2(0.07812501, 20)
+texture = SubResource("GradientTexture1D_mnca5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ypdsa")
