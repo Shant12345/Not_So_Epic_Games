@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://btsfmdo6jawlf"]
+
+[ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_j3pou"]
+[ext_resource type="PackedScene" uid="uid://0gb3ig8pubqk" path="res://tscn/enemy.tscn" id="2_byqc0"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_j3pou")]
+unique_name_in_owner = true
+position = Vector2(555, 55)
+
+[node name="Enemy" parent="." instance=ExtResource("2_byqc0")]
+unique_name_in_owner = true

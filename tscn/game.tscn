@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkyd8xjfs6t7t"]
+
+[ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_juix7"]
+[ext_resource type="PackedScene" uid="uid://0gb3ig8pubqk" path="res://tscn/enemy.tscn" id="1_tp0hw"]
+[ext_resource type="PackedScene" uid="uid://t3qtsflmc5kr" path="res://tscn/layout.tscn" id="2_juix7"]
+[ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/health_pack.tscn" id="3_ivtoj"]
+[ext_resource type="PackedScene" uid="uid://beqxm8my7oh0o" path="res://tscn/wall.tscn" id="5_740th"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("1_tp0hw")]
+unique_name_in_owner = true
+position = Vector2(6570, 3632)
+
+[node name="Player" parent="." instance=ExtResource("1_juix7")]
+unique_name_in_owner = true
+position = Vector2(5511, 3655)
+
+[node name="Layout" parent="." instance=ExtResource("2_juix7")]
+
+[node name="HealthPack" parent="." instance=ExtResource("3_ivtoj")]
+position = Vector2(5497, 3341)
+
+[node name="Wall" parent="." instance=ExtResource("5_740th")]
+position = Vector2(5994, 3548)

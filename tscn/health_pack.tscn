@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqbw1kdiasrhe"]
+
+[ext_resource type="Script" uid="uid://bpvpx77u50hjh" path="res://Scripts/health_pack.gd" id="1_xab54"]
+
+[sub_resource type="Gradient" id="Gradient_bboee"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v2cuk"]
+gradient = SubResource("Gradient_bboee")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irjl4"]
+size = Vector2(25.925907, 19.02671)
+
+[node name="HealthPack" type="Area2D"]
+script = ExtResource("1_xab54")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(72.99995, 36.5)
+scale = Vector2(0.32906395, 56.92001)
+texture = SubResource("GradientTexture1D_v2cuk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72.99999, 36.5)
+scale = Vector2(3.2400024, 2.9957888)
+shape = SubResource("RectangleShape2D_irjl4")
+debug_color = Color(0, 0.60045683, 0.68673813, 0.14901961)

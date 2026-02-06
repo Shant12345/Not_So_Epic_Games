@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://cljxa44wmhn7y"]
+
+[ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
+[ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_3c7ea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7omxl"]
+bg_color = Color(0, 0.6211991, 0.4044209, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
+size = Vector2(124.776886, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7omxl"]
+size = Vector2(125, 78)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(1, 7)
+script = ExtResource("1_7omxl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.00001
+offset_top = -101.0
+offset_right = 78.74096
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0799985, 1.2000006)
+theme_override_styles/fill = SubResource("StyleBoxFlat_7omxl")
+step = 1.0
+value = 67.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Skin" type="Sprite2D" parent="Hitbox"]
+position = Vector2(-7, -10)
+scale = Vector2(1.0039064, 0.80078125)
+texture = ExtResource("2_3c7ea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-8.5, -8.5)
+scale = Vector2(1.0017881, 1)
+shape = SubResource("RectangleShape2D_3c7ea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, -8)
+shape = SubResource("RectangleShape2D_7omxl")

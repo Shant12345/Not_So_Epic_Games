@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://0gb3ig8pubqk"]
+
+[ext_resource type="Script" uid="uid://bj6m3nw3uu750" path="res://Scripts/enemy.gd" id="1_68qdi"]
+
+[sub_resource type="Gradient" id="Gradient_m7vtn"]
+offsets = PackedFloat32Array(0, 0.6533333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.08627451, 0, 1, 1, 0.03137255, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6c4pm"]
+gradient = SubResource("Gradient_m7vtn")
+fill_to = Vector2(0.004672897, 0.0070093456)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_883pt"]
+size = Vector2(47.845047, 44.388943)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7vtn"]
+size = Vector2(62, 59)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_68qdi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9937964, 1.0026888)
+texture = SubResource("GradientTexture2D_6c4pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.50000143, -0.5000011)
+scale = Vector2(1.3585523, 1.3742161)
+shape = SubResource("RectangleShape2D_883pt")
+debug_color = Color(0, 0.6, 0.69803923, 0.8235294)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_m7vtn")
+
+[node name="Raycasts" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(70, 60)
+
+[node name="RayCast2D5" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(89, 0)
+
+[node name="RayCast2D6" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, -77)
+
+[node name="RayCast2D7" type="RayCast2D" parent="Raycasts"]
+rotation = -0.006155415
+target_position = Vector2(-81.99844, -0.50474083)
+
+[node name="RayCast2D8" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, 77)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-58, 58)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(60, -61)
+
+[node name="RayCast2D4" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-55, -58)
