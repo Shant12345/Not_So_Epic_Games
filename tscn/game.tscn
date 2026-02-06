@@ -1,26 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=8 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_juix7"]
-[ext_resource type="PackedScene" uid="uid://0gb3ig8pubqk" path="res://tscn/enemy.tscn" id="1_tp0hw"]
 [ext_resource type="PackedScene" uid="uid://t3qtsflmc5kr" path="res://tscn/layout.tscn" id="2_juix7"]
 [ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/health_pack.tscn" id="3_ivtoj"]
 [ext_resource type="PackedScene" uid="uid://beqxm8my7oh0o" path="res://tscn/wall.tscn" id="5_740th"]
+[ext_resource type="PackedScene" path="res://tscn/ghost_enemy.tscn" id="6_ghost"]
+[ext_resource type="PackedScene" path="res://tscn/pathfinding_enemy.tscn" id="7_path"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
+vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Enemy" parent="." instance=ExtResource("1_tp0hw")]
-unique_name_in_owner = true
-position = Vector2(6570, 3632)
-
 [node name="Player" parent="." instance=ExtResource("1_juix7")]
 unique_name_in_owner = true
-position = Vector2(5511, 3655)
-
-[node name="Layout" parent="." instance=ExtResource("2_juix7")]
+position = Vector2(4747, 2288)
 
 [node name="HealthPack" parent="." instance=ExtResource("3_ivtoj")]
-position = Vector2(5497, 3341)
+position = Vector2(6706, 2930)
 
-[node name="Wall" parent="." instance=ExtResource("5_740th")]
-position = Vector2(5994, 3548)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_game")
+
+[node name="Layout" parent="NavigationRegion2D" instance=ExtResource("2_juix7")]
+
+[node name="Wall" parent="NavigationRegion2D" instance=ExtResource("5_740th")]
+position = Vector2(5839, 2311)
+
+[node name="Wall2" parent="NavigationRegion2D" instance=ExtResource("5_740th")]
+position = Vector2(3984, 2321)
+
+[node name="PathfindingEnemy" parent="." instance=ExtResource("7_path")]
+position = Vector2(4000, 2000)
+max_speed = 250.0
+
+[node name="GhostEnemy" parent="." instance=ExtResource("6_ghost")]
+position = Vector2(5200, 2200)
+max_speed = 300.0

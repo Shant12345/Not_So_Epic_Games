@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ghost_enemy.gd" id="1_ghost"]
+
+[sub_resource type="Gradient" id="Gradient_ghost"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.4, 0, 0.8, 0.5, 0.6, 0.2, 1, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ghost"]
+gradient = SubResource("Gradient_ghost")
+fill_to = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghost"]
+size = Vector2(40, 40)
+
+[node name="GhostEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ghost")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_ghost")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ghost")
+debug_color = Color(0.7, 0, 0.7, 0.4)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_ghost")
