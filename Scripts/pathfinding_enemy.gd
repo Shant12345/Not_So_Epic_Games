@@ -6,20 +6,21 @@ extends CharacterBody2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready() -> void:
-	# These values need to be adjusted based on the actor's size
-	# and the desired behavior.
 	navigation_agent.path_desired_distance = 20.0
 	navigation_agent.target_desired_distance = 20.0
+	
+	var hit_box = get_node_or_null("HitBox")
+	if hit_box:
+		hit_box.body_entered.connect(_on_hit_box_body_entered)
 
-	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 
 func actor_setup():
-	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
 
-	# Now the agent is ready to query the navigation map.
-	# We can update the target here or in _physics_process.
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	var player = get_tree().root.find_child("Player", true, false)
@@ -38,7 +39,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# Visual indicator: flip sprite
 	var sprite = get_node_or_null("Sprite2D")
 	if sprite:
 		sprite.flip_h = velocity.x < 0

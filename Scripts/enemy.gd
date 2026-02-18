@@ -6,11 +6,21 @@ extends CharacterBody2D
 @onready var hit_box: Area2D = $HitBox
 @onready var raycasts: Node2D = %Raycasts
 
+func _ready() -> void:
+	hit_box.body_entered.connect(_on_hit_box_body_entered)
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		get_tree().reload_current_scene()
+
 
 
 
 func get_global_player_position() -> Vector2:
-	return get_tree().root.get_node("Game/Player").global_position
+	var player = get_tree().root.find_child("Player", true, false)
+	if player:
+		return player.global_position
+	return global_position
 
 func _physics_process(delta: float) -> void:
 	var direction := global_position.direction_to(get_global_player_position())
@@ -18,6 +28,11 @@ func _physics_process(delta: float) -> void:
 	var speed := max_speed if distance > 100 else max_speed * distance / 100
 
 	var desired_velocity := direction * speed
+	
+	# Apply avoidance force
+	var avoidance_force := calculate_avoidance_force()
+	desired_velocity += avoidance_force
+	
 	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
 	move_and_slide()
 	

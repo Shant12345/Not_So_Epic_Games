@@ -13,6 +13,8 @@ gradient = SubResource("Gradient_no3jk")
 
 [node name="Security" type="CharacterBody2D"]
 position = Vector2(173, 339)
+scale = Vector2(1.9155889, 1.7599951)
+collision_layer = 2
 script = ExtResource("1_225ps")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,4 +23,10 @@ scale = Vector2(0.07812501, 20)
 texture = SubResource("GradientTexture1D_mnca5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ypdsa")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ypdsa")
