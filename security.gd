@@ -32,13 +32,11 @@ func _on_tween_finished():
 	
 	
 
-func set_health(new_health: int) -> void:
-	health = new_health
-	var health_bar = get_node_or_null("UI/HealthBar")
-	if health_bar:
-		health_bar.value = health
-		
 func _on_hit_box_body_entered(body: Node2D):
 	if body.name == "Player":
-		set_health(health - 10)
+		if body.has_method("take_damage"):
+			body.take_damage(10)
+		else:
+			# Fallback
+			get_tree().reload_current_scene()
 	

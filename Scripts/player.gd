@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@export var max_speed := 1000.0
+@export var max_speed := 1400.0
 @export var acceleration := 3500.0
 @export var deceleration := 3500.0
-var health := 70
+var health := 30
 
 func _ready() -> void:
 	var hitbox = get_node_or_null("Hitbox")
@@ -30,6 +30,12 @@ func set_health(new_health: int) -> void:
 	var health_bar = get_node_or_null("UI/HealthBar")
 	if health_bar:
 		health_bar.value = health
+	
+	if health <= 0:
+		get_tree().reload_current_scene()
+
+func take_damage(amount: int) -> void:
+	set_health(health - amount)
 
 func _on_area_entered(_area_that_entered: Area2D) -> void:
 	set_health(health + 10)
