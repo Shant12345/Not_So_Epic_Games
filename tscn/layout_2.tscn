@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvqgi8ujm64pg"]
+
+[ext_resource type="PackedScene" uid="uid://beqxm8my7oh0o" path="res://tscn/wall.tscn" id="1_heqkc"]
+
+[node name="Layout_2" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(322, -0.99999905)
+scale = Vector2(0.31378335, 60.00445)
+
+[node name="Wall2" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(20477, -0.99998474)
+scale = Vector2(0.31378335, 60.00445)
+
+[node name="Wall3" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(10379.001, 8814)
+scale = Vector2(113.24, 0.44001463)
+
+[node name="Wall4" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(10422, 4.7683716e-07)
+scale = Vector2(113.24, 0.44001463)
+
+[node name="Wall5" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(12245, 4032.0002)
+scale = Vector2(92.72001, 0.44001463)
+
+[node name="Wall6" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(1296.9999, 817.99994)
+scale = Vector2(11.120012, 0.44001463)
+
+[node name="Wall7" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(3970, 820.99994)
+scale = Vector2(11.120012, 0.44001463)
+
+[node name="Wall8" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(4896, 720.00006)
+rotation = -1.5707964
+scale = Vector2(-1.8799906, 0.44001463)
+
+[node name="Wall9" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(2980, 719)
+rotation = -1.5707964
+scale = Vector2(-1.8799906, 0.44001463)
