@@ -9,7 +9,7 @@ gradient = SubResource("Gradient_behtt")
 fill_from = Vector2(1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbgl8"]
-size = Vector2(174, 138.99998)
+size = Vector2(179.67903, 147.99998)
 
 [node name="Wall" type="StaticBody2D"]
 position = Vector2(322, 199)
@@ -20,6 +20,6 @@ scale = Vector2(2.782238, 2.3125)
 texture = SubResource("GradientTexture2D_xt27s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 73.5)
+position = Vector2(0, 74)
 scale = Vector2(0.9906552, 1)
 shape = SubResource("RectangleShape2D_bbgl8")
