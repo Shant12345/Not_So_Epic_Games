@@ -23,7 +23,7 @@ unique_name_in_owner = true
 position = Vector2(500, 500)
 
 [node name="HealthPack" parent="." instance=ExtResource("3_ivtoj")]
-position = Vector2(4357, 2286)
+position = Vector2(3702.43, 1673.805)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(231.66162, -40.64643)
@@ -55,13 +55,14 @@ point_a = Vector2(4385, 2351)
 point_b = Vector2(6363, 2351)
 
 [node name="Security4" parent="." instance=ExtResource("6_rpnrw")]
-position = Vector2(10167.322, 4710.037)
+position = Vector2(10103.613, 4888.99)
 scale = Vector2(6.3438826, 6.8183937)
-point_a = Vector2(10156, 448)
-point_b = Vector2(10156, 4710)
+point_a = Vector2(10156, 3521)
+point_b = Vector2(10156, 4888)
+move_time = 1.0
 
 [node name="HealthPack2" parent="." instance=ExtResource("3_ivtoj")]
-position = Vector2(1049.631, 4160.0557)
+position = Vector2(2036.5977, 2785.6982)
 
 [node name="HealthPack3" parent="." instance=ExtResource("3_ivtoj")]
 position = Vector2(6841.924, 4198.2324)
@@ -69,6 +70,12 @@ position = Vector2(6841.924, 4198.2324)
 [node name="HealthPack4" parent="." instance=ExtResource("3_ivtoj")]
 position = Vector2(7591.809, 990.2054)
 
+[node name="HealthPack5" parent="." instance=ExtResource("3_ivtoj")]
+position = Vector2(499.22742, 1302.7761)
+
 [node name="FinishLine" parent="." instance=ExtResource("6_qol31")]
-position = Vector2(10391.869, 423.52158)
+position = Vector2(10400.225, 2598.3943)
 scale = Vector2(1, 2.9565496)
+
+[node name="HealthPack6" parent="." instance=ExtResource("3_ivtoj")]
+position = Vector2(534.7374, 1976.8318)

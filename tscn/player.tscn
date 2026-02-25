@@ -1,14 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://cljxa44wmhn7y"]
+[gd_scene load_steps=7 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_3c7ea"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7omxl"]
-bg_color = Color(0, 0.6211991, 0.4044209, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0, 0.8, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
 size = Vector2(124.776886, 77)
@@ -21,8 +42,12 @@ position = Vector2(1, 7)
 script = ExtResource("1_7omxl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
-[node name="UI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+self_modulate = Color(0.0616197, 0.8790505, 0.35664386, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,23 +55,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -87.00001
-offset_top = -101.0
-offset_right = 78.74096
-offset_bottom = -74.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0799985, 1.2000006)
-theme_override_styles/fill = SubResource("StyleBoxFlat_7omxl")
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 42.0
+offset_right = 362.0
+offset_bottom = 67.0
+scale = Vector2(1.8399982, 2.6800003)
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
 step = 1.0
-value = 67.0
+value = 30.0
+
+[node name="HPLabel" type="Label" parent="CanvasLayer/UI/HealthBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -11.5
+offset_right = -5.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "HP"
+horizontal_alignment = 2
 
 [node name="Hitbox" type="Area2D" parent="."]
 

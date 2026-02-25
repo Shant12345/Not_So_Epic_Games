@@ -15,6 +15,10 @@ run/main_scene="uid://d0rvrp0m6pcj7"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneTransition="*res://tscn/scene_transition.tscn"
+
 [input]
 
 move_left={
