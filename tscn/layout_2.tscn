@@ -3,27 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://beqxm8my7oh0o" path="res://tscn/wall.tscn" id="1_heqkc"]
 
 [node name="Layout_2" type="Node2D"]
-scale = Vector2(0.64147156, 0.74906737)
+scale = Vector2(0.5604337, 0.65325326)
 
 [node name="Wall" parent="." instance=ExtResource("1_heqkc")]
-position = Vector2(322, -0.99999905)
-scale = Vector2(0.31378335, 60.00445)
+position = Vector2(327.37228, -5.3399734)
+scale = Vector2(0.31378335, 59.89765)
 
 [node name="Wall2" parent="." instance=ExtResource("1_heqkc")]
-position = Vector2(20477, -0.99998474)
-scale = Vector2(0.31378335, 60.00445)
+position = Vector2(20434.266, -5.339974)
+scale = Vector2(0.31378335, 56.35313)
 
 [node name="Wall3" parent="." instance=ExtResource("1_heqkc")]
 position = Vector2(10379.001, 8814)
 scale = Vector2(113.24, 0.44001463)
 
 [node name="Wall4" parent="." instance=ExtResource("1_heqkc")]
-position = Vector2(10422, 4.7683716e-07)
-scale = Vector2(113.24, 0.44001463)
+position = Vector2(10393.941, -5.3399734)
+scale = Vector2(112.86586, 0.44001463)
 
 [node name="Wall5" parent="." instance=ExtResource("1_heqkc")]
-position = Vector2(12245, 4032.0002)
-scale = Vector2(92.72001, 0.44001463)
+position = Vector2(7356.5205, 4006.3154)
+scale = Vector2(37.596764, 0.44001463)
 
 [node name="Wall6" parent="." instance=ExtResource("1_heqkc")]
 position = Vector2(1296.9999, 817.99994)
@@ -102,10 +102,10 @@ scale = Vector2(2.440013, 0.44001463)
 [node name="Wall24" parent="." instance=ExtResource("1_heqkc")]
 position = Vector2(9241, 4912)
 rotation = -1.5707964
-scale = Vector2(8.036765, 0.40911224)
+scale = Vector2(5.7062287, 0.40911224)
 
 [node name="Wall25" parent="." instance=ExtResource("1_heqkc")]
-position = Vector2(14231.999, 4759)
+position = Vector2(14221.319, 4759)
 rotation = -1.5707964
 scale = Vector2(8.170598, 0.406646)
 
@@ -159,3 +159,17 @@ scale = Vector2(9.81047, 0.36664602)
 [node name="Wall34" parent="." instance=ExtResource("1_heqkc")]
 position = Vector2(2662.7092, 7486.209)
 scale = Vector2(16.783424, 0.44001463)
+
+[node name="Wall35" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(16014.741, 4006.3145)
+scale = Vector2(49.881027, 0.44001463)
+
+[node name="Wall36" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(17865.844, 5556.467)
+rotation = 1.5707964
+scale = Vector2(17.595772, 0.36664602)
+
+[node name="Wall37" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(17865.172, 8150.1343)
+rotation = 1.5707964
+scale = Vector2(7.6187134, 0.36664602)
