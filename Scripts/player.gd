@@ -41,7 +41,7 @@ func set_health(new_health: int) -> void:
 		if health > 50:
 			style_box.bg_color = Color(0, 0.8, 0.4) # Green
 		elif health > 25:
-			style_box.bg_color = Color(1, 0.6, 0.2) # Orange
+			style_box.bg_color = Color(0.803, 0.691, 0.041, 1.0) # Orange
 		else:
 			style_box.bg_color = Color(0.8, 0.1, 0.1) # Red
 		health_bar.add_theme_stylebox_override("fill", style_box)

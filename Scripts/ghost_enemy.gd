@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var max_speed := 200.0
-@export var acceleration := 800.0
+@export var max_speed := 50.0
+@export var acceleration := 400.0
 
 func _ready() -> void:
 	var hit_box = get_node_or_null("HitBox")

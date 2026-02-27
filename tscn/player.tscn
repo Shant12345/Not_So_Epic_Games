@@ -34,10 +34,15 @@ corner_radius_bottom_left = 4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
 size = Vector2(124.776886, 77)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7omxl"]
-size = Vector2(125, 78)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
+radius = 39.0
+height = 125.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
 position = Vector2(1, 7)
 script = ExtResource("1_7omxl")
 
@@ -92,9 +97,9 @@ texture = ExtResource("2_3c7ea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-8.5, -8.5)
-scale = Vector2(1.0017881, 1)
 shape = SubResource("RectangleShape2D_3c7ea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, -8)
-shape = SubResource("RectangleShape2D_7omxl")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_player")

@@ -28,13 +28,13 @@ scale = Vector2(10, 1)
 
 [node name="Wall_Inner2" parent="." instance=ExtResource("1_wall")]
 position = Vector2(1882, 1950)
-rotation = 0.0025208415
+rotation = -0.008298361
 scale = Vector2(10, 1)
 
 [node name="Wall_Inner3" parent="." instance=ExtResource("1_wall")]
 position = Vector2(2924, 2346)
 rotation = 1.5708
-scale = Vector2(17.200006, 1)
+scale = Vector2(17.520006, 1)
 
 [node name="Wall_Inner4" parent="." instance=ExtResource("1_wall")]
 position = Vector2(5202, 1159)
@@ -46,23 +46,14 @@ position = Vector2(5216, 4148.0005)
 rotation = 1.5708
 scale = Vector2(10, 1)
 
-[node name="Wall_Inner6" parent="." instance=ExtResource("1_wall")]
-position = Vector2(7919.9995, 1895)
-scale = Vector2(24.960001, 1)
-
 [node name="Wall_Inner7" parent="." instance=ExtResource("1_wall")]
 position = Vector2(2097, 744)
 rotation = -1.5712489
 scale = Vector2(5, 1)
 
-[node name="Wall_Inner8" parent="." instance=ExtResource("1_wall")]
-position = Vector2(2627, 2974)
-rotation = -1.5668242
-scale = Vector2(10.253172, 1)
-
 [node name="Wall" parent="." instance=ExtResource("1_wall")]
 position = Vector2(1152, 2923)
-rotation = 1.5670187
+rotation = 1.5736487
 scale = Vector2(-9.635219, 0.9867892)
 
 [node name="Wall2" parent="." instance=ExtResource("1_wall")]
@@ -83,15 +74,37 @@ scale = Vector2(17.057913, 1.3783692)
 skew = 0.019284368
 
 [node name="Wall_Inner9" parent="." instance=ExtResource("1_wall")]
-position = Vector2(3731, 3871)
+position = Vector2(3693, 3874)
 rotation = -3.1493793
-scale = Vector2(4.967022, 1)
-
-[node name="Wall_Inner10" parent="." instance=ExtResource("1_wall")]
-position = Vector2(7896.9995, 3215)
-scale = Vector2(24.960001, 1)
+scale = Vector2(4.6070366, 1)
 
 [node name="Wall_Right2" parent="." instance=ExtResource("1_wall")]
 position = Vector2(10265.999, 3995.0002)
 rotation = 1.5708
 scale = Vector2(13.180414, 1.0074213)
+
+[node name="Wall_Inner11" parent="." instance=ExtResource("1_wall")]
+position = Vector2(7641.9995, 4115)
+rotation = -1.5657218
+scale = Vector2(9.921544, 1)
+
+[node name="Wall_Inner12" parent="." instance=ExtResource("1_wall")]
+position = Vector2(9191.001, 3263)
+scale = Vector2(11.600001, 1)
+
+[node name="Wall_Inner14" parent="." instance=ExtResource("1_wall")]
+position = Vector2(7661, 1103)
+rotation = -1.57592
+scale = Vector2(10.082024, 1)
+
+[node name="Wall_Inner16" parent="." instance=ExtResource("1_wall")]
+position = Vector2(9163, 1854)
+scale = Vector2(11.600001, 1)
+
+[node name="Wall_Inner13" parent="." instance=ExtResource("1_wall")]
+position = Vector2(6235.0005, 1863)
+scale = Vector2(11.600001, 1)
+
+[node name="Wall_Inner15" parent="." instance=ExtResource("1_wall")]
+position = Vector2(6223, 3273)
+scale = Vector2(11.600001, 1)
