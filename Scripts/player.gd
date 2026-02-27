@@ -26,10 +26,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func set_health(new_health: int) -> void:
-	health = new_health
-	var health_bar = get_node_or_null("UI/HealthBar")
+	health = clamp(new_health, 0, 100)
+	var health_bar = get_node_or_null("CanvasLayer/UI/HealthBar")
 	if health_bar:
-		health_bar.value = health
+		var tween = create_tween()
+		tween.tween_property(health_bar, "value", health, 0.3).set_trans(Tween.TRANS_SINE)
+		
+		var hp_number = health_bar.get_node_or_null("HPNumber")
+		if hp_number:
+			hp_number.text = str(health) + " / 100"
+		
+		# Dynamic color logic
+		var style_box = health_bar.get_theme_stylebox("fill").duplicate()
+		if health > 50:
+			style_box.bg_color = Color(0, 0.8, 0.4) # Green
+		elif health > 25:
+			style_box.bg_color = Color(0.803, 0.691, 0.041, 1.0) # Orange
+		else:
+			style_box.bg_color = Color(0.8, 0.1, 0.1) # Red
+		health_bar.add_theme_stylebox_override("fill", style_box)
 	
 	if health <= 0:
 		get_tree().reload_current_scene()
