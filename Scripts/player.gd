@@ -32,7 +32,7 @@ func set_health(new_health: int) -> void:
 		var tween = create_tween()
 		tween.tween_property(health_bar, "value", health, 0.3).set_trans(Tween.TRANS_SINE)
 		
-		var hp_number = health_bar.get_node_or_null("HPNumber")
+		var hp_number = health_bar.get_node_or_null("HPLabel")
 		if hp_number:
 			hp_number.text = str(health) + " / 100"
 		

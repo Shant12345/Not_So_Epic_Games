@@ -25,11 +25,11 @@ texture = SubResource("GradientTexture2D_6c4pm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.50000143, -0.5000011)
-scale = Vector2(1.3585523, 1.3742161)
 shape = SubResource("RectangleShape2D_883pt")
 debug_color = Color(0, 0.6, 0.69803923, 0.8235294)
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, -0.5)

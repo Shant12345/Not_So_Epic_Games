@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_3c7ea"]
+[ext_resource type="PackedScene" uid="uid://d3h7qk3w5x2c" path="res://tscn/pause_menu.tscn" id="3_pause"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
@@ -38,7 +39,7 @@ size = Vector2(124.776886, 77)
 radius = 39.0
 height = 125.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -87,6 +88,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "HP"
 horizontal_alignment = 2
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_pause")]
 
 [node name="Hitbox" type="Area2D" parent="."]
 

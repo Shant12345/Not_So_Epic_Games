@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 var is_chasing := false
 var is_killing := false
+var damage_cooldown := 1.0
+var time_since_last_damage := 0.0
 
 func _ready() -> void:
 	navigation_agent.path_desired_distance = 20.0
@@ -28,17 +30,19 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	if is_killing:
 		return
 		
-	if body.name == "Player":
-		handle_kill()
+	if body.name == "Player" or body.is_in_group("Player"):
+		if time_since_last_damage >= damage_cooldown:
+			inflict_damage(body)
 
 
-func handle_kill() -> void:
-	is_killing = true
-	velocity = Vector2.ZERO
+func inflict_damage(player: Node2D) -> void:
+	time_since_last_damage = 0.0
+	if player.has_method("take_damage"):
+		player.take_damage(10)
+	
 	if animation_player.has_animation("kill"):
 		animation_player.play("kill")
-		await animation_player.animation_finished
-	get_tree().reload_current_scene()
+
 
 func _physics_process(delta: float) -> void:
 	if is_killing:
@@ -65,6 +69,7 @@ func _physics_process(delta: float) -> void:
 				var desired_velocity := direction * max_speed
 				velocity = velocity.move_toward(desired_velocity, acceleration * delta)
 
+	time_since_last_damage += delta
 	move_and_slide()
 
 	var sprite = get_node_or_null("Sprite2D")

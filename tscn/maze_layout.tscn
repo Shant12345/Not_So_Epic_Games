@@ -57,7 +57,7 @@ rotation = 1.5736487
 scale = Vector2(-9.635219, 0.9867892)
 
 [node name="Wall2" parent="." instance=ExtResource("1_wall")]
-position = Vector2(3545.0002, 961)
+position = Vector2(3528.0005, 938)
 rotation = 3.1487865
 scale = Vector2(8.452292, 1)
 
@@ -68,7 +68,7 @@ scale = Vector2(6.9420466, 0.8554386)
 skew = 0.019284368
 
 [node name="Wall4" parent="." instance=ExtResource("1_wall")]
-position = Vector2(4307, 2354)
+position = Vector2(4284, 2354.0005)
 rotation = 1.5693672
 scale = Vector2(17.057913, 1.3783692)
 skew = 0.019284368
