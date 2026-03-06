@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cljxa44wmhn7y"]
+[gd_scene load_steps=9 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_3c7ea"]
@@ -32,19 +32,30 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stamina"]
+bg_color = Color(0, 0.6, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
 size = Vector2(124.776886, 77)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
-radius = 39.0
-height = 125.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+radius = 45.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(1, 7)
 collision_layer = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 0.1
-position = Vector2(1, 7)
 script = ExtResource("1_7omxl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -79,15 +90,57 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -11.5
-offset_right = -5.0
-offset_bottom = 11.5
+offset_left = -15.760885
+offset_top = -11.634329
+offset_right = 35.326096
+offset_bottom = 11.365671
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "HP"
 horizontal_alignment = 2
+
+[node name="SprintBar" type="ProgressBar" parent="CanvasLayer/UI"]
+custom_minimum_size = Vector2(300, 15)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 125.0
+offset_right = 362.0
+offset_bottom = 151.66666
+scale = Vector2(1.84, 1.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_stamina")
+step = 0.1
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/SprintBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.6086936
+offset_top = -9.333328
+offset_right = 70.608696
+offset_bottom = 13.666672
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "STAMINA"
+horizontal_alignment = 2
+
+[node name="PauseHUDButton" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 90.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "PAUSE"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_pause")]
 
@@ -103,6 +156,7 @@ position = Vector2(-8.5, -8.5)
 shape = SubResource("RectangleShape2D_3c7ea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, -8)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_player")
+position = Vector2(-7, -10)
+shape = SubResource("CircleShape2D_player")
+
+[connection signal="pressed" from="CanvasLayer/UI/PauseHUDButton" to="CanvasLayer/PauseMenu" method="_on_pause_hud_button_pressed"]

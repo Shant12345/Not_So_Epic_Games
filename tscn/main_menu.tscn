@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpij0yog0ek6i"]
 
-[ext_resource type="Script" uid="uid://8ql21ye2ha5s" path="res://Scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_menu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+process_mode = 3
 script = ExtResource("1_menu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

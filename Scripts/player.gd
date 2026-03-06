@@ -1,9 +1,16 @@
 extends CharacterBody2D
 
 @export var max_speed := 1400.0
+@export var sprint_speed := 2200.0
 @export var acceleration := 3500.0
 @export var deceleration := 3500.0
+@export var max_stamina := 100.0
+@export var stamina_consumption := 20.0 # 100 / 20 = 5 seconds
+@export var stamina_recovery := 15.0
+
 var health := 30
+var stamina := 100.0
+var is_sprint_exhausted := false
 
 func _ready() -> void:
 	var hitbox = get_node_or_null("Hitbox")
@@ -11,12 +18,34 @@ func _ready() -> void:
 		hitbox.area_entered.connect(_on_area_entered)
 	
 	set_health(health)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	# Anti-stuck optimizations
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	# A smaller safe margin helps avoid snagging on tiny physics seams
+	safe_margin = 0.05 
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_down", "move_up")
 	var has_input_direction := direction.length() > 0.0
 	
-	var target_velocity := direction * max_speed
+	var is_sprinting := Input.is_action_pressed("sprint") and has_input_direction and not is_sprint_exhausted
+	
+	if is_sprinting:
+		stamina -= stamina_consumption * delta
+		if stamina <= 0:
+			stamina = 0
+			is_sprint_exhausted = true
+	else:
+		stamina += stamina_recovery * delta
+		if stamina >= 20: # Require 20% stamina to start sprinting again if exhausted
+			is_sprint_exhausted = false
+	
+	stamina = clamp(stamina, 0, max_stamina)
+	set_stamina(stamina)
+	
+	var current_max_speed: float = sprint_speed if is_sprinting else max_speed
+	var target_velocity: Vector2 = direction * current_max_speed
 	
 	if has_input_direction:
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
@@ -52,8 +81,15 @@ func set_health(new_health: int) -> void:
 func take_damage(amount: int) -> void:
 	set_health(health - amount)
 
-func _on_area_entered(_area_that_entered: Area2D) -> void:
-	set_health(health + 10)
+func set_stamina(new_stamina: float) -> void:
+	stamina = new_stamina
+	var stamina_bar = get_node_or_null("CanvasLayer/UI/SprintBar")
+	if stamina_bar:
+		stamina_bar.value = stamina
+
+func _on_area_entered(area_that_entered: Area2D) -> void:
+	if area_that_entered.name.begins_with("HealthPack") or area_that_entered.is_in_group("HealthPack"):
+		set_health(health + 10)
 	
 
 func get_global_player_position() -> Vector2:

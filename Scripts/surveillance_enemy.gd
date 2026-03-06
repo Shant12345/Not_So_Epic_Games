@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	if is_killing:
 		return
 		
-	var player = get_tree().root.find_child("Player", true, false)
+	var player = get_tree().get_first_node_in_group("Player")
 	
 	if player:
 		var distance_to_player = global_position.distance_to(player.global_position)
