@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://d10l2ki1gl66"]
+[gd_scene load_steps=9 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_u4ld8"]
 [ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/health_pack.tscn" id="2_ylxr0"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://tscn/maze_layout.tscn" id="3_xy5ct"]
-[ext_resource type="PackedScene" path="res://tscn/ghost_enemy.tscn" id="4_h2n6l"]
+[ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://tscn/ghost_enemy.tscn" id="4_h2n6l"]
 [ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="5_s4g3m"]
-[ext_resource type="PackedScene" uid="uid://c1eliibmi53h2" path="res://tscn/finish_line.tscn" id="6_pj4il"]
-[ext_resource type="PackedScene" uid="uid://bdnavxkkkdk6" path="res://tscn/door.tscn" id="7_mhpqi"]
+[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/finish_line.tscn" id="6_pj4il"]
+[ext_resource type="PackedScene" uid="uid://dfk8x4v2b1oam" path="res://tscn/door.tscn" id="7_mhpqi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
@@ -16,7 +16,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Level 1" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(-70, 58.999996)
+position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_u4ld8")]
 unique_name_in_owner = true
@@ -38,25 +38,21 @@ acceleration = 3000.0
 
 [node name="Security" parent="." instance=ExtResource("5_s4g3m")]
 position = Vector2(4995.8335, 596.14764)
-scale = Vector2(6.305588, 6.535605)
 point_a = Vector2(2643, 541)
 point_b = Vector2(4995, 541)
 
 [node name="Security2" parent="." instance=ExtResource("5_s4g3m")]
 position = Vector2(1704.4753, 1593.8728)
-scale = Vector2(7.0958533, 6.8661137)
 point_a = Vector2(1724, 1779)
 point_b = Vector2(1724, 3334)
 
 [node name="Security3" parent="." instance=ExtResource("5_s4g3m")]
 position = Vector2(4385.473, 2314.456)
-scale = Vector2(6.639311, 6.3465967)
 point_a = Vector2(4385, 2351)
 point_b = Vector2(6363, 2351)
 
 [node name="Security4" parent="." instance=ExtResource("5_s4g3m")]
 position = Vector2(10103.613, 4888.99)
-scale = Vector2(6.3438826, 6.8183937)
 point_a = Vector2(10156, 3521)
 point_b = Vector2(10156, 4888)
 move_time = 1.0
@@ -76,12 +72,11 @@ position = Vector2(499.22742, 1302.7761)
 [node name="FinishLine" parent="." instance=ExtResource("6_pj4il")]
 position = Vector2(10400.225, 2598.3943)
 scale = Vector2(1, 2.9565496)
-script = null
 
 [node name="HealthPack6" parent="." instance=ExtResource("2_ylxr0")]
 position = Vector2(534.7374, 1976.8318)
 
 [node name="Door" parent="." instance=ExtResource("7_mhpqi")]
-position = Vector2(507.58273, 1241.9323)
+position = Vector2(524, 1246)
 rotation = 1.5612984
-script = null
+scale = Vector2(1, 3.070405)

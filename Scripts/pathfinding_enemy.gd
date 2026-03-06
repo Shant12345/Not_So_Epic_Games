@@ -19,11 +19,11 @@ func actor_setup():
 	await get_tree().physics_frame
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.is_in_group("Player") or body.name == "Player":
 		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
-	var player = get_tree().root.find_child("Player", true, false)
+	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		navigation_agent.target_position = player.global_position
 

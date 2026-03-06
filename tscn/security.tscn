@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0rvrp0m6pcj7"]
 
-[ext_resource type="Script" uid="uid://bp57ygku81xrj" path="res://security.gd" id="1_225ps"]
+[ext_resource type="Script" uid="uid://bp57ygku81xrj" path="res://Scripts/security.gd" id="1_225ps"]
 
 [sub_resource type="Gradient" id="Gradient_no3jk"]
 offsets = PackedFloat32Array(0.03, 0.5733333, 0.58, 0.99666667)
@@ -10,16 +10,17 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0.007843138, 1, 1, 0, 0, 1, 1, 0, 0,
 gradient = SubResource("Gradient_no3jk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypdsa"]
+size = Vector2(128.5, 120)
 
 [node name="Security" type="CharacterBody2D"]
 position = Vector2(173, 339)
-scale = Vector2(1.9155889, 1.7599951)
+scale = Vector2(1, 1)
 collision_layer = 2
 script = ExtResource("1_225ps")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.6293945e-06, 0)
-scale = Vector2(0.07812501, 20)
+scale = Vector2(0.5, 120)
 texture = SubResource("GradientTexture1D_mnca5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,6 +28,7 @@ shape = SubResource("RectangleShape2D_ypdsa")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ypdsa")

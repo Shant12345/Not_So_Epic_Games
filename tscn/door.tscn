@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdnavxkkkdk6"]
+[gd_scene load_steps=5 format=3 uid="uid://dfk8x4v2b1oam"]
 
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_abcde"]
 
@@ -9,6 +9,7 @@ size = Vector2(32, 128)
 size = Vector2(160, 160)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1"]
+font_size = 16
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_abcde")

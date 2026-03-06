@@ -33,7 +33,7 @@ func _on_tween_finished():
 	
 
 func _on_hit_box_body_entered(body: Node2D):
-	if body.name == "Player":
+	if body.is_in_group("Player") or body.name == "Player":
 		if body.has_method("take_damage"):
 			body.take_damage(10)
 		else:
