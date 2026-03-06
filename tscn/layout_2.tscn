@@ -1,0 +1,175 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvqgi8ujm64pg"]
+
+[ext_resource type="PackedScene" uid="uid://beqxm8my7oh0o" path="res://tscn/wall.tscn" id="1_heqkc"]
+
+[node name="Layout_2" type="Node2D"]
+scale = Vector2(0.5604337, 0.65325326)
+
+[node name="Wall" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(327.37228, -5.3399734)
+scale = Vector2(0.31378335, 59.89765)
+
+[node name="Wall2" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(20434.266, -5.339974)
+scale = Vector2(0.31378335, 56.35313)
+
+[node name="Wall3" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(10379.001, 8814)
+scale = Vector2(113.24, 0.44001463)
+
+[node name="Wall4" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(10393.941, -5.3399734)
+scale = Vector2(112.86586, 0.44001463)
+
+[node name="Wall5" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(7356.5205, 4006.3154)
+scale = Vector2(37.596764, 0.44001463)
+
+[node name="Wall6" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(1296.9999, 817.99994)
+scale = Vector2(11.120012, 0.44001463)
+
+[node name="Wall7" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(3970, 820.99994)
+scale = Vector2(11.120012, 0.44001463)
+
+[node name="Wall8" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(4906, 536.99994)
+rotation = -1.5707964
+scale = Vector2(3.395775, 0.36664602)
+
+[node name="Wall10" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(10219.001, 821.99994)
+scale = Vector2(60.56002, 0.44001463)
+
+[node name="Wall11" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(7995, 310)
+rotation = -1.5707964
+scale = Vector2(3.395775, 0.36664602)
+
+[node name="Wall12" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(11386, 561)
+rotation = -1.5707964
+scale = Vector2(3.395775, 0.36664602)
+
+[node name="Wall13" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(15562, 2171.9998)
+rotation = -1.5707964
+scale = Vector2(15.075773, 0.32664603)
+
+[node name="Wall14" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(17808, 2727.9998)
+rotation = -1.5707964
+scale = Vector2(15.075773, 0.406646)
+
+[node name="Wall15" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(17813, 509.99997)
+rotation = -1.5707964
+scale = Vector2(5.3587084, 0.406646)
+
+[node name="Wall16" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(9126.001, 2285)
+scale = Vector2(57.88002, 0.44001463)
+
+[node name="Wall17" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(9239, 3195)
+rotation = -1.5707964
+scale = Vector2(9.770599, 0.406646)
+
+[node name="Wall18" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(14219.001, 3032.9998)
+rotation = -1.5707964
+scale = Vector2(8.170598, 0.406646)
+
+[node name="Wall19" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(3991.0002, 3384.9998)
+rotation = -1.5707964
+scale = Vector2(7.610599, 0.40904588)
+
+[node name="Wall20" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(2232, 1581.0001)
+rotation = -1.5707964
+scale = Vector2(8.490599, 0.40904588)
+
+[node name="Wall9" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(1772, 2273)
+scale = Vector2(5.720012, 0.44001463)
+
+[node name="Wall21" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(531.00006, 2257)
+scale = Vector2(2.440013, 0.44001463)
+
+[node name="Wall24" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(9241, 4912)
+rotation = -1.5707964
+scale = Vector2(5.7062287, 0.40911224)
+
+[node name="Wall25" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(14221.319, 4759)
+rotation = -1.5707964
+scale = Vector2(8.170598, 0.406646)
+
+[node name="Wall26" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(3990.9998, 4735)
+rotation = -1.5707964
+scale = Vector2(7.610599, 0.40904588)
+
+[node name="Wall22" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(8547.001, 5722)
+scale = Vector2(64.56003, 0.44001463)
+
+[node name="Wall23" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(1310, 5721)
+scale = Vector2(11.000011, 0.44001463)
+
+[node name="Wall27" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(1678, 4469)
+rotation = -1.5707964
+scale = Vector2(14.730599, 0.40904588)
+
+[node name="Wall29" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(6314, 7693.999)
+rotation = 1.5707964
+scale = Vector2(13.155772, 0.36664602)
+
+[node name="Wall31" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(8180.001, 7058)
+rotation = 1.5707964
+scale = Vector2(14.955775, 0.36664602)
+
+[node name="Wall30" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(9917, 7298.0005)
+rotation = 1.5707964
+scale = Vector2(17.595772, 0.36664602)
+
+[node name="Wall28" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(3281, 6531)
+scale = Vector2(23.720009, 0.44001463)
+
+[node name="Wall32" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(5332, 6151)
+rotation = -1.5707964
+scale = Vector2(4.5305796, 0.40904588)
+
+[node name="Wall33" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(4171.782, 7418.2266)
+rotation = 1.5707964
+scale = Vector2(9.81047, 0.36664602)
+
+[node name="Wall34" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(2662.7092, 7486.209)
+scale = Vector2(16.783424, 0.44001463)
+
+[node name="Wall35" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(16014.741, 4006.3145)
+scale = Vector2(49.881027, 0.44001463)
+
+[node name="Wall36" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(17865.844, 5556.467)
+rotation = 1.5707964
+scale = Vector2(17.595772, 0.36664602)
+
+[node name="Wall37" parent="." instance=ExtResource("1_heqkc")]
+position = Vector2(17865.172, 8150.1343)
+rotation = 1.5707964
+scale = Vector2(7.6187134, 0.36664602)
