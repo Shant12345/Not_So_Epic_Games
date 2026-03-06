@@ -1,3 +1,82 @@
-[gd_scene format=3 uid="uid://batce14nwu7v2"]
+[gd_scene load_steps=2 format=3 uid="uid://cc4xk042nn1bs"]
+
+[ext_resource type="PackedScene" uid="uid://beqxm8my7oh0o" path="res://tscn/wall.tscn" id="1_1sfay"]
 
 [node name="layout_3" type="Node2D"]
+position = Vector2(12613, 307)
+rotation = 1.5707964
+
+[node name="Wall" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(327.37228, -5.3399734)
+scale = Vector2(0.31378335, 59.89765)
+
+[node name="Wall2" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(20434.266, -5.339974)
+scale = Vector2(0.31378335, 56.35313)
+
+[node name="Wall3" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(10379.001, 8814)
+scale = Vector2(113.24, 0.44001463)
+
+[node name="Wall4" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(10393.941, -5.3399734)
+scale = Vector2(112.86586, 0.44001463)
+
+[node name="Wall5" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(7955, 4516.9995)
+scale = Vector2(54.865864, 0.44001463)
+
+[node name="Wall6" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(7955, 2521.875)
+scale = Vector2(54.865864, 0.44001463)
+
+[node name="Wall7" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(7955, 6636.625)
+scale = Vector2(54.865864, 0.44001463)
+
+[node name="Wall8" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(12774.999, 6676.9985)
+rotation = -1.5707964
+scale = Vector2(24.225864, 0.44001463)
+
+[node name="Wall9" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(12773, 1285)
+rotation = -1.5707964
+scale = Vector2(14.30587, 0.44001463)
+
+[node name="Wall10" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(1338.0001, 2568.9993)
+rotation = -1.5707964
+scale = Vector2(28.505867, 0.44001463)
+
+[node name="Wall11" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(2100, 6976)
+rotation = -1.5707964
+scale = Vector2(21.185877, 0.44001463)
+
+[node name="Wall12" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(813.0001, 3221)
+rotation = -1.5707964
+scale = Vector2(21.185877, 0.44001463)
+
+[node name="Wall13" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(1100, 1335)
+scale = Vector2(3.065876, 0.44001463)
+
+[node name="Wall14" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(1772, 1335)
+scale = Vector2(4.425876, 0.44001463)
+
+[node name="Wall15" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(2100.0002, 2814)
+rotation = -1.5707964
+scale = Vector2(16.545887, 0.44001463)
+
+[node name="Wall16" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(2578.0002, 3946)
+rotation = -1.5707964
+scale = Vector2(44.185875, 0.44001463)
+
+[node name="Wall17" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(3901.0005, 7799)
+scale = Vector2(9.30588, 0.44001463)
