@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cljxa44wmhn7y"]
+[gd_scene load_steps=10 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_3c7ea"]
 [ext_resource type="PackedScene" uid="uid://d3h7qk3w5x2c" path="res://tscn/pause_menu.tscn" id="3_pause"]
+[ext_resource type="PackedScene" uid="uid://b3656vmxvbcq6" path="res://tscn/inventory_ui.tscn" id="4_inv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
@@ -143,6 +144,13 @@ theme_override_font_sizes/font_size = 24
 text = "PAUSE"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_pause")]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_inv")]
+offset_left = -116.0
+offset_top = 0.0
+offset_right = -116.0
+offset_bottom = 0.0
+scale = Vector2(1.0012951, 1.0030499)
 
 [node name="Hitbox" type="Area2D" parent="."]
 
