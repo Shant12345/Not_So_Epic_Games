@@ -15,7 +15,7 @@ position = Vector2(20434.266, -5.339974)
 scale = Vector2(0.31378335, 56.35313)
 
 [node name="Wall3" parent="." instance=ExtResource("1_1sfay")]
-position = Vector2(10379.001, 8814)
+position = Vector2(10381, 8810)
 scale = Vector2(113.24, 0.44001463)
 
 [node name="Wall4" parent="." instance=ExtResource("1_1sfay")]
@@ -80,3 +80,13 @@ scale = Vector2(44.185875, 0.44001463)
 [node name="Wall17" parent="." instance=ExtResource("1_1sfay")]
 position = Vector2(3901.0005, 7799)
 scale = Vector2(9.30588, 0.44001463)
+
+[node name="Wall18" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(4542, 3995)
+rotation = -1.5707964
+scale = Vector2(6.225884, 0.44001463)
+
+[node name="Wall19" parent="." instance=ExtResource("1_1sfay")]
+position = Vector2(4987, 3195)
+rotation = -1.5707964
+scale = Vector2(7.265884, 0.44001463)

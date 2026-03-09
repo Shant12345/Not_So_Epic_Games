@@ -1,7 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dd8vjviuxmyeb"]
 
-[ext_resource type="PackedScene" uid="uid://batce14nwu7v2" path="res://tscn/layout_3.tscn" id="1_kckro"]
+[ext_resource type="PackedScene" uid="uid://cc4xk042nn1bs" path="res://tscn/layout_3.tscn" id="1_kckro"]
 
 [node name="level_3" type="Node2D"]
 
 [node name="layout_3" parent="." instance=ExtResource("1_kckro")]
+position = Vector2(9116, -100)
