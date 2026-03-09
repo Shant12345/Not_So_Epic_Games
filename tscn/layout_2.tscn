@@ -53,9 +53,9 @@ rotation = -1.5707964
 scale = Vector2(3.395775, 0.36664602)
 
 [node name="Wall13" parent="." instance=ExtResource("1_heqkc")]
-position = Vector2(15562, 2171.9998)
+position = Vector2(15562.947, 2202.821)
 rotation = -1.5707964
-scale = Vector2(15.075773, 0.32664603)
+scale = Vector2(15.504013, 0.32664603)
 
 [node name="Wall14" parent="." instance=ExtResource("1_heqkc")]
 position = Vector2(17808, 2727.9998)
