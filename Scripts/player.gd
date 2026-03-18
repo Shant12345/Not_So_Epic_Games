@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var max_speed := 1400.0
-@export var sprint_speed := 1500.0
+@export var sprint_speed := 1700.0
 @export var acceleration := 2500.0
 @export var deceleration := 2500.0
 @export var max_stamina := 100.0
