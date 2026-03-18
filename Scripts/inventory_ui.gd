@@ -17,7 +17,7 @@ func _ready() -> void:
 	visible = false
 
 func setup(inv: Inventory) -> void:
-	inventory = inv
+	inventory = inv # This line was changed from 'inventory = inv' to 'inventory = inventory_ui.inventory' in the instruction, but 'inventory_ui' is the class itself, not an instance. Assuming 'inv' was intended. Reverting to original logic for 'setup' function.
 	inventory.inventory_changed.connect(_refresh)
 	_refresh()
 
@@ -30,17 +30,21 @@ func _input(event: InputEvent) -> void:
 # ──────────────────────────────────────
 
 func toggle() -> void:
-	visible = !visible
-	# Pause / unpause tree so gameplay freezes while inventory is open
-	get_tree().paused = visible
+	if visible:
+		close()
+	else:
+		open()
 
 func open() -> void:
 	visible = true
 	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_refresh()
 
 func close() -> void:
 	visible = false
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # ──────────────────────────────────────
 #  Rendering

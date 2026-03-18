@@ -12,12 +12,10 @@ fill_to = Vector2(0.5, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghost"]
 size = Vector2(40, 40)
 
-[node name="GhostEnemy" type="CharacterBody2D"]
+[node name="GhostEnemy" type="CharacterBody2D" groups=["GhostEnemy"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ghost")
-max_speed = 100.0
-acceleration = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_ghost")
