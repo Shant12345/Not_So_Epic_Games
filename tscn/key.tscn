@@ -31,7 +31,7 @@ func _on_area_entered(area: Area2D) -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_key"]
-radius = 28.0
+radius = 31.97465
 
 [node name="Key" type="Area2D" groups=["Key"]]
 scale = Vector2(0.71999943, 0.7200009)
@@ -42,7 +42,7 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_key")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(1.38889, 1.3888893)
 shape = SubResource("CircleShape2D_key")
 
 [node name="Label" type="Label" parent="."]

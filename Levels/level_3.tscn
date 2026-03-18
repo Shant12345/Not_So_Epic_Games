@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd8vjviuxmyeb"]
+[gd_scene load_steps=4 format=3 uid="uid://dd8vjviuxmyeb"]
 
 [ext_resource type="PackedScene" uid="uid://cc4xk042nn1bs" path="res://Levels/layout_3.tscn" id="1_kckro"]
+[ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/level1_to_level2.tscn" id="3_finish"]
 
 [node name="level_3" type="Node2D"]
 position = Vector2(-6250, 1676)
 
 [node name="layout_3" parent="." instance=ExtResource("1_kckro")]
 position = Vector2(6842, -805)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(7508, -494)
+scale = Vector2(1.1050894, 1.0424875)
+
+[node name="FinishLine" parent="." instance=ExtResource("3_finish")]
+position = Vector2(26300, 6200)
+scale = Vector2(5, 5)
+next_level_path = "res://tscn/main_menu.tscn"
