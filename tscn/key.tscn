@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddhjdqn43wwdo"]
+
+[ext_resource type="Texture2D" uid="uid://dv7j6m456vhxm" path="res://texture/key.png" id="2_key"]
+
+[sub_resource type="GDScript" id="GDScript_hp0b3"]
+script/source = "extends Area2D
+
+## Key pickup — collected by walking over it.
+## Adds one \"Key\" to the player's inventory, then disappears.
+## Spins and bobs up and down to attract the player's attention.
+
+@export var bob_height := 8.0       # pixels up and down
+@export var bob_speed := 2.5        # oscillations per second
+@export var spin_speed := 2.0       # full rotations per second
+
+var _time := 0.0
+var _base_y := 0.0
+var _sprite: Sprite2D = null
+
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
+	_sprite = get_node_or_null(\"Sprite2D\")
+	_base_y = position.y
+
+func _process(delta: float) -> void:
+	_time += delta
+
+	# Bob up and down (sine wave)
+	position.y = _base_y + sin(_time * bob_speed * TAU) * bob_height
+
+	# Spin the sprite
+	if _sprite:
+		_sprite.rotation += spin_speed * TAU * delta
+
+func _on_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent.is_in_group(\"Player\") or parent.name == \"Player\":
+		if \"inventory\" in parent and parent.inventory != null:
+			parent.inventory.add_item(\"Key\", 1, \"Opens a locked door.\", \"key\")
+		queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_key"]
+radius = 28.0
+
+[node name="Key" type="Area2D" groups=["Key"]]
+scale = Vector2(0.71999943, 0.7200009)
+script = SubResource("GDScript_hp0b3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_key")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_key")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 20.0
+offset_bottom = -30.0
+theme_override_font_sizes/font_size = 10
+text = "KEY"
+horizontal_alignment = 1

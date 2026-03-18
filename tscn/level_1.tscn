@@ -20,7 +20,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_u4ld8")]
 unique_name_in_owner = true
-position = Vector2(481, 643)
+position = Vector2(1058, 1473)
 
 [node name="HealthPack" parent="." instance=ExtResource("2_ylxr0")]
 position = Vector2(3702.43, 1673.805)
