@@ -21,9 +21,9 @@ func _on_button_unhover(btn: Button):
 
 func _on_start_button_pressed():
 	if SceneTransition:
-		SceneTransition.change_scene("res://tscn/level_1.tscn")
+		SceneTransition.change_scene("res://Levels/level_1.tscn")
 	else:
-		get_tree().change_scene_to_file("res://tscn/level_1.tscn")
+		get_tree().change_scene_to_file("res://Levels/level_1.tscn")
 
 func _on_quit_button_pressed():
 	get_tree().quit()

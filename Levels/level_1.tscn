@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkyd8xjfs6t7t"]
+
+[ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
+[ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/health_pack.tscn" id="2_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://tscn/maze_layout.tscn" id="3_f4pg2"]
+[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/level1_to_level2.tscn" id="5_rs4xw"]
+[ext_resource type="PackedScene" uid="uid://dfk8x4v2b1oam" path="res://tscn/door.tscn" id="6_lk57d"]
+[ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/ghost_enemy.tscn" id="7_2hkqn"]
+[ext_resource type="PackedScene" uid="uid://ddhjdqn43wwdo" path="res://tscn/key.tscn" id="8_34erp"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
+vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Level 1" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-69, 58.999996)
+
+[node name="Player" parent="." instance=ExtResource("1_77x7w")]
+unique_name_in_owner = true
+position = Vector2(1058, 1473)
+
+[node name="HealthPack" parent="." instance=ExtResource("2_xoyoh")]
+position = Vector2(3702.43, 1673.805)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(231.66162, -40.64643)
+navigation_polygon = SubResource("NavigationPolygon_game")
+
+[node name="MazeLayout" parent="NavigationRegion2D" instance=ExtResource("3_f4pg2")]
+position = Vector2(0.3383789, -0.35356522)
+
+[node name="FinishLine" parent="." instance=ExtResource("5_rs4xw")]
+position = Vector2(10400.225, 2598.3943)
+scale = Vector2(1, 2.9565496)
+
+[node name="HealthPack6" parent="." instance=ExtResource("2_xoyoh")]
+position = Vector2(534.7374, 1976.8318)
+
+[node name="Door" parent="." instance=ExtResource("6_lk57d")]
+position = Vector2(524, 1246)
+rotation = 1.5612984
+scale = Vector2(1, 3.070405)
+
+[node name="GhostEnemy" parent="." instance=ExtResource("7_2hkqn")]
+position = Vector2(6285, 4014)
+
+[node name="Key" parent="." instance=ExtResource("8_34erp")]
+position = Vector2(951.00006, 1698)
+
+[node name="Door2" parent="." instance=ExtResource("6_lk57d")]
+position = Vector2(2766.0002, 3784.9998)
+rotation = 1.5899165
+scale = Vector2(2.5146081, 5.533193)
+skew = -0.025581598
+
+[node name="Key2" parent="." instance=ExtResource("8_34erp")]
+position = Vector2(758, 2386)
