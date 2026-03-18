@@ -72,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(300, 25)
@@ -85,6 +86,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
 step = 1.0
 value = 30.0
+metadata/_edit_use_anchors_ = true
 
 [node name="HPLabel" type="Label" parent="CanvasLayer/UI/HealthBar"]
 layout_mode = 1
@@ -100,6 +102,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "HP"
 horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SprintBar" type="ProgressBar" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(300, 15)
@@ -114,6 +117,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_stamina")
 step = 0.1
 value = 100.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/UI/SprintBar"]
 layout_mode = 1
@@ -129,6 +133,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "STAMINA"
 horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseHUDButton" type="Button" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -142,15 +147,25 @@ offset_bottom = 90.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
 text = "PAUSE"
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_pause")]
+offset_left = -7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = 7.0
+metadata/_edit_use_anchors_ = true
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_inv")]
-offset_left = -116.0
-offset_top = 0.0
-offset_right = -116.0
-offset_bottom = 0.0
-scale = Vector2(1.0012951, 1.0030499)
+anchors_preset = -1
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1441.0
+offset_top = 830.0
+offset_right = 1441.0
+offset_bottom = 830.0
+scale = Vector2(0.6412975, 0.52304983)
+metadata/_edit_use_anchors_ = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 
