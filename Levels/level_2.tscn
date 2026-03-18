@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3wrkjdylnf2"]
+[gd_scene load_steps=4 format=3 uid="uid://c3wrkjdylnf2"]
 
-[ext_resource type="PackedScene" uid="uid://bvqgi8ujm64pg" path="res://tscn/layout_2.tscn" id="1_s1mjy"]
+[ext_resource type="PackedScene" uid="uid://bvqgi8ujm64pg" path="res://Levels/layout_2.tscn" id="1_s1mjy"]
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="2_s1mjy"]
-[ext_resource type="PackedScene" uid="uid://b8y2m2n2n2n2" path="res://tscn/scene_transition.tscn" id="3_gp5vw"]
+[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/level1_to_level2.tscn" id="3_finish"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lv2"]
 vertices = PackedVector2Array(0, 0, 12000, 0, 12000, 8000, 0, 8000)
@@ -22,4 +22,7 @@ position = Vector2(70, 42)
 position = Vector2(666.00006, 311.00003)
 scale = Vector2(1.1050894, 1.0424875)
 
-[node name="SceneTransition" parent="." instance=ExtResource("3_gp5vw")]
+[node name="FinishLine" parent="." instance=ExtResource("3_finish")]
+position = Vector2(19000, 7000)
+scale = Vector2(5, 5)
+next_level_path = "res://Levels/level_3.tscn"

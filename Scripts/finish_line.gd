@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_level_path: String = "res://tscn/level_2.tscn"
+@export var next_level_path: String = "res://Levels/level_2.tscn"
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var max_speed := 1400.0
-@export var sprint_speed := 2200.0
-@export var acceleration := 3500.0
-@export var deceleration := 3500.0
+@export var sprint_speed := 1500.0
+@export var acceleration := 2500.0
+@export var deceleration := 2500.0
 @export var max_stamina := 100.0
 @export var stamina_consumption := 20.0 
 @export var stamina_recovery := 15.0
@@ -158,9 +158,9 @@ func _update_danger_flash(delta: float) -> void:
 	ghost_visible = _is_ghost_on_screen()
 	
 	if ghost_visible:
-		danger_flash_intensity = move_toward(danger_flash_intensity, 1.0, delta * 2.5)
+		danger_flash_intensity = move_toward(danger_flash_intensity, 0.5, delta * 1.0)
 	else:
-		danger_flash_intensity = move_toward(danger_flash_intensity, 0.0, delta * 2.0)
+		danger_flash_intensity = move_toward(danger_flash_intensity, 0.0, delta * 1.0)
 	
 	if danger_flash_intensity > 0.0:
 		var pulse = (sin(Time.get_ticks_msec() / 200.0) + 1.0) / 2.0
