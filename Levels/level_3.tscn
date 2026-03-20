@@ -17,4 +17,4 @@ scale = Vector2(1.1050894, 1.0424875)
 [node name="FinishLine" parent="." instance=ExtResource("3_finish")]
 position = Vector2(27277.998, 7772)
 scale = Vector2(0.39999962, 3.8)
-next_level_path = "res://tscn/main_menu.tscn"
+next_level_path = "res://tscn/win_screen.tscn"

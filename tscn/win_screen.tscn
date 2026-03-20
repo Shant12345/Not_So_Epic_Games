@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpij0yog0ek6i"]
+[gd_scene load_steps=2 format=3 uid="uid://cpij0yog0ek6w"]
 
-[ext_resource type="Script" uid="uid://8ql21ye2ha5s" path="res://Scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Script" uid="uid://8ql21ye2ha5w" path="res://Scripts/win_screen.gd" id="1_menu"]
 
-[node name="MainMenu" type="Control"]
+[node name="WinScreen" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+color = Color(0.1, 0.4, 0.1, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -36,22 +36,20 @@ theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.0035191667, 0.0035191681, 0.0035191672, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 80
-text = "NOT SO EPIC GAMES"
+text = "YOU ESCAPED!"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 7
-text = "START GAME"
+text = "MAIN MENU"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 7
 text = "QUIT"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

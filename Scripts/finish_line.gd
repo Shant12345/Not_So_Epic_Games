@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 			elif current_scene.ends_with("level_2.tscn"):
 				path_to_load = "res://Levels/level_3.tscn"
 			elif current_scene.ends_with("level_3.tscn"):
-				path_to_load = "res://tscn/main_menu.tscn"
+				path_to_load = "res://tscn/win_screen.tscn"
 		
 		if path_to_load != "":
 			SceneTransition.change_scene(path_to_load)
