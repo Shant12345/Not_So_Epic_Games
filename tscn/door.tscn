@@ -44,7 +44,6 @@ offset_right = 174.0
 offset_bottom = 93.99999
 rotation = -1.5730302
 scale = Vector2(1, 2.1597285)
-text = "Press E to Open"
 label_settings = SubResource("LabelSettings_1")
 horizontal_alignment = 1
 
