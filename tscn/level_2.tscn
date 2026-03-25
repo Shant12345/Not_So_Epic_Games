@@ -3,6 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bvqgi8ujm64pg" path="res://tscn/layout_2.tscn" id="1_s1mjy"]
 
 [node name="Level_2" type="Node2D"]
+position = Vector2(247, 216)
 
 [node name="Layout_2" parent="." instance=ExtResource("1_s1mjy")]
-position = Vector2(70, 42)
