@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=8 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
 [ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/health_pack.tscn" id="2_xoyoh"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
 [ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="5_rs4xw"]
-[ext_resource type="PackedScene" uid="uid://dfk8x4v2b1oam" path="res://tscn/door.tscn" id="6_lk57d"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/ghost_enemy.tscn" id="7_2hkqn"]
 [ext_resource type="PackedScene" uid="uid://ddhjdqn43wwdo" path="res://tscn/key.tscn" id="8_34erp"]
 
@@ -20,7 +19,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(1058, 1473)
+position = Vector2(1926, 1624)
 
 [node name="HealthPack" parent="." instance=ExtResource("2_xoyoh")]
 position = Vector2(3702.43, 1673.805)
@@ -38,24 +37,13 @@ position = Vector2(10498, 2483)
 scale = Vector2(1, 2.9565496)
 
 [node name="HealthPack6" parent="." instance=ExtResource("2_xoyoh")]
-position = Vector2(534.7374, 1976.8318)
+position = Vector2(2641, 2050)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("7_2hkqn")]
 position = Vector2(6285, 4014)
 
 [node name="Key" parent="." instance=ExtResource("8_34erp")]
-position = Vector2(951.00006, 1698)
+position = Vector2(2022, 2060)
 
 [node name="Key2" parent="." instance=ExtResource("8_34erp")]
-position = Vector2(758, 2386)
-
-[node name="Door" parent="." instance=ExtResource("6_lk57d")]
-position = Vector2(472, 1150)
-rotation = 1.5612984
-scale = Vector2(2.237676, 3.5111473)
-
-[node name="Door2" parent="." instance=ExtResource("6_lk57d")]
-position = Vector2(3521, 3633.0002)
-rotation = 1.6030731
-scale = Vector2(2.5146081, 2.1168845)
-skew = -0.025581598
+position = Vector2(1990, 5305)

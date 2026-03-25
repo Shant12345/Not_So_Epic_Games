@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
-[ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_3c7ea"]
 [ext_resource type="PackedScene" uid="uid://d3h7qk3w5x2c" path="res://tscn/pause_menu.tscn" id="3_pause"]
 [ext_resource type="PackedScene" uid="uid://b3656vmxvbcq6" path="res://tscn/inventory_ui.tscn" id="4_inv"]
+[ext_resource type="Texture2D" uid="uid://bnfe5cgnv6fa2" path="res://texture/MainAntagonist-Sheet.png" id="4_u4c7w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
@@ -46,10 +46,10 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
-size = Vector2(124.776886, 77)
+size = Vector2(98, 77)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
-radius = 45.0
+radius = 33.06055
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 7)
@@ -60,7 +60,6 @@ safe_margin = 0.1
 script = ExtResource("1_7omxl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -171,12 +170,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="Skin" type="Sprite2D" parent="Hitbox"]
-position = Vector2(-7, -10)
-scale = Vector2(1.0039064, 0.80078125)
-texture = ExtResource("2_3c7ea")
+position = Vector2(-11.000001, -21)
+scale = Vector2(1.5912362, 2.3054993)
+texture = ExtResource("4_u4c7w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-8.5, -8.5)
+position = Vector2(-8, -8.5)
 shape = SubResource("RectangleShape2D_3c7ea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

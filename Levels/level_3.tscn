@@ -11,7 +11,7 @@ position = Vector2(-6250, 1676)
 position = Vector2(6842, -805)
 
 [node name="Player" parent="." instance=ExtResource("2_player")]
-position = Vector2(7508, -494)
+position = Vector2(26589, 7371)
 scale = Vector2(1.1050894, 1.0424875)
 
 [node name="FinishLine" parent="." instance=ExtResource("3_finish")]
