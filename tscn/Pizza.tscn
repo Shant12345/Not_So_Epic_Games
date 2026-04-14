@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://cqbw1kdiasrhe"]
+
+[ext_resource type="Script" uid="uid://bpvpx77u50hjh" path="res://Scripts/health_pack.gd" id="1_xab54"]
+[ext_resource type="Texture2D" uid="uid://b6vcmi6clhhrv" path="res://texture/Pizza-Sheet.png" id="2_k0f40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irjl4"]
+size = Vector2(9.755224, 14.2802515)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm1ov"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7yuj"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1gri"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0xjp"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnhmd"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ewoh"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhcmu"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roc2s"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuwmv"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c38r"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_650pe"]
+atlas = ExtResource("2_k0f40")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8lqd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm1ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7yuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1gri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0xjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnhmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ewoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhcmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roc2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuwmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c38r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_650pe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="HealthPack" type="Area2D"]
+scale = Vector2(3.662697, 3.1891341)
+script = ExtResource("1_xab54")
+item_name = "Pizza"
+item_description = "A delicious slice of pizza. Restores 15 HP."
+item_icon = SubResource("AtlasTexture_hm1ov")
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5460449, 1.6745673)
+rotation = 3.1415925
+scale = Vector2(2.9719224, 1.9612638)
+shape = SubResource("RectangleShape2D_irjl4")
+debug_color = Color(0, 0.60045683, 0.68673813, 0.14901961)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i8lqd")
+autoplay = "default"

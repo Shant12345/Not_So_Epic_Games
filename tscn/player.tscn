@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cljxa44wmhn7y"]
+[gd_scene load_steps=11 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="PackedScene" uid="uid://d3h7qk3w5x2c" path="res://tscn/pause_menu.tscn" id="3_pause"]
 [ext_resource type="PackedScene" uid="uid://b3656vmxvbcq6" path="res://tscn/inventory_ui.tscn" id="4_inv"]
-[ext_resource type="Texture2D" uid="uid://bnfe5cgnv6fa2" path="res://texture/MainAntagonist-Sheet.png" id="4_u4c7w"]
+[ext_resource type="Texture2D" uid="uid://ujfuwwskfc6g" path="res://texture/PlayerDesign-Sheet.png" id="4_u4c7w"]
+[ext_resource type="Script" uid="uid://bp8i3cxj04ex4" path="res://Scripts/game_timer.gd" id="5_timer"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
@@ -46,10 +47,10 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
-size = Vector2(98, 77)
+size = Vector2(35.30513, 80.43573)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
-radius = 33.06055
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4c7w"]
+size = Vector2(57, 133)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 7)
@@ -76,10 +77,10 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(300, 25)
 layout_mode = 0
-offset_left = 62.0
-offset_top = 42.0
-offset_right = 362.0
-offset_bottom = 67.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 45.0
 scale = Vector2(1.8399982, 2.6800003)
 theme_override_styles/background = SubResource("StyleBoxFlat_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
@@ -106,10 +107,10 @@ metadata/_edit_use_anchors_ = true
 [node name="SprintBar" type="ProgressBar" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(300, 15)
 layout_mode = 0
-offset_left = 62.0
-offset_top = 125.0
-offset_right = 362.0
-offset_bottom = 151.66666
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 320.0
+offset_bottom = 126.66666
 scale = Vector2(1.84, 1.5)
 theme_override_styles/background = SubResource("StyleBoxFlat_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_stamina")
@@ -134,19 +135,21 @@ text = "STAMINA"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseHUDButton" type="Button" parent="CanvasLayer/UI"]
+[node name="GameTimer" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -150.0
-offset_top = 40.0
-offset_right = -40.0
-offset_bottom = 90.0
+offset_left = -240.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 75.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 24
-text = "PAUSE"
-metadata/_edit_use_anchors_ = true
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "08:00 PM"
+horizontal_alignment = 2
+script = ExtResource("5_timer")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_pause")]
 offset_left = -7.0
@@ -157,29 +160,26 @@ scale = Vector2(1.0029738, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_inv")]
-anchors_preset = -1
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1441.0001
-offset_top = 893.00006
-offset_right = 1441.0001
-offset_bottom = 893.00006
-scale = Vector2(0.6412975, 0.8030474)
-metadata/_edit_use_anchors_ = true
+process_mode = 3
+offset_left = -444.0
+offset_top = -184.99997
+offset_right = 56.0
+offset_bottom = -85.0
+scale = Vector2(1.6902251, 1.7824794)
 
 [node name="Hitbox" type="Area2D" parent="."]
+scale = Vector2(1.6144964, 1.6456586)
 
 [node name="Skin" type="Sprite2D" parent="Hitbox"]
-position = Vector2(-11.000001, -21)
-scale = Vector2(1.5912362, 2.3054993)
+position = Vector2(-4.9551063, -9.114892)
+scale = Vector2(1.5912362, 1.7308747)
 texture = ExtResource("4_u4c7w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-8, -8.5)
+position = Vector2(-5.264799, -10.217867)
 shape = SubResource("RectangleShape2D_3c7ea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -10)
-shape = SubResource("CircleShape2D_player")
+position = Vector2(-8.5, -16.5)
+shape = SubResource("RectangleShape2D_u4c7w")
 
-[connection signal="pressed" from="CanvasLayer/UI/PauseHUDButton" to="CanvasLayer/PauseMenu" method="_on_pause_hud_button_pressed"]

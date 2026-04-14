@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var avoidance_strength := 21000.0
 @onready var hit_box: Area2D = $HitBox
 @onready var raycasts: Node2D = %Raycasts
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	hit_box.body_entered.connect(_on_hit_box_body_entered)
@@ -12,9 +13,6 @@ func _ready() -> void:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":
 		get_tree().reload_current_scene()
-
-
-
 
 func get_global_player_position() -> Vector2:
 	var player = get_tree().get_first_node_in_group("Player")
@@ -36,6 +34,32 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
 	move_and_slide()
 	
+	# Flip sprite based on movement direction
+	_update_sprite_direction()
+	
+func _update_sprite_direction() -> void:
+	if velocity.length() < 5.0:
+		# Standing still — keep last direction, stop animation
+		animated_sprite.stop()
+		return
+	
+	animated_sprite.play("walk")
+	
+	# Determine dominant axis
+	if abs(velocity.x) >= abs(velocity.y):
+		# Horizontal movement dominates
+		animated_sprite.flip_h = velocity.x < 0
+		animated_sprite.flip_v = false
+	else:
+		# Vertical movement dominates
+		if velocity.y < 0:
+			# Moving up — flip vertically to suggest going away
+			animated_sprite.flip_h = false
+			animated_sprite.flip_v = true
+		else:
+			# Moving down — normal orientation
+			animated_sprite.flip_h = false
+			animated_sprite.flip_v = false
 	
 func calculate_avoidance_force() -> Vector2:
 	var avoidance_force := Vector2.ZERO

@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://ce7jwebmtjh78"]
+
+[ext_resource type="Script" uid="uid://bpvpx77u50hjh" path="res://Scripts/health_pack.gd" id="1_t52vn"]
+[ext_resource type="Texture2D" uid="uid://b3yo6asvsr6c5" path="res://texture/HotDog-Sheet.png" id="2_t52vn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7boyj"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irjl4"]
+size = Vector2(13.412645, 20.784256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m18np"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ogxp"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ej2v"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6du4y"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32l5j"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c0lx"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubc1l"]
+atlas = ExtResource("2_t52vn")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uh77j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7boyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m18np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ogxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ej2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6du4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32l5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c0lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubc1l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="HealthPack" type="Area2D"]
+scale = Vector2(2.7668931, 2.5010254)
+script = ExtResource("1_t52vn")
+item_name = "Hot Dog"
+item_description = "A long hot dog. Restores 12 HP."
+item_icon = SubResource("AtlasTexture_7boyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.092091, -1.4951932e-07)
+rotation = 3.1415925
+scale = Vector2(2.9719224, 1.9612638)
+shape = SubResource("RectangleShape2D_irjl4")
+debug_color = Color(0, 0.60045683, 0.68673813, 0.14901961)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uh77j")
+autoplay = "default"

@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=7 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
-[ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/health_pack.tscn" id="2_xoyoh"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
 [ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="5_rs4xw"]
+[ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="5_syshm"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/ghost_enemy.tscn" id="7_2hkqn"]
-[ext_resource type="PackedScene" uid="uid://ddhjdqn43wwdo" path="res://tscn/key.tscn" id="8_34erp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
@@ -19,10 +18,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(1926, 1624)
-
-[node name="HealthPack" parent="." instance=ExtResource("2_xoyoh")]
-position = Vector2(3702.43, 1673.805)
+position = Vector2(9023, 4916)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(231.66162, -40.64643)
@@ -33,17 +29,19 @@ navigation_polygon = SubResource("NavigationPolygon_game")
 scale = Vector2(0.6084318, 0.6011691)
 
 [node name="FinishLine" parent="." instance=ExtResource("5_rs4xw")]
-position = Vector2(10498, 2483)
-scale = Vector2(1, 2.9565496)
-
-[node name="HealthPack6" parent="." instance=ExtResource("2_xoyoh")]
-position = Vector2(2641, 2050)
+position = Vector2(9484, 4939.0005)
+scale = Vector2(0.901405, 4.5303802)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("7_2hkqn")]
 position = Vector2(6285, 4014)
 
-[node name="Key" parent="." instance=ExtResource("8_34erp")]
-position = Vector2(2022, 2060)
+[node name="Security" parent="." instance=ExtResource("5_syshm")]
+position = Vector2(5010, 1632)
+point_a = Vector2(3617, 1657)
+point_b = Vector2(5311, 1657)
 
-[node name="Key2" parent="." instance=ExtResource("8_34erp")]
-position = Vector2(1990, 5305)
+[node name="Security2" parent="." instance=ExtResource("5_syshm")]
+position = Vector2(3658, 5376)
+point_a = Vector2(3684, 1659)
+point_b = Vector2(3648, 5376)
+move_time = 8.0

@@ -45,19 +45,19 @@ horizontal_alignment = 1
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 4
+button_mask = 1
 text = "RESUME"
 
 [node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 4
+button_mask = 1
 text = "RESTART LEVEL"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 4
+button_mask = 1
 text = "MAIN MENU"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]

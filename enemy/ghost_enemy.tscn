@@ -1,16 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfpmub1gvy55y"]
+[gd_scene load_steps=4 format=3 uid="uid://dfpmub1gvy55y"]
 
 [ext_resource type="Script" uid="uid://begkb5q0knrx1" path="res://Scripts/ghost_enemy.gd" id="1_ghost"]
-
-[sub_resource type="Gradient" id="Gradient_ghost"]
-colors = PackedColorArray(0.4, 0, 0.8, 0.5, 0.6, 0.2, 1, 0.5)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ghost"]
-gradient = SubResource("Gradient_ghost")
-fill_to = Vector2(0.5, 0.5)
+[ext_resource type="Texture2D" uid="uid://dawigrhqb327m" path="res://texture/MainAntagonist-Sheet (1).png" id="2_kl4od"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghost"]
-size = Vector2(40, 40)
+size = Vector2(41.5, 54.62482)
 
 [node name="GhostEnemy" type="CharacterBody2D" groups=["GhostEnemy"]]
 collision_layer = 4
@@ -18,15 +12,23 @@ collision_mask = 0
 script = ExtResource("1_ghost")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_ghost")
+position = Vector2(-3, -5)
+scale = Vector2(1.5600009, 1.5999982)
+texture = ExtResource("2_kl4od")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.25, 3)
+scale = Vector2(1.2409954, -1.1552405)
 shape = SubResource("RectangleShape2D_ghost")
 debug_color = Color(0.7, 0, 0.7, 0.4)
 
 [node name="HitBox" type="Area2D" parent="."]
+scale = Vector2(1.2409954, -1.1552405)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.9999999, -7.312411)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_ghost")

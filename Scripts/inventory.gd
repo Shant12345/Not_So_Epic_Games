@@ -7,7 +7,7 @@ class_name Inventory
 signal inventory_changed
 signal item_used(item_name: String)
 
-const MAX_SLOTS := 20
+const MAX_SLOTS := 5
 
 var items: Array[Dictionary] = []
 
@@ -16,7 +16,7 @@ var items: Array[Dictionary] = []
 # ──────────────────────────────────────
 
 ## Returns true if the item was successfully added.
-func add_item(item_name: String, quantity: int = 1, description: String = "", type: String = "misc") -> bool:
+func add_item(item_name: String, quantity: int = 1, description: String = "", type: String = "misc", icon: Texture2D = null) -> bool:
 	# Try to stack onto an existing entry first
 	for item in items:
 		if item["name"] == item_name:
@@ -33,9 +33,11 @@ func add_item(item_name: String, quantity: int = 1, description: String = "", ty
 		"quantity": quantity,
 		"description": description,
 		"type": type,
+		"icon": icon
 	})
 	inventory_changed.emit()
 	return true
+
 
 
 ## Removes *quantity* of the given item.  Returns true on success.

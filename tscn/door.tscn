@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfk8x4v2b1oam"]
+[gd_scene load_steps=6 format=3 uid="uid://dfk8x4v2b1oam"]
 
 [ext_resource type="Script" uid="uid://uknuvgu45rk5" path="res://Scripts/door.gd" id="1_abcde"]
+[ext_resource type="Texture2D" uid="uid://373vvobtiog8" path="res://texture/Door.png" id="2_mairw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(32, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
-size = Vector2(160, 160)
+size = Vector2(68, 136)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1"]
 
 [node name="Door" type="StaticBody2D"]
+position = Vector2(0, 2)
 script = ExtResource("1_abcde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,16 +20,23 @@ shape = SubResource("RectangleShape2D_1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -16.0
-offset_top = -64.0
+offset_top = -63.0
 offset_right = 16.0
-offset_bottom = 64.0
+offset_bottom = 65.0
 color = Color(0.4, 0.2, 0.05, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+position = Vector2(12, 85.00001)
+rotation = -1.5707964
+scale = Vector2(2.6799996, 0.40000337)
+texture = ExtResource("2_mairw")
 
 [node name="InteractArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_2")
 
 [node name="SafetyArea" type="Area2D" parent="."]
@@ -38,12 +47,12 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_1")
 
 [node name="InteractLabel" type="Label" parent="."]
-offset_left = 24.000008
-offset_top = 68.99999
-offset_right = 174.0
-offset_bottom = 93.99999
+offset_left = 12.000001
+offset_top = 69.0
+offset_right = 162.0
+offset_bottom = 94.0
 rotation = -1.5730302
-scale = Vector2(1, 2.1597285)
+scale = Vector2(0.9926623, 1.029949)
 label_settings = SubResource("LabelSettings_1")
 horizontal_alignment = 1
 

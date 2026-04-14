@@ -18,6 +18,7 @@ fill_to = Vector2(0.4602804, 0.47429907)
 size = Vector2(128, 128)
 
 [node name="FinishLine" type="Area2D"]
+position = Vector2(263, 138)
 script = ExtResource("1_finish")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

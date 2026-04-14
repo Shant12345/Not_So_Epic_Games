@@ -16,7 +16,6 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 navigation_polygon = SubResource("NavigationPolygon_lv2")
 
 [node name="Layout_2" parent="NavigationRegion2D" instance=ExtResource("1_s1mjy")]
-position = Vector2(70, 42)
 
 [node name="Player" parent="." instance=ExtResource("2_s1mjy")]
 position = Vector2(666.00006, 311.00003)

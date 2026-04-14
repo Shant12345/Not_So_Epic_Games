@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@export var max_speed := 500.0
-@export var acceleration := 1000.0
+@export var max_speed := 300.0
+@export var acceleration := 800.0
+var _anim_time := 0.0
 
 func _ready() -> void:
 	var hit_box = get_node_or_null("HitBox")
@@ -38,3 +39,8 @@ func _physics_process(delta: float) -> void:
 	var sprite = get_node_or_null("Sprite2D")
 	if sprite:
 		sprite.flip_h = velocity.x < 0
+		_anim_time += delta
+		if velocity.length() > 10:
+			sprite.frame = int(_anim_time * 10) % 8
+		else:
+			sprite.frame = 0

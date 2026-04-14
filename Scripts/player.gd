@@ -5,12 +5,14 @@ extends CharacterBody2D
 @export var acceleration := 2500.0
 @export var deceleration := 2500.0
 @export var max_stamina := 100.0
-@export var stamina_consumption := 20.0 
-@export var stamina_recovery := 15.0
+@export var stamina_consumption := 10.0 
+@export var stamina_recovery := 5.0
 
-var health := 30
+var health := 70
 var stamina := 100.0
 var is_sprint_exhausted := false
+var is_stunned := false
+var stun_duration := 1.5
 var inventory: Inventory = null
 var danger_overlay: ColorRect = null
 var danger_flash_intensity := 0.0
@@ -43,6 +45,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Block all movement while stunned
+	if is_stunned:
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		move_and_slide()
+		_update_danger_flash(delta)
+		return
+	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var has_input_direction := direction.length() > 0.0
 	
@@ -71,6 +80,19 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	_update_danger_flash(delta)
+
+func stun() -> void:
+	if is_stunned:
+		return
+	is_stunned = true
+	# Flash the player white to signal the stun
+	var skin = get_node_or_null("Hitbox/Skin")
+	if skin:
+		var tw = create_tween().set_loops(3)
+		tw.tween_property(skin, "modulate", Color(1, 0.2, 0.2, 1), 0.1)
+		tw.tween_property(skin, "modulate", Color(1, 1, 1, 1), 0.1)
+	await get_tree().create_timer(stun_duration).timeout
+	is_stunned = false
 
 func set_health(new_health: int) -> void:
 	health = clamp(new_health, 0, 100)
@@ -107,8 +129,20 @@ func set_stamina(new_stamina: float) -> void:
 
 func _on_area_entered(area_that_entered: Area2D) -> void:
 	if area_that_entered.name.begins_with("HealthPack") or area_that_entered.is_in_group("HealthPack"):
+		var i_name = "Health Pack"
+		var i_desc = "Restores 10 HP"
+		var i_icon = null
+		
+		# Try to get specific properties from the health pack script
+		if area_that_entered.get("item_name"):
+			i_name = area_that_entered.item_name
+		if area_that_entered.get("item_description"):
+			i_desc = area_that_entered.item_description
+		if area_that_entered.get("item_icon"):
+			i_icon = area_that_entered.item_icon
+			
 		if inventory:
-			inventory.add_item("Health Pack", 1, "Restores 10 HP", "healing")
+			inventory.add_item(i_name, 1, i_desc, "healing", i_icon)
 		else:
 			set_health(health + 10)
 
@@ -117,6 +151,11 @@ func _on_item_used(item_name: String) -> void:
 	match item_name:
 		"Health Pack":
 			set_health(health + 10)
+		"Pizza":
+			set_health(health + 15)
+		"Hot Dog":
+			set_health(health + 12)
+
 
 func get_global_player_position() -> Vector2:
 	return global_position
@@ -170,7 +209,7 @@ func _update_danger_flash(delta: float) -> void:
 		var pulse = (sin(Time.get_ticks_msec() / 200.0) + 1.0) / 2.0
 		# Wider range and sharper curve for a "flashing" feel
 		var flash_value = pow(pulse, 1.8)
-		var intensity = danger_flash_intensity * lerpf(0.0, 2.2, flash_value)
+		var intensity = danger_flash_intensity * lerpf(0.0, 1.2, flash_value)
 		danger_overlay.material.set_shader_parameter("intensity", intensity)
 	else:
 		danger_overlay.material.set_shader_parameter("intensity", 0.0)

@@ -25,7 +25,7 @@ func _input(event):
 		if is_paused:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			
 		# Prevent other input events from firing
 		get_viewport().set_input_as_handled()
@@ -33,11 +33,11 @@ func _input(event):
 func _on_resume_pressed():
 	get_tree().paused = false
 	visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_restart_pressed():
 	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().reload_current_scene()
 
 func _on_quit_pressed():
@@ -55,4 +55,4 @@ func _on_pause_hud_button_pressed():
 	if is_paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
