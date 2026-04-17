@@ -116,7 +116,25 @@ func set_health(new_health: int) -> void:
 		health_bar.add_theme_stylebox_override("fill", style_box)
 	
 	if health <= 0:
+		die()
+
+func die() -> void:
+	# Ignore if already dead (to prevent multiple death screens)
+	if get_tree().paused and get_node_or_null("CanvasLayer/DeathScreen"):
+		return
+		
+	var death_screen_scene = load("res://tscn/death_screen.tscn")
+	if death_screen_scene:
+		var death_screen = death_screen_scene.instantiate()
+		var canvas = get_node_or_null("CanvasLayer")
+		if canvas:
+			canvas.add_child(death_screen)
+		else:
+			get_tree().root.add_child(death_screen)
+	else:
 		get_tree().reload_current_scene()
+
+
 
 func take_damage(amount: int) -> void:
 	set_health(health - amount)
@@ -128,29 +146,30 @@ func set_stamina(new_stamina: float) -> void:
 		stamina_bar.value = stamina
 
 func _on_area_entered(area_that_entered: Area2D) -> void:
-	if area_that_entered.name.begins_with("HealthPack") or area_that_entered.is_in_group("HealthPack"):
-		var i_name = "Health Pack"
-		var i_desc = "Restores 10 HP"
-		var i_icon = null
+	# Check if the area has pickup-related properties
+	var is_pickup = area_that_entered.has_method("pickup") or area_that_entered.is_in_group("Pickup") or area_that_entered.is_in_group("HealthPack") or area_that_entered.name.contains("Key") or area_that_entered.name.contains("HealthPack")
+	
+	if is_pickup:
+		var i_name = area_that_entered.get("item_name") if area_that_entered.get("item_name") else "Unknown Item"
+		var i_desc = area_that_entered.get("item_description") if area_that_entered.get("item_description") else ""
+		var i_type = area_that_entered.get("item_type") if area_that_entered.get("item_type") else "misc"
+		var i_icon = area_that_entered.get("item_icon") if area_that_entered.get("item_icon") else null
 		
-		# Try to get specific properties from the health pack script
-		if area_that_entered.get("item_name"):
-			i_name = area_that_entered.item_name
-		if area_that_entered.get("item_description"):
-			i_desc = area_that_entered.item_description
-		if area_that_entered.get("item_icon"):
-			i_icon = area_that_entered.item_icon
-			
-		if inventory:
-			inventory.add_item(i_name, 1, i_desc, "healing", i_icon)
-		else:
+		# Specialized logic for health packs if inventory is missing (legacy support)
+		if i_name == "Health Pack" and not inventory:
 			set_health(health + 10)
+		elif inventory:
+			inventory.add_item(i_name, 1, i_desc, i_type, i_icon)
+		
+		# Tell the item it has been picked up
+		if area_that_entered.has_method("pickup"):
+			area_that_entered.pickup()
+		else:
+			area_that_entered.queue_free()
 
 
 func _on_item_used(item_name: String) -> void:
 	match item_name:
-		"Health Pack":
-			set_health(health + 10)
 		"Pizza":
 			set_health(health + 15)
 		"Hot Dog":

@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dysk6bxaie7b1"]
+
+[ext_resource type="Script" uid="uid://1cp0v4i8yda1" path="res://Scripts/key.gd" id="1_key"]
+[ext_resource type="Texture2D" uid="uid://lhbwaamhtmrd" path="res://texture/Key-Sheet.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_key"]
+radius = 35.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2"]
+atlas = ExtResource("2_sheet")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3"]
+atlas = ExtResource("2_sheet")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4"]
+atlas = ExtResource("2_sheet")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5"]
+atlas = ExtResource("2_sheet")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6"]
+atlas = ExtResource("2_sheet")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_key"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Key" type="Area2D" groups=["Pickup"]]
+scale = Vector2(1.9838187, 2.379416)
+script = ExtResource("1_key")
+item_icon = SubResource("AtlasTexture_k1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_key")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_key")
+autoplay = "default"

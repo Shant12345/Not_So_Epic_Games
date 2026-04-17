@@ -16,12 +16,15 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 navigation_polygon = SubResource("NavigationPolygon_lv2")
 
 [node name="Layout_2" parent="NavigationRegion2D" instance=ExtResource("1_s1mjy")]
-
-[node name="Player" parent="." instance=ExtResource("2_s1mjy")]
-position = Vector2(666.00006, 311.00003)
-scale = Vector2(1.1050894, 1.0424875)
+position = Vector2(-54, 86.00001)
+scale = Vector2(4.8404326, 5.333254)
 
 [node name="FinishLine" parent="." instance=ExtResource("3_finish")]
 position = Vector2(11530.999, 5648.9995)
 scale = Vector2(0.31998014, 2.72)
 next_level_path = "res://Levels/level_3.tscn"
+
+[node name="Player" parent="." instance=ExtResource("2_s1mjy")]
+unique_name_in_owner = true
+position = Vector2(1293.0004, 1537.0001)
+scale = Vector2(0.7999609, 0.79999995)

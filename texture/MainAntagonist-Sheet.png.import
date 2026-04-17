@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnfe5cgnv6fa2"
-path="res://.godot/imported/MainAntagonist-Sheet.png-35c32eaf96f15f5eb359c1368a032587.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://8xgp846a2xjr"
+valid=false
 
 [deps]
 
 source_file="res://texture/MainAntagonist-Sheet.png"
-dest_files=["res://.godot/imported/MainAntagonist-Sheet.png-35c32eaf96f15f5eb359c1368a032587.ctex"]
 
 [params]
 

@@ -7,9 +7,7 @@ extends Area2D
 func _ready() -> void:
 	if has_node("AnimatedSprite2D"):
 		$AnimatedSprite2D.play("default")
-	area_entered.connect(_area_entered)
 
-
-func _area_entered(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Player") or area.get_parent().name == "Player":
-		queue_free()
+func pickup() -> void:
+	# Add any visual/audio feedback here
+	queue_free()

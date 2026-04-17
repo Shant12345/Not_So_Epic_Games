@@ -45,5 +45,10 @@ func _update_label() -> void:
 	text = "%02d:%02d %s" % [display_h, m, am_pm]
 
 func _game_over() -> void:
-	# Reload scene when time is up
-	get_tree().reload_current_scene()
+	# Trigger death screen when time is up
+	var player = get_tree().get_first_node_in_group("Player")
+	if player and player.has_method("die"):
+		player.die()
+	else:
+		get_tree().reload_current_scene()
+

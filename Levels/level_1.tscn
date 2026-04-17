@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=8 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
 [ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="5_rs4xw"]
 [ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="5_syshm"]
-[ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/ghost_enemy.tscn" id="7_2hkqn"]
+[ext_resource type="PackedScene" uid="uid://dysk6bxaie7b1" path="res://tscn/key.tscn" id="6_rfktq"]
+[ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="7_2hkqn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
@@ -18,7 +19,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(9023, 4916)
+position = Vector2(3971, 4782)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(231.66162, -40.64643)
@@ -45,3 +46,10 @@ position = Vector2(3658, 5376)
 point_a = Vector2(3684, 1659)
 point_b = Vector2(3648, 5376)
 move_time = 8.0
+
+[node name="Key" parent="." instance=ExtResource("6_rfktq")]
+position = Vector2(2792, 2129)
+
+[node name="Key2" parent="." instance=ExtResource("6_rfktq")]
+position = Vector2(2150, 5327.0005)
+scale = Vector2(2.845427, 3.5160558)
