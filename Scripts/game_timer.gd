@@ -51,4 +51,3 @@ func _game_over() -> void:
 		player.die()
 	else:
 		get_tree().reload_current_scene()
-

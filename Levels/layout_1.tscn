@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://dcp0u7635cmf5" path="res://texture/Lockers.png" id="2_irvs6"]
 [ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_ndbud"]
-[ext_resource type="Texture2D" uid="uid://bb0t3nv8f4hvx" path="res://texture/Wall#1.png" id="3_5vks0"]
+[ext_resource type="Texture2D" uid="uid://cnn6i7w678ix3" path="res://texture/Wall#1.png" id="3_5vks0"]
 [ext_resource type="PackedScene" uid="uid://dfk8x4v2b1oam" path="res://tscn/door.tscn" id="3_nb3us"]
-[ext_resource type="Texture2D" uid="uid://bofoupgvvvud0" path="res://texture/Wall#2.png" id="4_qhkvf"]
+[ext_resource type="Texture2D" uid="uid://dx61qoynxocf8" path="res://texture/Wall#2.png" id="4_qhkvf"]
 [ext_resource type="PackedScene" uid="uid://cqbw1kdiasrhe" path="res://tscn/Pizza.tscn" id="6_b3kf3"]
 [ext_resource type="PackedScene" uid="uid://ce7jwebmtjh78" path="res://tscn/Hot_Doggy_Style.tscn" id="7_rxdrj"]
 
@@ -247,10 +247,10 @@ sources/3 = SubResource("TileSetAtlasSource_b3kf3")
 sources/4 = SubResource("TileSetAtlasSource_rxdrj")
 
 [node name="layout_1" type="Node2D"]
-position = Vector2(1392, 1351)
+position = Vector2(1540, 1379)
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-385, -103)
+position = Vector2(-394, -37.000004)
 scale = Vector2(7, 7)
 tile_set = SubResource("TileSet_l0eo7")
 format = 2

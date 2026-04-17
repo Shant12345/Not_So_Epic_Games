@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var max_speed := 300.0
 @export var acceleration := 800.0
-var _anim_time := 0.0
 var _original_sprite_pos := Vector2.ZERO
 
 func _ready() -> void:
@@ -43,22 +42,24 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Animation Logic
-	_anim_time += delta
+	var anim_player = get_node_or_null("AnimationPlayer")
 	var sprite = get_node_or_null("Sprite2D")
+	
 	if sprite:
 		# Directional Flip
 		if velocity.x != 0:
 			sprite.flip_h = velocity.x < 0
-		
-		# Slight Ghostly Bobbing (Sine wave on Y)
-		sprite.position.y = _original_sprite_pos.y + sin(_anim_time * 4.0) * 8.0
-		
-		# Walking animation cycle
-		var total_frames = sprite.hframes * sprite.vframes
-		if total_frames > 1:
-			if velocity.length() > 10:
-				sprite.frame = int(_anim_time * 8) % total_frames
-			else:
-				sprite.frame = 0
+	
+	if anim_player:
+		if distance < 150:
+			if anim_player.current_animation != "crush":
+				anim_player.play("crush")
+		elif velocity.length() > 10:
+			if anim_player.current_animation != "walk":
+				anim_player.play("walk")
 		else:
-			sprite.frame = 0
+			anim_player.stop()
+			if sprite:
+				sprite.frame = 0
+				sprite.position = _original_sprite_pos
+				sprite.scale = Vector2(8, 8)

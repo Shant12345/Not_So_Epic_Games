@@ -1,35 +1,34 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfpmub1gvy55y"]
 
 [ext_resource type="Script" uid="uid://begkb5q0knrx1" path="res://Scripts/ghost_enemy.gd" id="1_ghost"]
-[ext_resource type="Texture2D" path="res://texture/MainAntagonist-Sheet.png" id="2_kl4od"]
+[ext_resource type="Texture2D" uid="uid://cuxd0gkjv7ldm" path="res://texture/MainAntagonist-Sheet (2).png" id="2_o44rp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghost"]
 size = Vector2(41.5, 54.62482)
 
 [node name="GhostEnemy" type="CharacterBody2D" groups=["GhostEnemy"]]
+scale = Vector2(0.7686797, 0.66639304)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ghost")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, -5)
-scale = Vector2(1.5600009, 1.5999982)
-texture = ExtResource("2_kl4od")
-hframes = 4
-vframes = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.25, 3)
-scale = Vector2(1.2409954, -1.1552405)
+position = Vector2(6.50466, 40.51663)
+scale = Vector2(5.533244, -7.053906)
 shape = SubResource("RectangleShape2D_ghost")
 debug_color = Color(0.7, 0, 0.7, 0.4)
 
 [node name="HitBox" type="Area2D" parent="."]
-scale = Vector2(1.2409954, -1.1552405)
+scale = Vector2(5.250991, -7.8815565)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0.9999999, -7.312411)
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.8645597, 0.9573858)
 shape = SubResource("RectangleShape2D_ghost")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, -2)
+scale = Vector2(6.0734973, 7.7083907)
+texture = ExtResource("2_o44rp")

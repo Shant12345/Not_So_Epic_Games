@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var point_a: Vector2 = Vector2(173, 339)
 @export var point_b: Vector2 = Vector2(986, 338)
-@export var move_time: float = 2.2
+@export var move_time: float = 4.0
 @export var pause_at_end: float = 0.25
 @export var slow_duration: float = 3.0  # seconds to stay slowed after hitting player
 var health := 70

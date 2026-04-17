@@ -35,6 +35,7 @@ scale = Vector2(0.901405, 4.5303802)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("7_2hkqn")]
 position = Vector2(6285, 4014)
+scale = Vector2(0.4987455, 0.42485318)
 
 [node name="Security" parent="." instance=ExtResource("5_syshm")]
 position = Vector2(5010, 1632)
@@ -48,8 +49,16 @@ point_b = Vector2(3648, 5376)
 move_time = 8.0
 
 [node name="Key" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(2792, 2129)
+position = Vector2(2473, 2181)
 
 [node name="Key2" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(2150, 5327.0005)
-scale = Vector2(2.845427, 3.5160558)
+position = Vector2(1771, 5161)
+
+[node name="Key3" parent="." instance=ExtResource("6_rfktq")]
+position = Vector2(4650, 4136)
+
+[node name="Key4" parent="." instance=ExtResource("6_rfktq")]
+position = Vector2(8448, 4285)
+
+[node name="Key5" parent="." instance=ExtResource("6_rfktq")]
+position = Vector2(5615, 2860)

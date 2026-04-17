@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://btog7c323d1r4"]
+
+[ext_resource type="Script" uid="uid://bc0oogshbsmsh" path="res://Scripts/dialogue_scene.gd" id="1_dlg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.08, 0.04, 0.1, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6, 0.1, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skip"]
+bg_color = Color(0.3, 0.05, 0.08, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.2, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skip_hover"]
+bg_color = Color(0.55, 0.08, 0.12, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.3, 0.3, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DialogueScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dlg")
+
+[node name="BgOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="DialogueBox" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 219.0
+offset_right = 1027.0
+offset_bottom = 399.0
+scale = Vector2(2.3642626, 1.8340946)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="DialogueBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SpeakerName" type="Label" parent="DialogueBox/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 0.85, 1)
+theme_override_font_sizes/font_size = 22
+text = "Amber"
+
+[node name="DialogueText" type="Label" parent="DialogueBox/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="ContinueHint" type="Label" parent="DialogueBox/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.8)
+theme_override_font_sizes/font_size = 13
+text = "Click or press [Space] to continue ▼"
+horizontal_alignment = 2
+
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2826.0
+offset_top = 1726.0
+offset_right = 2918.0
+offset_bottom = 1758.0
+scale = Vector2(1.8747704, 2.806121)
+theme_override_colors/font_color = Color(0.9, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_skip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_skip_hover")
+text = "Skip ▶▶"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

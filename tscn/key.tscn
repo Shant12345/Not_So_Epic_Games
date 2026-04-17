@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dysk6bxaie7b1"]
 
 [ext_resource type="Script" uid="uid://1cp0v4i8yda1" path="res://Scripts/key.gd" id="1_key"]
-[ext_resource type="Texture2D" uid="uid://lhbwaamhtmrd" path="res://texture/Key-Sheet.png" id="2_sheet"]
+[ext_resource type="Texture2D" uid="uid://6tp2l14amcu0" path="res://texture/Key-Sheet.png" id="2_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1"]
 atlas = ExtResource("2_sheet")
@@ -57,7 +57,7 @@ animations = [{
 }]
 
 [node name="Key" type="Area2D" groups=["Pickup"]]
-scale = Vector2(1.9838187, 2.379416)
+scale = Vector2(1.6638882, 1.8738422)
 script = ExtResource("1_key")
 item_icon = SubResource("AtlasTexture_k1")
 

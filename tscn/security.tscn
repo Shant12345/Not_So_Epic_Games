@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d0rvrp0m6pcj7"]
 
 [ext_resource type="Script" uid="uid://bp57ygku81xrj" path="res://Scripts/security.gd" id="1_225ps"]
-[ext_resource type="Texture2D" uid="uid://dg4j5l2we5uf0" path="res://texture/PonchoSecurityGuard-Sheet.png" id="2_uekkb"]
+[ext_resource type="Texture2D" uid="uid://byb2m1hc4lhld" path="res://texture/PonchoSecurityGuard-Sheet.png" id="2_uekkb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypdsa"]
 size = Vector2(113.8125, 175)
@@ -79,7 +79,6 @@ script = ExtResource("1_225ps")
 visible = false
 position = Vector2(7.6293945e-06, 0)
 scale = Vector2(0.5, 120)
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(11, 2)
