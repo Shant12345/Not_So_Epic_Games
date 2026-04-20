@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=11 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
@@ -6,12 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="5_syshm"]
 [ext_resource type="PackedScene" uid="uid://dysk6bxaie7b1" path="res://tscn/key.tscn" id="6_rfktq"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="7_2hkqn"]
+[ext_resource type="PackedScene" uid="uid://gmdv8u7p5coh" path="res://tscn/SchoolMilk.tscn" id="7_77x7w"]
+[ext_resource type="Texture2D" uid="uid://88cm8gy2m7jr" path="res://texture/HotDog-Sheet.png" id="8_xoyoh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7boyj"]
+atlas = ExtResource("8_xoyoh")
+region = Rect2(0, 0, 64, 64)
 
 [node name="Level 1" type="Node2D"]
 y_sort_enabled = true
@@ -22,7 +28,7 @@ unique_name_in_owner = true
 position = Vector2(3971, 4782)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(231.66162, -40.64643)
+position = Vector2(65.00001, -121)
 scale = Vector2(1.6455185, 1.658297)
 navigation_polygon = SubResource("NavigationPolygon_game")
 
@@ -62,3 +68,10 @@ position = Vector2(8448, 4285)
 
 [node name="Key5" parent="." instance=ExtResource("6_rfktq")]
 position = Vector2(5615, 2860)
+
+[node name="HealthPack" parent="." instance=ExtResource("7_77x7w")]
+position = Vector2(3927, 5083)
+scale = Vector2(2.7668931, 2.5010254)
+item_name = "Hot Dog"
+item_description = "A long hot dog. Restores 12 HP."
+item_icon = SubResource("AtlasTexture_7boyj")

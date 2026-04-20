@@ -157,7 +157,7 @@ func _on_area_entered(area_that_entered: Area2D) -> void:
 		
 		# Specialized logic for health packs if inventory is missing (legacy support)
 		if i_name == "Health Pack" and not inventory:
-			set_health(health + 10)
+			set_health(health + 25)
 		elif inventory:
 			inventory.add_item(i_name, 1, i_desc, i_type, i_icon)
 		
@@ -174,6 +174,10 @@ func _on_item_used(item_name: String) -> void:
 			set_health(health + 15)
 		"Hot Dog":
 			set_health(health + 12)
+		"Health Pack":
+			set_health(health + 25)
+		"School Milk":
+			set_health(health + 25)
 
 
 func get_global_player_position() -> Vector2:

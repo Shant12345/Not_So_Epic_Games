@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b374rfadpuhyn"
-path="res://.godot/imported/PlayerDesign-Sheet copy.png-0936be17b3a263543f966a38f9160761.ctex"
+uid="uid://b1t2a6363x0in"
+path="res://.godot/imported/SchoolMilk-Sheet.png-38e7c3011f1ff9372cf9bd0086667226.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture/PlayerDesign-Sheet copy.png"
-dest_files=["res://.godot/imported/PlayerDesign-Sheet copy.png-0936be17b3a263543f966a38f9160761.ctex"]
+source_file="res://texture/SchoolMilk-Sheet.png"
+dest_files=["res://.godot/imported/SchoolMilk-Sheet.png-38e7c3011f1ff9372cf9bd0086667226.ctex"]
 
 [params]
 

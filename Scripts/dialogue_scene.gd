@@ -15,17 +15,17 @@ const LINES := [
 	{
 		"speaker": "Yuming",
 		"text": "Oh. Uh...",
-		"color": Color(0.6, 0.85, 1.0)
+		"color": Color(0.0, 0.532, 0.743, 1.0)
 	},
 	{
 		"speaker": "Yuming",
 		"text": "Yeah, no. Hard pass. You're kind of... a lot.",
-		"color": Color(0.6, 0.85, 1.0)
+		"color": Color(0.0, 0.532, 0.743, 1.0)
 	},
 	{
 		"speaker": "Yuming",
 		"text": "Also I'm seeing someone. And even if I wasn't, I wouldn't.",
-		"color": Color(0.6, 0.85, 1.0)
+		"color": Color(0.0, 0.532, 0.743, 1.0)
 	},
 	{
 		"speaker": "Killer Crush",
@@ -45,7 +45,7 @@ const LINES := [
 	{
 		"speaker": "Yuming",
 		"text": "Okay, this is getting weird. I'm gonna go.",
-		"color": Color(0.6, 0.85, 1.0)
+		"color": Color(0.0, 0.532, 0.743, 1.0)
 	},
 	{
 		"speaker": "Killer Crush",
