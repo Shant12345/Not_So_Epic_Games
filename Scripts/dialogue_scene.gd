@@ -99,7 +99,7 @@ func _ready() -> void:
 func _slide_in() -> void:
 	var target_y := get_viewport_rect().size.y - dialogue_box.size.y - 40.0
 	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	_tween.tween_property(bg_overlay,     "modulate:a",   0.65, SLIDE_TIME)
+	_tween.tween_property(bg_overlay,     "modulate:a",   1.65, SLIDE_TIME)
 	_tween.parallel().tween_property(dialogue_box, "position:y", target_y, SLIDE_TIME)
 	await _tween.finished
 	_show_line(_current_line)
