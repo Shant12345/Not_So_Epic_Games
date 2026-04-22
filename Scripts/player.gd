@@ -40,10 +40,6 @@ func _ready() -> void:
 	
 	_setup_danger_overlay()
 	
-	
-
-
-
 func _physics_process(delta: float) -> void:
 	# Block all movement while stunned
 	if is_stunned:
@@ -174,8 +170,6 @@ func _on_item_used(item_name: String) -> void:
 			set_health(health + 15)
 		"Hot Dog":
 			set_health(health + 12)
-		"Health Pack":
-			set_health(health + 25)
 		"School Milk":
 			set_health(health + 25)
 

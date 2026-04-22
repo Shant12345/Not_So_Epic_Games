@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx58pxglkg7ia"
-path="res://.godot/imported/MainAntagonist-Sheet (1).png-e4122e8ea921849cebceae48d3a5b941.ctex"
+uid="uid://q7271spwhjn1"
+path="res://.godot/imported/killercrushwalking.png-c07beb36893f6339e46494b95584c582.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture/MainAntagonist-Sheet (1).png"
-dest_files=["res://.godot/imported/MainAntagonist-Sheet (1).png-e4122e8ea921849cebceae48d3a5b941.ctex"]
+source_file="res://texture/killercrushwalking.png"
+dest_files=["res://.godot/imported/killercrushwalking.png-c07beb36893f6339e46494b95584c582.ctex"]
 
 [params]
 

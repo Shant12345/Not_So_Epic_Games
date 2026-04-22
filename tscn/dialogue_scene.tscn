@@ -64,7 +64,7 @@ offset_left = -5.0
 offset_top = 219.0
 offset_right = 1027.0
 offset_bottom = 399.0
-scale = Vector2(2.3642626, 1.8340946)
+scale = Vector2(1.7211797, 2.368072)
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="VBox" type="VBoxContainer" parent="DialogueBox"]
@@ -75,7 +75,6 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.7, 0.85, 1)
 theme_override_font_sizes/font_size = 22
-text = "Amber"
 
 [node name="DialogueText" type="Label" parent="DialogueBox/VBox"]
 layout_mode = 2
