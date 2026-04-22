@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyqb5fqggwd8h"
-path="res://.godot/imported/Wall#3.png-8838913f11288fcd5ac21c496152b99c.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://cpl7fin0uh0jo"
+valid=false
 
 [deps]
 
-source_file="res://texture/Wall#3.png"
-dest_files=["res://.godot/imported/Wall#3.png-8838913f11288fcd5ac21c496152b99c.ctex"]
+source_file="res://texture/cabinet_sheet.png"
 
 [params]
 

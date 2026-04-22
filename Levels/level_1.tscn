@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=12 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="7_2hkqn"]
 [ext_resource type="PackedScene" uid="uid://gmdv8u7p5coh" path="res://tscn/SchoolMilk.tscn" id="7_77x7w"]
 [ext_resource type="Texture2D" uid="uid://88cm8gy2m7jr" path="res://texture/HotDog-Sheet.png" id="8_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://ds014gmw1kpfi" path="res://tscn/chest.tscn" id="9_xoyoh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
@@ -28,7 +29,7 @@ unique_name_in_owner = true
 position = Vector2(3971, 4782)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(65.00001, -121)
+position = Vector2(65, -121)
 scale = Vector2(1.6455185, 1.658297)
 navigation_polygon = SubResource("NavigationPolygon_game")
 
@@ -36,7 +37,7 @@ navigation_polygon = SubResource("NavigationPolygon_game")
 scale = Vector2(0.6084318, 0.6011691)
 
 [node name="FinishLine" parent="." instance=ExtResource("5_rs4xw")]
-position = Vector2(9484, 4939.0005)
+position = Vector2(9545, 4957)
 scale = Vector2(0.901405, 4.5303802)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("7_2hkqn")]
@@ -75,3 +76,6 @@ scale = Vector2(2.7668931, 2.5010254)
 item_name = "Hot Dog"
 item_description = "A long hot dog. Restores 12 HP."
 item_icon = SubResource("AtlasTexture_7boyj")
+
+[node name="Chest" parent="." instance=ExtResource("9_xoyoh")]
+position = Vector2(4148, 5448)
