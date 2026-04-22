@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8ql21ye2ha5s" path="res://Scripts/main_menu.gd" id="1_menu"]
 [ext_resource type="Texture2D" uid="uid://bvcikpepj88k7" path="res://texture/IntroScreen (1).png" id="2_ukx4d"]
-[ext_resource type="Texture2D" uid="uid://p7b37fnyvi62" path="res://texture/JustPlaybutton.png" id="3_ukx4d"]
+[ext_resource type="Texture2D" uid="uid://odilwdvidsm5" path="res://texture/JustPlaybutton (1).png" id="4_cpdt8"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -48,17 +48,16 @@ scale = Vector2(14.073796, 14.077771)
 texture = ExtResource("2_ukx4d")
 
 [node name="StartButton" type="TextureButton" parent="VBoxContainer/IntroScreen"]
-offset_left = 31.61905
-offset_top = 40.844524
-offset_right = 159.61905
-offset_bottom = 168.84453
-scale = Vector2(0.29659718, 0.0878046)
+offset_left = 29.629536
+offset_top = 46.385174
+offset_right = 157.62953
+offset_bottom = 174.38516
+scale = Vector2(0.30972832, 0.08357191)
 button_mask = 7
-texture_pressed = ExtResource("3_ukx4d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2256, 1622.9999)
-scale = Vector2(15.666293, 13.499022)
-texture = ExtResource("3_ukx4d")
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/IntroScreen/StartButton"]
+position = Vector2(65.61063, 65.44812)
+scale = Vector2(3.593967, 11.473821)
+texture = ExtResource("4_cpdt8")
 
 [connection signal="pressed" from="VBoxContainer/IntroScreen/StartButton" to="." method="_on_start_button_pressed"]
