@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://coattb0cvr2j6"]
+
+[ext_resource type="Script" uid="uid://m0tpvutrrdrs" path="res://Scripts/cabinet.gd" id="1_cabinet"]
+[ext_resource type="Texture2D" uid="uid://d37s10ltfprx5" path="res://texture/Metal Lockers 32x32.png" id="2_lkqy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(160, 160)
+
+[sub_resource type="Animation" id="Animation_open"]
+resource_name = "open"
+length = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cabinet"]
+_data = {
+&"open": SubResource("Animation_open")
+}
+
+[node name="Cabinet" type="StaticBody2D"]
+script = ExtResource("1_cabinet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="InteractLabel" type="Label" parent="."]
+z_index = 10
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press E to Open"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cabinet")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.7178564, 4.6879005)
+texture = ExtResource("2_lkqy4")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

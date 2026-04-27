@@ -27,7 +27,7 @@ next_level_path = "res://Levels/level_3.tscn"
 
 [node name="Player" parent="." instance=ExtResource("2_s1mjy")]
 unique_name_in_owner = true
-position = Vector2(2534, 2332)
+position = Vector2(17423, 14924)
 scale = Vector2(0.7999609, 0.79999995)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("4_dgq3b")]

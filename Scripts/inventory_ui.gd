@@ -1,15 +1,22 @@
 extends Control
 
-## Hotbar style inventory UI
-## Displays 5 slots at the bottom. Click to select, press 'E' (interact) to use.
+## Grid-based inventory UI
+## Displays items in a 5-column grid. Click to select, press 'E' to use.
 
-@onready var container: HBoxContainer = $Panel/MarginContainer/HBoxContainer
+const COLS := 5
+const SLOT_SIZE := 72
 
 var inventory: Inventory = null
 var selected_index: int = -1
 
+# Built in code — no @onready needed
+var grid: GridContainer = null
+var panel: PanelContainer = null
+var title_label: Label = null
+
 func _ready() -> void:
 	visible = true
+	_build_ui()
 
 func setup(inv: Inventory) -> void:
 	inventory = inv
@@ -20,106 +27,162 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and selected_index >= 0:
 		if inventory and selected_index < inventory.items.size():
 			inventory.use_item(inventory.items[selected_index]["name"])
-			# The door interact action is also 'E'. The door script checks 'is_action_pressed'.
-			# It's okay if both happen, but typically if player uses a health pack, we might not want to open door.
-			# But if they use a key, the door consumes the key automatically via _player_has_key / _consume_key anyway.
-			# So we don't necessarily have to block the door.
+
+# ──────────────────────────────────────
+#  Build the UI
+# ──────────────────────────────────────
+
+func _build_ui() -> void:
+	# Main panel background
+	panel = PanelContainer.new()
+	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var panel_style := StyleBoxFlat.new()
+	panel_style.bg_color = Color(0.06, 0.06, 0.09, 0.92)
+	panel_style.border_width_left = 2
+	panel_style.border_width_top = 2
+	panel_style.border_width_right = 2
+	panel_style.border_width_bottom = 2
+	panel_style.border_color = Color(0.35, 0.45, 0.7, 0.5)
+	panel_style.corner_radius_top_left = 8
+	panel_style.corner_radius_top_right = 8
+	panel_style.corner_radius_bottom_right = 8
+	panel_style.corner_radius_bottom_left = 8
+	panel_style.shadow_color = Color(0, 0, 0, 0.5)
+	panel_style.shadow_size = 6
+	panel.add_theme_stylebox_override("panel", panel_style)
+	add_child(panel)
+
+	var margin := MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	margin.add_theme_constant_override("margin_left", 10)
+	margin.add_theme_constant_override("margin_top", 8)
+	margin.add_theme_constant_override("margin_right", 10)
+	margin.add_theme_constant_override("margin_bottom", 8)
+	panel.add_child(margin)
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 6)
+	margin.add_child(vbox)
+
+	# Title
+	title_label = Label.new()
+	title_label.text = "INVENTORY"
+	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title_label.add_theme_font_size_override("font_size", 11)
+	title_label.add_theme_color_override("font_color", Color(0.6, 0.7, 0.9, 0.7))
+	vbox.add_child(title_label)
+
+	# Grid
+	grid = GridContainer.new()
+	grid.columns = COLS
+	grid.add_theme_constant_override("h_separation", 6)
+	grid.add_theme_constant_override("v_separation", 6)
+	vbox.add_child(grid)
+
+# ──────────────────────────────────────
+#  Refresh
+# ──────────────────────────────────────
 
 func _refresh() -> void:
-	if container == null:
+	if grid == null:
 		return
 
-	# Remove old slot nodes
-	for child in container.get_children():
+	for child in grid.get_children():
 		child.queue_free()
 
 	if inventory == null:
 		return
-		
-	# Ensure selected_index is valid
+
+	# Clamp selected_index
 	if selected_index >= inventory.items.size() and inventory.items.size() > 0:
 		selected_index = inventory.items.size() - 1
 	elif inventory.items.size() == 0:
 		selected_index = -1
 
 	for i in inventory.items.size():
-		var item = inventory.items[i]
-		var slot := _create_slot(item, i)
-		container.add_child(slot)
+		var slot := _create_slot(inventory.items[i], i)
+		grid.add_child(slot)
 
-	# Fill remaining empty slots up to MAX_SLOTS for visual consistency
-	var empty_slots := inventory.MAX_SLOTS - inventory.items.size()
-	for i in empty_slots:
+	# Fill remaining empty slots
+	var empty_count := inventory.MAX_SLOTS - inventory.items.size()
+	for i in empty_count:
 		var empty := _create_empty_slot(inventory.items.size() + i)
-		container.add_child(empty)
+		grid.add_child(empty)
 
+# ──────────────────────────────────────
+#  Slot creation
+# ──────────────────────────────────────
 
 func _create_slot(item: Dictionary, index: int) -> PanelContainer:
 	var slot := PanelContainer.new()
-	slot.custom_minimum_size = Vector2(80, 80)
-	slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slot.custom_minimum_size = Vector2(SLOT_SIZE, SLOT_SIZE)
 
-	# Slot background style
+	var is_selected := (index == selected_index)
+
+	# Slot style — dark inner with subtle color tint based on type
 	var style := StyleBoxFlat.new()
-	style.bg_color = _get_slot_color(item.get("type", "misc"))
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
+	var base_color := _get_slot_color(item.get("type", "misc"))
+	style.bg_color = base_color
+	style.corner_radius_top_left = 4
+	style.corner_radius_top_right = 4
+	style.corner_radius_bottom_right = 4
+	style.corner_radius_bottom_left = 4
 	style.border_width_left = 2
 	style.border_width_top = 2
 	style.border_width_right = 2
 	style.border_width_bottom = 2
-	if index == selected_index:
-		style.border_color = Color(1, 1, 0.4, 1.0) # Yellow highlight text
-		style.border_width_left = 3
-		style.border_width_top = 3
-		style.border_width_right = 3
-		style.border_width_bottom = 3
+	if is_selected:
+		style.border_color = Color(0.95, 0.85, 0.3, 1.0)  # Gold selection
+		style.bg_color = base_color.lightened(0.1)
 	else:
-		style.border_color = Color(1, 1, 1, 0.15)
+		style.border_color = Color(0.3, 0.3, 0.4, 0.5)
 	slot.add_theme_stylebox_override("panel", style)
 
-	var vbox := VBoxContainer.new()
-	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	slot.add_child(vbox)
+	# Content layout
+	var content := VBoxContainer.new()
+	content.alignment = BoxContainer.ALIGNMENT_CENTER
+	content.add_theme_constant_override("separation", 1)
+	slot.add_child(content)
 
-	# Item icon
+	# Icon
 	if item.get("icon") != null:
-		var tex_rect := TextureRect.new()
-		tex_rect.texture = item["icon"]
-		tex_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tex_rect.custom_minimum_size = Vector2(48, 48)
-		tex_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		tex_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		vbox.add_child(tex_rect)
+		var tex := TextureRect.new()
+		tex.texture = item["icon"]
+		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		tex.custom_minimum_size = Vector2(40, 40)
+		tex.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		tex.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		content.add_child(tex)
 	else:
-		var icon_label := Label.new()
-		icon_label.text = _get_item_icon(item.get("type", "misc"))
-		icon_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		icon_label.add_theme_font_size_override("font_size", 28)
-		vbox.add_child(icon_label)
+		var icon_lbl := Label.new()
+		icon_lbl.text = _get_item_icon(item.get("type", "misc"))
+		icon_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		icon_lbl.add_theme_font_size_override("font_size", 24)
+		icon_lbl.add_theme_color_override("font_color", Color(1, 1, 1, 0.8))
+		content.add_child(icon_lbl)
 
+	# Item name (truncated)
+	var name_lbl := Label.new()
+	var display_name: String = item["name"]
+	if display_name.length() > 8:
+		display_name = display_name.substr(0, 7) + "."
+	name_lbl.text = display_name
+	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_lbl.add_theme_font_size_override("font_size", 9)
+	name_lbl.add_theme_color_override("font_color", Color(0.85, 0.85, 0.85, 0.9))
+	content.add_child(name_lbl)
 
-	# Item name
-	var name_label := Label.new()
-	name_label.text = item["name"]
-	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_label.add_theme_font_size_override("font_size", 11)
-	name_label.add_theme_color_override("font_color", Color(0.9, 0.9, 0.9))
-	vbox.add_child(name_label)
+	# Quantity
+	if item.get("quantity", 1) > 1:
+		var qty := Label.new()
+		qty.text = "x" + str(item["quantity"])
+		qty.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		qty.add_theme_font_size_override("font_size", 9)
+		qty.add_theme_color_override("font_color", Color(0.6, 0.8, 1.0, 0.8))
+		content.add_child(qty)
 
-	# Quantity badge
-	if item["quantity"] > 1:
-		var qty_label := Label.new()
-		qty_label.text = "x" + str(item["quantity"])
-		qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		qty_label.add_theme_font_size_override("font_size", 10)
-		qty_label.add_theme_color_override("font_color", Color(0.7, 0.85, 1.0))
-		vbox.add_child(qty_label)
-
-	# Select-item button (invisible, overlays the slot)
+	# Clickable overlay
 	var btn := Button.new()
 	btn.flat = true
 	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -133,29 +196,30 @@ func _create_slot(item: Dictionary, index: int) -> PanelContainer:
 
 func _create_empty_slot(index: int) -> PanelContainer:
 	var slot := PanelContainer.new()
-	slot.custom_minimum_size = Vector2(80, 80)
-	slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slot.custom_minimum_size = Vector2(SLOT_SIZE, SLOT_SIZE)
+
+	var is_selected := (index == selected_index)
 
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.12, 0.12, 0.15, 0.5)
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
-	if index == selected_index:
-		style.border_color = Color(1, 1, 0.4, 0.8)
+	style.bg_color = Color(0.1, 0.1, 0.13, 0.6)
+	style.corner_radius_top_left = 4
+	style.corner_radius_top_right = 4
+	style.corner_radius_bottom_right = 4
+	style.corner_radius_bottom_left = 4
+	style.border_width_left = 1
+	style.border_width_top = 1
+	style.border_width_right = 1
+	style.border_width_bottom = 1
+	if is_selected:
+		style.border_color = Color(0.95, 0.85, 0.3, 0.7)
 		style.border_width_left = 2
 		style.border_width_top = 2
 		style.border_width_right = 2
 		style.border_width_bottom = 2
 	else:
-		style.border_color = Color(1, 1, 1, 0.05)
-		style.border_width_left = 1
-		style.border_width_top = 1
-		style.border_width_right = 1
-		style.border_width_bottom = 1
+		style.border_color = Color(1, 1, 1, 0.06)
 	slot.add_theme_stylebox_override("panel", style)
-	
+
 	var btn := Button.new()
 	btn.flat = true
 	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -164,7 +228,6 @@ func _create_empty_slot(index: int) -> PanelContainer:
 	slot.add_child(btn)
 
 	return slot
-
 
 # ──────────────────────────────────────
 #  Helpers
@@ -177,27 +240,25 @@ func _on_slot_pressed(index: int) -> void:
 
 func _get_slot_color(type: String) -> Color:
 	match type:
+		"heal":
+			return Color(0.12, 0.22, 0.14, 0.85)
 		"healing":
-			return Color(0.15, 0.35, 0.15, 0.85)
+			return Color(0.12, 0.22, 0.14, 0.85)
 		"key":
-			return Color(0.4, 0.35, 0.1, 0.85)
+			return Color(0.25, 0.22, 0.1, 0.85)
 		"weapon":
-			return Color(0.35, 0.12, 0.12, 0.85)
-		"ammo":
-			return Color(0.12, 0.2, 0.35, 0.85)
+			return Color(0.25, 0.1, 0.1, 0.85)
 		_:
-			return Color(0.18, 0.18, 0.22, 0.85)
+			return Color(0.13, 0.13, 0.17, 0.85)
 
 
 func _get_item_icon(type: String) -> String:
 	match type:
-		"healing":
+		"healing", "heal":
 			return "+"
 		"key":
 			return "*"
 		"weapon":
 			return "!"
-		"ammo":
-			return ">"
 		_:
 			return "?"

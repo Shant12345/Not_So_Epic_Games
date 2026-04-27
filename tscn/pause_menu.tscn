@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3h7qk3w5x2c"]
+[gd_scene load_steps=6 format=3 uid="uid://d3h7qk3w5x2c"]
 
 [ext_resource type="Script" uid="uid://c2ceoa2g5w735" path="res://Scripts/pause_menu.gd" id="1_pause"]
+[ext_resource type="Texture2D" uid="uid://c2w5b07tsc2lc" path="res://texture/BlankPausescreen.png" id="2_5g577"]
+[ext_resource type="Texture2D" uid="uid://cpi5ehq1i1fdg" path="res://texture/JustMainMenubutton.png" id="3_ydsj6"]
+[ext_resource type="Texture2D" uid="uid://bq26l7wcltpjj" path="res://texture/JustRestartbutton.png" id="4_udlf0"]
 
 [sub_resource type="Theme" id="Theme_g31w0"]
 
@@ -42,23 +45,35 @@ theme_override_font_sizes/font_size = 64
 text = "Pause"
 horizontal_alignment = 1
 
+[node name="BlankPausescreen" type="Sprite2D" parent="CenterContainer/VBoxContainer/Title"]
+position = Vector2(124.00003, 162)
+scale = Vector2(5.0351563, 5.3847647)
+texture = ExtResource("2_5g577")
+
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 1
 text = "RESUME"
 
 [node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 1
 text = "RESTART LEVEL"
+
+[node name="JustRestartbutton" type="Sprite2D" parent="CenterContainer/VBoxContainer/RestartButton"]
+position = Vector2(121, -14.9999695)
+scale = Vector2(7.6034646, 5.6002626)
+texture = ExtResource("4_udlf0")
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-button_mask = 1
 text = "MAIN MENU"
+
+[node name="JustMainMenubutton" type="Sprite2D" parent="CenterContainer/VBoxContainer/QuitButton"]
+position = Vector2(120, -88)
+scale = Vector2(6.463087, 5.532461)
+texture = ExtResource("3_ydsj6")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_pressed"]

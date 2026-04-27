@@ -89,11 +89,11 @@ const SLIDE_TIME   := 0.45   # panel slide duration
 # ── lifecycle ────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	# Start box off-screen below
-	dialogue_box.position.y = get_viewport_rect().size.y + 100
+	dialogue_box.position.y = get_viewport_rect().size.y + 400
 	bg_overlay.modulate.a  = 0.0
 	continue_hint.modulate.a = 0.0
 
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.5).timeout
 	_slide_in()
 
 func _slide_in() -> void:
@@ -128,7 +128,7 @@ func _show_line(idx: int) -> void:
 	for i in _full_text.length():
 		if not _typing:
 			break
-		text_label.text = _full_text.substr(0, i + 1)
+		text_label.text = _full_text.substr(0, i)
 		await get_tree().create_timer(CHAR_DELAY).timeout
 
 	text_label.text = _full_text
@@ -137,7 +137,7 @@ func _show_line(idx: int) -> void:
 
 func _flash_hint() -> void:
 	var t := create_tween().set_loops()
-	t.tween_property(continue_hint, "modulate:a", 1.0, 0.4)
+	t.tween_property(continue_hint, "modulate:a", 0.0, 1.0)
 	t.tween_property(continue_hint, "modulate:a", 0.0, 0.4)
 
 func _advance() -> void:

@@ -85,7 +85,7 @@ func stun() -> void:
 	var skin = get_node_or_null("Hitbox/Skin")
 	if skin:
 		var tw = create_tween().set_loops(3)
-		tw.tween_property(skin, "modulate", Color(1, 0.2, 0.2, 1), 0.1)
+		tw.tween_property(skin, "modulate", Color(1.0, 0.248, 0.233, 1.0), 0.1)
 		tw.tween_property(skin, "modulate", Color(1, 1, 1, 1), 0.1)
 	await get_tree().create_timer(stun_duration).timeout
 	is_stunned = false

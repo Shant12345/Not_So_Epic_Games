@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var point_b: Vector2 = Vector2(986, 338)
 @export var move_time: float = 4.0
 @export var pause_at_end: float = 0.25
-@export var slow_duration: float = 3.0  # seconds to stay slowed after hitting player
+@export var slow_duration: float = 1.0  # seconds to stay slowed after hitting player
 var health := 70
 
 var going_to_b := true
@@ -39,7 +39,7 @@ func move_to_next_point():
 			sprite.flip_h = false
 	
 	# Halve the speed (double the time) when slowed
-	var effective_time = move_time * (2.0 if _is_slowed else 1.0)
+	var effective_time = move_time * (1.0 if _is_slowed else 0.5)
 	
 	# Adjust time proportionally based on remaining distance
 	var total_dist = point_a.distance_to(point_b)
@@ -61,7 +61,7 @@ func _on_tween_finished():
 func _on_hit_box_body_entered(body: Node2D):
 	if body.is_in_group("Player") or body.name == "Player":
 		if body.has_method("take_damage"):
-			body.take_damage(10)
+			body.take_damage(15)
 		else:
 			# Fallback
 			get_tree().reload_current_scene()

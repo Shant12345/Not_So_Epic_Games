@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="5_syshm"]
 [ext_resource type="PackedScene" uid="uid://dysk6bxaie7b1" path="res://tscn/key.tscn" id="6_rfktq"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="7_2hkqn"]
-[ext_resource type="PackedScene" uid="uid://ds014gmw1kpfi" path="res://tscn/chest.tscn" id="9_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://coattb0cvr2j6" path="res://tscn/cabinet.tscn" id="9_cabinet"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
@@ -20,7 +21,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(3971, 4782)
+position = Vector2(2665, 1932)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(65, -121)
@@ -31,12 +32,12 @@ navigation_polygon = SubResource("NavigationPolygon_game")
 scale = Vector2(0.6084318, 0.6011691)
 
 [node name="FinishLine" parent="." instance=ExtResource("5_rs4xw")]
-position = Vector2(9545, 4957)
+position = Vector2(9600, 5024.0005)
 scale = Vector2(0.901405, 4.5303802)
 
-[node name="GhostEnemy" parent="." instance=ExtResource("7_2hkqn")]
-position = Vector2(6288, 4016.9998)
-scale = Vector2(0.4987455, 0.42485318)
+[node name="killercrush" parent="." instance=ExtResource("7_2hkqn")]
+position = Vector2(3815.0002, 4148)
+scale = Vector2(0.6278179, 0.54848915)
 
 [node name="Security" parent="." instance=ExtResource("5_syshm")]
 position = Vector2(5010, 1632)
@@ -53,7 +54,7 @@ move_time = 8.0
 position = Vector2(2473, 2181)
 
 [node name="Key2" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(1771, 5161)
+position = Vector2(1940, 5184)
 
 [node name="Key3" parent="." instance=ExtResource("6_rfktq")]
 position = Vector2(4650, 4136)
@@ -64,5 +65,11 @@ position = Vector2(8448, 4285)
 [node name="Key5" parent="." instance=ExtResource("6_rfktq")]
 position = Vector2(5615, 2860)
 
-[node name="Chest" parent="." instance=ExtResource("9_xoyoh")]
-position = Vector2(4148, 5448)
+[node name="Cabinet" parent="." instance=ExtResource("9_cabinet")]
+position = Vector2(1932, 1637)
+scale = Vector2(1.5374898, 1.7208873)
+
+[node name="Cabinet2" parent="." instance=ExtResource("9_cabinet")]
+position = Vector2(1956.0001, 5127.0005)
+scale = Vector2(1.9420269, 1.8686655)
+

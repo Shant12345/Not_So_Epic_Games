@@ -7,7 +7,7 @@ class_name Inventory
 signal inventory_changed
 signal item_used(item_name: String)
 
-const MAX_SLOTS := 5
+const MAX_SLOTS := 10
 
 var items: Array[Dictionary] = []
 

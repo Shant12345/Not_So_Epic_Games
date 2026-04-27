@@ -55,7 +55,6 @@ size = Vector2(57, 133)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 7)
 collision_layer = 3
-collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 0.1
@@ -162,11 +161,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_inv")]
 process_mode = 3
-offset_left = -444.0
-offset_top = -184.99997
-offset_right = 56.0
-offset_bottom = -85.0
-scale = Vector2(1.6902251, 1.7824794)
 
 [node name="Hitbox" type="Area2D" parent="."]
 scale = Vector2(1.6144964, 1.6456586)
