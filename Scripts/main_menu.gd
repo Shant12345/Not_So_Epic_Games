@@ -10,6 +10,8 @@ func _ready():
 		btn.ready.connect(func(): btn.pivot_offset = btn.size / 2)
 
 func _on_start_button_pressed():
+	if GameState.has_method("reset"):
+		GameState.reset()
 	if SceneTransition:
 		SceneTransition.change_scene("res://tscn/dialogue_scene.tscn")
 	else:

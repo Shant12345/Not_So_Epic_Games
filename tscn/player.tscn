@@ -1,11 +1,49 @@
-[gd_scene load_steps=11 format=3 uid="uid://cljxa44wmhn7y"]
+[gd_scene load_steps=14 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="PackedScene" uid="uid://d3h7qk3w5x2c" path="res://tscn/pause_menu.tscn" id="3_pause"]
 [ext_resource type="PackedScene" uid="uid://b3656vmxvbcq6" path="res://tscn/inventory_ui.tscn" id="4_inv"]
-[ext_resource type="Texture2D" uid="uid://ujfuwwskfc6g" path="res://texture/PlayerDesign-Sheet.png" id="4_u4c7w"]
+[ext_resource type="Texture2D" uid="uid://cr7v2caxiearf" path="res://texture/PlayerWalking.png" id="4_u4c7w"]
 [ext_resource type="Script" uid="uid://bp8i3cxj04ex4" path="res://Scripts/game_timer.gd" id="5_timer"]
 
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/Skin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/Skin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
+_data = {
+"idle": SubResource("Animation_idle"),
+"walk": SubResource("Animation_walk")
+}
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 border_width_left = 2
@@ -54,13 +92,11 @@ size = Vector2(57, 133)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 7)
-collision_layer = 3
+collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 0.1
 script = ExtResource("1_7omxl")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -169,6 +205,7 @@ scale = Vector2(1.6144964, 1.6456586)
 position = Vector2(-4.9551063, -9.114892)
 scale = Vector2(1.5912362, 1.7308747)
 texture = ExtResource("4_u4c7w")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-5.264799, -10.217867)
@@ -178,3 +215,7 @@ shape = SubResource("RectangleShape2D_3c7ea")
 position = Vector2(-8.5, -16.5)
 shape = SubResource("RectangleShape2D_u4c7w")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_player")
+}

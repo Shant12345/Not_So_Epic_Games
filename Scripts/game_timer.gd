@@ -13,12 +13,13 @@ const END_MINUTES := 24 * 60 + 8 * 60 + 40  # 8:40 AM next day
 var current_time_minutes: float
 
 func _ready() -> void:
-	current_time_minutes = START_MINUTES
+	current_time_minutes = GameState.current_time_minutes
 	_update_label()
 
 func _process(delta: float) -> void:
 	# Count up
 	current_time_minutes += game_minutes_per_real_second * delta
+	GameState.current_time_minutes = current_time_minutes
 	_update_label()
 	
 	if current_time_minutes >= END_MINUTES:

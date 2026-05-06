@@ -1,18 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crur1qf5w5qre"]
+[gd_scene load_steps=4 format=3 uid="uid://crur1qf5w5qre"]
 
 [ext_resource type="Script" uid="uid://cpmk0dupcyvcy" path="res://Scripts/finish_line.gd" id="1_finish"]
-
-[sub_resource type="Gradient" id="Gradient_finish"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_finish"]
-gradient = SubResource("Gradient_finish")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.4602804, 0.47429907)
+[ext_resource type="Texture2D" uid="uid://xo6sr0m2y7j4" path="res://texture/Exit sign.png" id="2_ihrab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_finish"]
 size = Vector2(128, 128)
@@ -22,8 +11,9 @@ position = Vector2(263, 138)
 script = ExtResource("1_finish")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-texture = SubResource("GradientTexture2D_finish")
+position = Vector2(1, 4)
+scale = Vector2(2.044679, 3.2395544)
+texture = ExtResource("2_ihrab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_finish")

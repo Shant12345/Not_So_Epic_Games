@@ -47,17 +47,18 @@ position = Vector2(1366, 697.00006)
 scale = Vector2(14.073796, 14.077771)
 texture = ExtResource("2_ukx4d")
 
-[node name="StartButton" type="TextureButton" parent="VBoxContainer/IntroScreen"]
-offset_left = 29.629536
-offset_top = 46.385174
-offset_right = 157.62953
-offset_bottom = 174.38516
-scale = Vector2(0.30972832, 0.08357191)
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1968.0
+offset_top = 1546.0
+offset_right = 2096.0
+offset_bottom = 1674.0
+scale = Vector2(4.1589375, 1.008259)
 button_mask = 7
 
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/IntroScreen/StartButton"]
+[node name="Sprite2D" type="Sprite2D" parent="StartButton"]
 position = Vector2(65.61063, 65.44812)
 scale = Vector2(3.593967, 11.473821)
 texture = ExtResource("4_cpdt8")
 
-[connection signal="pressed" from="VBoxContainer/IntroScreen/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

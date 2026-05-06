@@ -137,7 +137,7 @@ func _show_line(idx: int) -> void:
 
 func _flash_hint() -> void:
 	var t := create_tween().set_loops()
-	t.tween_property(continue_hint, "modulate:a", 0.0, 1.0)
+	t.tween_property(continue_hint, "modulate:a", 1.0, 0.6)
 	t.tween_property(continue_hint, "modulate:a", 0.0, 0.4)
 
 func _advance() -> void:

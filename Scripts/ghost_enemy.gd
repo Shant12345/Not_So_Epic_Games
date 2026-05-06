@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var max_speed := 300.0
-@export var acceleration := 800.0
+@export var max_speed := 200.0
+@export var acceleration := 600.0
 var _original_sprite_pos := Vector2.ZERO
 var _original_sprite_scale := Vector2(1,1)
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpj2yfi01xx4i"]
+
+[ext_resource type="Texture2D" uid="uid://d3wjo0c5u5qnu" path="res://texture/Classroom 32x32/Wooden Cabinet (Side).png" id="1_5qrtu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qrtu"]
+size = Vector2(22, 37)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="WoodenCabinet(side)" type="Sprite2D" parent="."]
+position = Vector2(52, -36)
+scale = Vector2(0.75, 1.25)
+texture = ExtResource("1_5qrtu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(52, -36)
+shape = SubResource("RectangleShape2D_5qrtu")

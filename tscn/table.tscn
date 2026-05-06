@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2lohs4rot0b4"]
+
+[ext_resource type="Texture2D" uid="uid://cvay22h87rn66" path="res://texture/Classroom 32x32/Wooden Table (Left Side).png" id="1_v5i0k"]
+[ext_resource type="Texture2D" uid="uid://dlgttobhku26b" path="res://texture/Classroom 32x32/Wooden Table (Right Side).png" id="2_kl0hw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjl2i"]
+size = Vector2(168, 40)
+
+[node name="Table" type="StaticBody2D"]
+
+[node name="WoodenTable(leftSide)" type="Sprite2D" parent="."]
+position = Vector2(344, 216)
+scale = Vector2(5, 3.375)
+texture = ExtResource("1_v5i0k")
+
+[node name="WoodenTable(rightSide)" type="Sprite2D" parent="."]
+position = Vector2(368.00003, 216)
+scale = Vector2(6.0850115, 3.3630674)
+texture = ExtResource("2_kl0hw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(364, 196)
+shape = SubResource("RectangleShape2D_vjl2i")

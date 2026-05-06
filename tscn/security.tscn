@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0rvrp0m6pcj7"]
+[gd_scene load_steps=14 format=3 uid="uid://d0rvrp0m6pcj7"]
 
 [ext_resource type="Script" uid="uid://bp57ygku81xrj" path="res://Scripts/security.gd" id="1_225ps"]
 [ext_resource type="Texture2D" uid="uid://byb2m1hc4lhld" path="res://texture/PonchoSecurityGuard-Sheet.png" id="2_uekkb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypdsa"]
 size = Vector2(113.8125, 175)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 400.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxiks"]
 atlas = ExtResource("2_uekkb")
@@ -71,8 +74,10 @@ animations = [{
 }]
 
 [node name="Security" type="CharacterBody2D"]
+z_index = 5
 position = Vector2(173, 339)
-collision_layer = 2
+collision_layer = 4
+collision_mask = 1
 script = ExtResource("1_225ps")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -90,11 +95,19 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(13.90625, 0)
+scale = Vector2(1.5195808, 1.6951421)
 shape = SubResource("RectangleShape2D_ypdsa")
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource("CircleShape2D_detect")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(13.999999, -8.00001)
-scale = Vector2(2.5375, 2.9125004)
+scale = Vector2(4.2055445, 5.3460493)
 sprite_frames = SubResource("SpriteFrames_t4bt0")
 autoplay = "default"
 frame_progress = 0.798267

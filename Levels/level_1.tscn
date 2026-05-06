@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=6 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
-[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="5_rs4xw"]
-[ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="5_syshm"]
-[ext_resource type="PackedScene" uid="uid://dysk6bxaie7b1" path="res://tscn/key.tscn" id="6_rfktq"]
+[ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="4_rf6l5"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="7_2hkqn"]
-[ext_resource type="PackedScene" uid="uid://coattb0cvr2j6" path="res://tscn/cabinet.tscn" id="9_cabinet"]
-
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(0, 0, 10000, 0, 10000, 6000, 0, 6000)
@@ -21,7 +17,11 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(2665, 1932)
+position = Vector2(4013, 2157)
+scale = Vector2(1.0895953, 0.92527544)
+collision_layer = 3
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(65, -121)
@@ -31,45 +31,18 @@ navigation_polygon = SubResource("NavigationPolygon_game")
 [node name="layout_1" parent="NavigationRegion2D" instance=ExtResource("3_f4pg2")]
 scale = Vector2(0.6084318, 0.6011691)
 
-[node name="FinishLine" parent="." instance=ExtResource("5_rs4xw")]
-position = Vector2(9600, 5024.0005)
-scale = Vector2(0.901405, 4.5303802)
-
 [node name="killercrush" parent="." instance=ExtResource("7_2hkqn")]
 position = Vector2(3815.0002, 4148)
 scale = Vector2(0.6278179, 0.54848915)
 
-[node name="Security" parent="." instance=ExtResource("5_syshm")]
-position = Vector2(5010, 1632)
-point_a = Vector2(3617, 1657)
-point_b = Vector2(5311, 1657)
-
-[node name="Security2" parent="." instance=ExtResource("5_syshm")]
-position = Vector2(3658, 5376)
-point_a = Vector2(3684, 1659)
-point_b = Vector2(3648, 5376)
-move_time = 8.0
-
-[node name="Key" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(2473, 2181)
-
-[node name="Key2" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(1940, 5184)
-
-[node name="Key3" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(4650, 4136)
-
-[node name="Key4" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(8448, 4285)
-
-[node name="Key5" parent="." instance=ExtResource("6_rfktq")]
-position = Vector2(5615, 2860)
-
-[node name="Cabinet" parent="." instance=ExtResource("9_cabinet")]
-position = Vector2(1932, 1637)
-scale = Vector2(1.5374898, 1.7208873)
-
-[node name="Cabinet2" parent="." instance=ExtResource("9_cabinet")]
-position = Vector2(1956.0001, 5127.0005)
-scale = Vector2(1.9420269, 1.8686655)
-
+[node name="Security" parent="." instance=ExtResource("4_rf6l5")]
+position = Vector2(3765.0002, 1773)
+scale = Vector2(0.68169796, 0.65625286)
+collision_layer = 2
+point_a = null
+point_b = null
+move_time = null
+pause_at_end = null
+slow_duration = null
+chase_speed = null
+damage_cooldown = null

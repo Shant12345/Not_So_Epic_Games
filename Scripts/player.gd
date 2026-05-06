@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var stamina_consumption := 10.0 
 @export var stamina_recovery := 5.0
 
-var health := 70
+var health := 100
 var stamina := 100.0
 var is_sprint_exhausted := false
 var is_stunned := false
@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	inventory = Inventory.new()
 	add_child(inventory)
+	inventory.items = GameState.inventory_items
 	inventory.item_used.connect(_on_item_used)
 	
 	var inv_ui = get_node_or_null("CanvasLayer/InventoryUI")
@@ -69,10 +70,19 @@ func _physics_process(delta: float) -> void:
 	var current_max_speed: float = sprint_speed if is_sprinting else max_speed
 	var target_velocity: Vector2 = direction * current_max_speed
 	
+	var anim_player = get_node_or_null("AnimationPlayer")
+	var skin = get_node_or_null("Hitbox/Skin")
+	
 	if has_input_direction:
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
+		if anim_player and anim_player.current_animation != "walk":
+			anim_player.play("walk")
+		if skin and direction.x != 0:
+			skin.flip_h = direction.x < 0
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		if anim_player and anim_player.current_animation != "idle":
+			anim_player.play("idle")
 		
 	move_and_slide()
 	_update_danger_flash(delta)
@@ -218,9 +228,9 @@ func _update_danger_flash(delta: float) -> void:
 	ghost_visible = _is_ghost_on_screen()
 	
 	if ghost_visible:
-		danger_flash_intensity = move_toward(danger_flash_intensity, 0.5, delta * 1.0)
+		danger_flash_intensity = move_toward(danger_flash_intensity, 0.5, delta * 3.0)
 	else:
-		danger_flash_intensity = move_toward(danger_flash_intensity, 0.0, delta * 1.0)
+		danger_flash_intensity = move_toward(danger_flash_intensity, 0.0, delta * 3.0)
 	
 	if danger_flash_intensity > 0.0:
 		var pulse = (sin(Time.get_ticks_msec() / 200.0) + 1.0) / 2.0

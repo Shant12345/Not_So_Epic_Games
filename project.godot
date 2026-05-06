@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameState="*res://Scripts/game_state.gd"
 SceneTransition="*res://tscn/scene_transition.tscn"
 ControllerMouse="*res://Scripts/controller_mouse.gd"
 

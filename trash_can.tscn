@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwitvuebln01e"]
+
+[ext_resource type="Texture2D" uid="uid://dp0b2lpg1ci1l" path="res://texture/Classroom 32x32/Waste Basket 1.png" id="1_bgvmr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpy1"]
+radius = 2.8066673
+height = 8.380829
+
+[node name="Trash_can" type="StaticBody2D"]
+
+[node name="WasteBasket1" type="Sprite2D" parent="."]
+position = Vector2(344, 473)
+scale = Vector2(5.770949, 6.6860533)
+texture = ExtResource("1_bgvmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(298, 423.00003)
+rotation = 3.1415925
+scale = Vector2(14.251772, -10.022872)
+shape = SubResource("CapsuleShape2D_alpy1")

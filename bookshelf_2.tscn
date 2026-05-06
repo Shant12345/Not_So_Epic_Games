@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://8wa6bg3y5xwg"]
+
+[ext_resource type="Texture2D" uid="uid://dt7sm3koebsmc" path="res://texture/Classroom 32x32/Bookshelf L1.png" id="1_x0bsp"]
+[ext_resource type="Texture2D" uid="uid://bj5k0jpw2g4sg" path="res://texture/Classroom 32x32/Bookshelf L2.png" id="2_l6wgl"]
+[ext_resource type="Texture2D" uid="uid://dwyglnjqpn0ax" path="res://texture/Classroom 32x32/Bookshelf R1.png" id="3_w4jrc"]
+[ext_resource type="Texture2D" uid="uid://di2cn7ri0ttnj" path="res://texture/Classroom 32x32/Bookshelf R2.png" id="4_an6d2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ma0x6"]
+size = Vector2(57, 53.5)
+
+[node name="Bookshelf2" type="StaticBody2D"]
+position = Vector2(-61, -35)
+
+[node name="BookshelfL1" type="Sprite2D" parent="."]
+position = Vector2(47, 20)
+texture = ExtResource("1_x0bsp")
+
+[node name="BookshelfL2" type="Sprite2D" parent="."]
+position = Vector2(47, 52)
+texture = ExtResource("2_l6wgl")
+
+[node name="BookshelfR1" type="Sprite2D" parent="."]
+position = Vector2(79, 20)
+texture = ExtResource("3_w4jrc")
+
+[node name="BookshelfR2" type="Sprite2D" parent="."]
+position = Vector2(79, 52)
+texture = ExtResource("4_an6d2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(62.5, 36.25)
+shape = SubResource("RectangleShape2D_ma0x6")

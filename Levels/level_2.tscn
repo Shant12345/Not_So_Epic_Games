@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3wrkjdylnf2"]
+[gd_scene load_steps=5 format=3 uid="uid://c3wrkjdylnf2"]
 
 [ext_resource type="PackedScene" uid="uid://bvqgi8ujm64pg" path="res://Levels/layout_2.tscn" id="1_s1mjy"]
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="2_s1mjy"]
-[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="3_finish"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="4_dgq3b"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lv2"]
@@ -14,21 +13,27 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Level_2" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(236.00195, 224.00012)
+scale = Vector2(2.9877026, 2.152588)
 navigation_polygon = SubResource("NavigationPolygon_lv2")
 
 [node name="Layout_2" parent="NavigationRegion2D" instance=ExtResource("1_s1mjy")]
-position = Vector2(-54, 86.00001)
-scale = Vector2(4.8404326, 5.333254)
+position = Vector2(-2680.989, 3211.0193)
+scale = Vector2(1.0154896, 1.201957)
 
-[node name="FinishLine" parent="." instance=ExtResource("3_finish")]
-position = Vector2(11530.999, 5648.9995)
-scale = Vector2(0.31998014, 2.72)
-next_level_path = "res://Levels/level_3.tscn"
+[node name="GhostEnemy" parent="." instance=ExtResource("4_dgq3b")]
+position = Vector2(26280, 16063)
+scale = Vector2(4.992075, 3.5700006)
 
 [node name="Player" parent="." instance=ExtResource("2_s1mjy")]
 unique_name_in_owner = true
-position = Vector2(17423, 14924)
-scale = Vector2(0.7999609, 0.79999995)
+position = Vector2(2778.0002, 15081)
+scale = Vector2(5.249121, 4.402427)
+max_speed = 10000.0
+sprint_speed = 7000.0
+acceleration = 5500.0
+deceleration = 5500.0
 
-[node name="GhostEnemy" parent="." instance=ExtResource("4_dgq3b")]
-position = Vector2(3058, 2180)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(54.104294, 14.310287)
+zoom = Vector2(0.2, 0.2)
