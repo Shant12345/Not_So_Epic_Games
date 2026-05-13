@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8y2m2n2n2n2"]
 
-[ext_resource type="Script" path="res://Scripts/scene_transition.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://colvioh0xy47j" path="res://Scripts/scene_transition.gd" id="1_script"]
 
 [sub_resource type="Animation" id="Animation_fade_to_black"]
 resource_name = "fade_to_black"

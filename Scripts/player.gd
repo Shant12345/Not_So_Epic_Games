@@ -153,7 +153,7 @@ func set_stamina(new_stamina: float) -> void:
 
 func _on_area_entered(area_that_entered: Area2D) -> void:
 	# Check if the area has pickup-related properties
-	var is_pickup = area_that_entered.has_method("pickup") or area_that_entered.is_in_group("Pickup") or area_that_entered.is_in_group("HealthPack") or area_that_entered.name.contains("Key") or area_that_entered.name.contains("HealthPack")
+	var is_pickup = area_that_entered.has_method("pickup") or area_that_entered.is_in_group("Pickup") or area_that_entered.is_in_group("HealthPack") or area_that_entered.name.to_lower().contains("key") or area_that_entered.name.to_lower().contains("healthpack")
 	
 	if is_pickup:
 		var i_name = area_that_entered.get("item_name") if area_that_entered.get("item_name") else "Unknown Item"

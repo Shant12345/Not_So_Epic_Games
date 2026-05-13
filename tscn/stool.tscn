@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4boukrcrrvlb"]
+
+[ext_resource type="Texture2D" uid="uid://cdlx6agy1j0or" path="res://texture/Classroom 32x32/Small Circle Table.png" id="1_whlh4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pqpp"]
+radius = 8.58492
+
+[node name="Stool" type="StaticBody2D"]
+
+[node name="SmallCircleTable" type="Sprite2D" parent="."]
+position = Vector2(20, 15)
+scale = Vector2(1.5096351, 1.8021852)
+texture = ExtResource("1_whlh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 9.0000305)
+scale = Vector2(2.1758482, 1.7217757)
+shape = SubResource("CircleShape2D_5pqpp")

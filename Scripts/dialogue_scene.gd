@@ -29,7 +29,7 @@ const LINES := [
 	},
 	{
 		"speaker": "Killer Crush",
-		"text": "WOW! You're actually braver then I thought.",
+		"text": "WOW! You're actually braver than I thought.",
 		"color": Color(0.877, 0.0, 0.602, 1.0)
 	},
 	{
@@ -76,33 +76,33 @@ const LINES := [
 @onready var continue_hint  : Label          = $DialogueBox/VBox/ContinueHint
 @onready var bg_overlay     : ColorRect      = $BgOverlay
 @onready var skip_btn       : Button         = $SkipButton
+@onready var antag_sprite   : Sprite2D       = $AntagonistSprite
+
 
 # ── state ────────────────────────────────────────────────────────────────────
 var _current_line   := 0
 var _typing         := false
 var _full_text      := ""
 var _tween          : Tween
+var _is_talking     := false
+var _anim_timer     := 0.0
 
+const ANIM_SPEED   := 0.1
 const CHAR_DELAY   := 0.03   # seconds per character
 const SLIDE_TIME   := 0.45   # panel slide duration
 
 # ── lifecycle ────────────────────────────────────────────────────────────────
 func _ready() -> void:
-	# Start box off-screen below
-	dialogue_box.position.y = get_viewport_rect().size.y + 400
-	bg_overlay.modulate.a  = 0.0
-	continue_hint.modulate.a = 0.0
-
-	await get_tree().create_timer(0.5).timeout
-	_slide_in()
-
-func _slide_in() -> void:
-	var target_y := get_viewport_rect().size.y - dialogue_box.size.y - 40.0
-	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	_tween.tween_property(bg_overlay,     "modulate:a",   1.65, SLIDE_TIME)
-	_tween.parallel().tween_property(dialogue_box, "position:y", target_y, SLIDE_TIME)
-	await _tween.finished
+	bg_overlay.modulate.a  = 0.4
+	continue_hint.modulate.a = 1.0
+	
+	antag_sprite.modulate.a = 1.0
+	
+	# Position dialogue box
+	dialogue_box.position.y = get_viewport_rect().size.y - dialogue_box.size.y - 40.0
+	
 	_show_line(_current_line)
+
 
 func _show_line(idx: int) -> void:
 	if idx >= LINES.size():
@@ -118,27 +118,20 @@ func _show_line(idx: int) -> void:
 	speaker_label.modulate   = data["color"]
 	text_label.text          = ""
 
-	# Bounce the panel slightly
-	var base_y := dialogue_box.position.y
-	var bounce := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	bounce.tween_property(dialogue_box, "position:y", base_y - 8, 0.12)
-	bounce.tween_property(dialogue_box, "position:y", base_y, 0.12)
+	# Handle antagonist visibility
+	var is_crush = data["speaker"] == "Killer Crush"
+	antag_sprite.visible = is_crush
 
 	# Type out text
 	for i in _full_text.length():
 		if not _typing:
 			break
-		text_label.text = _full_text.substr(0, i)
+		text_label.text = _full_text.substr(0, i + 1)
 		await get_tree().create_timer(CHAR_DELAY).timeout
 
 	text_label.text = _full_text
 	_typing = false
-	_flash_hint()
-
-func _flash_hint() -> void:
-	var t := create_tween().set_loops()
-	t.tween_property(continue_hint, "modulate:a", 1.0, 0.6)
-	t.tween_property(continue_hint, "modulate:a", 0.0, 0.4)
+	continue_hint.modulate.a = 1.0
 
 func _advance() -> void:
 	if _typing:
@@ -151,14 +144,13 @@ func _advance() -> void:
 	_show_line(_current_line)
 
 func _finish() -> void:
-	# Slide out
-	var t := create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
-	t.tween_property(dialogue_box, "position:y", get_viewport_rect().size.y + 100, SLIDE_TIME)
-	t.parallel().tween_property(bg_overlay,    "modulate:a", 0.0, SLIDE_TIME)
-	await t.finished
+	# Change scene immediately
 
 	# Load level 1
-	get_tree().change_scene_to_file("res://Levels/level_1.tscn")
+	if SceneTransition:
+		SceneTransition.change_scene("res://Levels/level_1.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Levels/level_1.tscn")
 
 # ── input ────────────────────────────────────────────────────────────────────
 func _unhandled_input(event: InputEvent) -> void:

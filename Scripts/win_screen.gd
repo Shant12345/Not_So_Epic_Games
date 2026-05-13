@@ -11,7 +11,7 @@ func _ready():
 	
 	# Initial UI state for animations
 	modulate.a = 0
-	title.position.y -= 30
+	title.pivot_offset = title.size / 2
 	subtitle.modulate.a = 0
 	buttons_container.modulate.a = 0
 	
@@ -21,8 +21,9 @@ func _ready():
 	# Fade in everything
 	tween.tween_property(self, "modulate:a", 1.0, 1.2)
 	
-	# Slide title into place
-	tween.tween_property(title, "position:y", title.position.y + 30, 1.5).set_delay(0.3)
+	# Scale title into place
+	title.scale = Vector2(0.8, 0.8)
+	tween.tween_property(title, "scale", Vector2(1.0, 1.0), 1.5).set_delay(0.3)
 	
 	# Fade in subtitle and buttons with staggered timing
 	tween.tween_property(subtitle, "modulate:a", 1.0, 1.0).set_delay(0.8)

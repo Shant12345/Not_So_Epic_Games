@@ -17,7 +17,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(4013, 2157)
+position = Vector2(2237, 1773.0002)
 scale = Vector2(1.0895953, 0.92527544)
 collision_layer = 3
 
@@ -38,11 +38,3 @@ scale = Vector2(0.6278179, 0.54848915)
 [node name="Security" parent="." instance=ExtResource("4_rf6l5")]
 position = Vector2(3765.0002, 1773)
 scale = Vector2(0.68169796, 0.65625286)
-collision_layer = 2
-point_a = null
-point_b = null
-move_time = null
-pause_at_end = null
-slow_duration = null
-chase_speed = null
-damage_cooldown = null

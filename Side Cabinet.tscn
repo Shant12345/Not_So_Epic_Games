@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qrtu"]
 size = Vector2(22, 37)
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Side Cabinet" type="StaticBody2D"]
 
 [node name="WoodenCabinet(side)" type="Sprite2D" parent="."]
 position = Vector2(52, -36)

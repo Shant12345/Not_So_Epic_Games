@@ -6,8 +6,7 @@ func _ready():
 	
 	# Add hover effects to all buttons
 	for btn in find_children("*", "Button", true):
-		# Connect to lambda to set pivot after button has its actual size
-		btn.ready.connect(func(): btn.pivot_offset = btn.size / 2)
+		btn.pivot_offset = btn.size / 2
 
 func _on_start_button_pressed():
 	if GameState.has_method("reset"):

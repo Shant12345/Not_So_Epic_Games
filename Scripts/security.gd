@@ -114,6 +114,10 @@ func move_to_next_point():
 	
 	_current_tween = create_tween()
 	_current_tween.tween_property(self, "position", target, max(effective_time, 0.01)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	
+	if pause_at_end > 0:
+		_current_tween.tween_interval(pause_at_end)
+		
 	_current_tween.finished.connect(_on_tween_finished)
 
 func _on_tween_finished():
@@ -155,5 +159,7 @@ func _apply_slow():
 	# Remove slow after duration
 	await get_tree().create_timer(slow_duration).timeout
 	_is_slowed = false
-	if not _player_in_range:
+	
+	# Only resume if we were patrolling (no active chase)
+	if not _player_in_range or _already_hit_player:
 		move_to_next_point()

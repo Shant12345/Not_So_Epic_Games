@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var max_speed := 600.0
 @export var acceleration := 1200.0
-@export var avoidance_strength := 21000.0
+@export var avoidance_strength := 400.0
 @onready var hit_box: Area2D = $HitBox
 @onready var raycasts: Node2D = %Raycasts
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -45,21 +45,12 @@ func _update_sprite_direction() -> void:
 	
 	animated_sprite.play("walk")
 	
-	# Determine dominant axis
-	if abs(velocity.x) >= abs(velocity.y):
-		# Horizontal movement dominates
+	# Determine direction for flipping
+	if velocity.x != 0:
 		animated_sprite.flip_h = velocity.x < 0
-		animated_sprite.flip_v = false
-	else:
-		# Vertical movement dominates
-		if velocity.y < 0:
-			# Moving up — flip vertically to suggest going away
-			animated_sprite.flip_h = false
-			animated_sprite.flip_v = true
-		else:
-			# Moving down — normal orientation
-			animated_sprite.flip_h = false
-			animated_sprite.flip_v = false
+	
+	# Reset flip_v as it makes the character upside down
+	animated_sprite.flip_v = false
 	
 func calculate_avoidance_force() -> Vector2:
 	var avoidance_force := Vector2.ZERO

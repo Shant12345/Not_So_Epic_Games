@@ -137,9 +137,11 @@ func _update_visuals() -> void:
 	if sprite == null:
 		return
 	if is_open:
-		sprite.frame = 1
+		if sprite.hframes > 1 or sprite.vframes > 1:
+			sprite.frame = 1
 	else:
-		sprite.frame = 0
+		if sprite.hframes > 1 or sprite.vframes > 1:
+			sprite.frame = 0
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfpmub1gvy55y"]
 
 [ext_resource type="Script" uid="uid://begkb5q0knrx1" path="res://Scripts/ghost_enemy.gd" id="1_ghost"]
-[ext_resource type="Texture2D" path="res://texture/killercrushwalking.png" id="2_sheet"]
+[ext_resource type="Texture2D" uid="uid://q7271spwhjn1" path="res://texture/killercrushwalking.png" id="2_sheet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghost"]
 size = Vector2(60, 80)

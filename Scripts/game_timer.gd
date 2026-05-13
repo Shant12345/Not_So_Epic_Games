@@ -5,24 +5,28 @@ extends Label
 
 @export var game_minutes_per_real_second := 1.0
 
-# Start: 8:00 PM = 20 * 60 = 1200 minutes
-# End: 8:40 AM next day = 24*60 + 8*60 + 40 = 1440 + 520 = 1960 minutes
-const START_MINUTES := 20 * 60        # 8:00 PM
-const END_MINUTES := 24 * 60 + 8 * 60 + 40  # 8:40 AM next day
+# Start: 10:00 AM = 10 * 60 = 600 minutes
+# End: 8:40 AM same day = 8 * 60 + 40 = 520 minutes
+const START_MINUTES := 10 * 60        # 10:00 AM
+const END_MINUTES := 8 * 60 + 40      # 8:40 AM
 
 var current_time_minutes: float
 
 func _ready() -> void:
+	# Always initialize to start time if this is a fresh scene load
+	if GameState.current_time_minutes == 600.0:
+		GameState.current_time_minutes = float(START_MINUTES)
+		
 	current_time_minutes = GameState.current_time_minutes
 	_update_label()
 
 func _process(delta: float) -> void:
-	# Count up
-	current_time_minutes += game_minutes_per_real_second * delta
+	# Count down
+	current_time_minutes -= game_minutes_per_real_second * delta
 	GameState.current_time_minutes = current_time_minutes
 	_update_label()
 	
-	if current_time_minutes >= END_MINUTES:
+	if current_time_minutes <= END_MINUTES:
 		current_time_minutes = END_MINUTES
 		_update_label()
 		_game_over()

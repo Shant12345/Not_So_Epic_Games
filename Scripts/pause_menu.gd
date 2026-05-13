@@ -4,7 +4,7 @@ func _ready():
 	visible = false
 	# Add hover effects to all buttons
 	for btn in find_children("*", "Button", true):
-		btn.ready.connect(func(): btn.pivot_offset = btn.size / 2)
+		btn.pivot_offset = btn.size / 2
 		btn.mouse_entered.connect(_on_button_hover.bind(btn))
 		btn.mouse_exited.connect(_on_button_unhover.bind(btn))
 

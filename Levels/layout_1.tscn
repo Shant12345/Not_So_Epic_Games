@@ -13,13 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://bqr5hg3u56wgu" path="res://texture/Classroom 32x32/Bulletin Board (Left Side).png" id="10_18h4u"]
 [ext_resource type="Texture2D" uid="uid://dibu2nr0b8arp" path="res://texture/Classroom 32x32/Bulletin Board (Right Side).png" id="11_oqfve"]
 [ext_resource type="PackedScene" uid="uid://d2lohs4rot0b4" path="res://tscn/table.tscn" id="12_oqfve"]
-[ext_resource type="PackedScene" uid="uid://ch5pycxq8p035" path="res://bookshelf.tscn" id="13_5b4ew"]
+[ext_resource type="PackedScene" path="res://tscn/bookshelf.tscn" id="13_5b4ew"]
 [ext_resource type="Texture2D" uid="uid://cmg2no5un3l5d" path="res://texture/Classroom 32x32/Speaker Box.png" id="14_uvvhr"]
-[ext_resource type="PackedScene" uid="uid://8wa6bg3y5xwg" path="res://bookshelf_2.tscn" id="15_p1jqa"]
+[ext_resource type="PackedScene" path="res://tscn/bookshelf_2.tscn" id="15_p1jqa"]
 [ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="16_p1jqa"]
 [ext_resource type="PackedScene" uid="uid://b1bkxnwicktop" path="res://tscn/Woodencabinet.tscn" id="18_b73ag"]
 [ext_resource type="PackedScene" uid="uid://bpj2yfi01xx4i" path="res://Side Cabinet.tscn" id="19_x3lju"]
-[ext_resource type="PackedScene" uid="uid://cwitvuebln01e" path="res://trash_can.tscn" id="20_qvxb0"]
+[ext_resource type="PackedScene" path="res://tscn/trash_can.tscn" id="20_qvxb0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5yll"]
 texture = ExtResource("2_ndbud")
@@ -419,12 +419,8 @@ scale = Vector2(3.9750798, 4.033801)
 texture = ExtResource("14_uvvhr")
 
 [node name="Bookshelf6" parent="." instance=ExtResource("13_5b4ew")]
-position = Vector2(1667.7489, 2477.3691)
+position = Vector2(2933.0042, 2477.3691)
 scale = Vector2(4.089993, 4.0646114)
-
-[node name="Bookshelf7" parent="." instance=ExtResource("15_p1jqa")]
-position = Vector2(1783.2974, 2455.3562)
-scale = Vector2(4.387017, 4.127712)
 
 [node name="SpeakerBox5" type="Sprite2D" parent="."]
 position = Vector2(3282.5383, 624.61615)
@@ -489,3 +485,71 @@ scale = Vector2(1.1751873, 1.530052)
 position = Vector2(6996.457, 2875.436)
 rotation = 1.5707964
 scale = Vector2(4.6458664, 0.8957198)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("19_x3lju")]
+position = Vector2(1001.4197, 3601.862)
+scale = Vector2(-8.455747, 7.4938207)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("19_x3lju")]
+position = Vector2(999.4939, 3403.7458)
+scale = Vector2(-8.455747, 7.4938207)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("19_x3lju")]
+position = Vector2(-1095.7843, 3455.1091)
+scale = Vector2(7.3814936, 7.3129697)
+
+[node name="Bookshelf7" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(2179.0508, 2477.3691)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf9" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(1923.8812, 2477.3691)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf10" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(2428.4429, 2475.5344)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf12" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(1922.9183, 1794.9691)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf13" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(2175.199, 1792.2175)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf15" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(2693.2412, 1787.6315)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf16" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(2940.7075, 1778.4595)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf17" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(3181.4333, 2481.9548)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Bookshelf18" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(3191.0625, 1778.4595)
+scale = Vector2(4.089993, 4.0646114)
+
+[node name="Cabinet5" parent="." instance=ExtResource("18_b73ag")]
+position = Vector2(2803.9753, 2610.364)
+scale = Vector2(1.6398467, 1.7305787)
+
+[node name="Cabinet6" parent="." instance=ExtResource("18_b73ag")]
+position = Vector2(1790.0378, 2628.708)
+scale = Vector2(1.6398467, 1.7305787)
+
+[node name="Cabinet7" parent="." instance=ExtResource("18_b73ag")]
+position = Vector2(2550.7317, 1913.2886)
+scale = Vector2(1.6398467, 1.7305787)
+
+[node name="Cabinet8" parent="." instance=ExtResource("18_b73ag")]
+position = Vector2(1790.0378, 1931.6326)
+scale = Vector2(1.6398467, 1.7305787)
+
+[node name="Cabinet9" parent="." instance=ExtResource("6_aawp7")]
+position = Vector2(6200.1367, 2167.3542)
+scale = Vector2(1.6552031, 1.740217)
