@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3h7g21h502xj"
-path="res://.godot/imported/KillercrushTalking.png-4db53bac198c731676b9cd30955690bd.ctex"
+uid="uid://cyfoouliy20f3"
+path="res://.godot/imported/killercrushnottalking.png-9c78f881e2e58178b2f98a841dccbe38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture/KillercrushTalking.png"
-dest_files=["res://.godot/imported/KillercrushTalking.png-4db53bac198c731676b9cd30955690bd.ctex"]
+source_file="res://texture/killercrushnottalking.png"
+dest_files=["res://.godot/imported/killercrushnottalking.png-9c78f881e2e58178b2f98a841dccbe38.ctex"]
 
 [params]
 

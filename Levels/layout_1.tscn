@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://pj5cgkq6lpg0"]
+[gd_scene load_steps=32 format=3 uid="uid://pj5cgkq6lpg0"]
 
 [ext_resource type="Texture2D" uid="uid://dcp0u7635cmf5" path="res://texture/Lockers.png" id="2_irvs6"]
 [ext_resource type="Texture2D" uid="uid://dduw4wmhsvdpn" path="res://icon.svg" id="2_ndbud"]
@@ -18,8 +18,11 @@
 [ext_resource type="PackedScene" path="res://tscn/bookshelf_2.tscn" id="15_p1jqa"]
 [ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="16_p1jqa"]
 [ext_resource type="PackedScene" uid="uid://b1bkxnwicktop" path="res://tscn/Woodencabinet.tscn" id="18_b73ag"]
-[ext_resource type="PackedScene" uid="uid://bpj2yfi01xx4i" path="res://Side Cabinet.tscn" id="19_x3lju"]
+[ext_resource type="PackedScene" uid="uid://bpj2yfi01xx4i" path="res://tscn/Side Cabinet.tscn" id="19_x3lju"]
 [ext_resource type="PackedScene" path="res://tscn/trash_can.tscn" id="20_qvxb0"]
+[ext_resource type="PackedScene" uid="uid://dg8p6xivph6sm" path="res://tscn/stool.tscn" id="21_6fwnl"]
+[ext_resource type="Texture2D" uid="uid://dy0mkhqr3mrai" path="res://texture/Classroom 32x32/Window (Left Side).png" id="22_s6eej"]
+[ext_resource type="Texture2D" uid="uid://cgwjn2wsattyl" path="res://texture/Classroom 32x32/Window (Right Side).png" id="23_vcgfo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5yll"]
 texture = ExtResource("2_ndbud")
@@ -553,3 +556,84 @@ scale = Vector2(1.6398467, 1.7305787)
 [node name="Cabinet9" parent="." instance=ExtResource("6_aawp7")]
 position = Vector2(6200.1367, 2167.3542)
 scale = Vector2(1.6552031, 1.740217)
+
+[node name="Cabinet10" parent="." instance=ExtResource("6_aawp7")]
+position = Vector2(3451.0461, 1023.60004)
+scale = Vector2(1.3032876, 1.4442997)
+
+[node name="Bookshelf19" parent="." instance=ExtResource("13_5b4ew")]
+position = Vector2(3553.1143, 908.03235)
+scale = Vector2(3.8654652, 3.6562448)
+
+[node name="Stool" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(5975.7793, 2868.0984)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool2" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6120.2153, -244.8936)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool3" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6468.7866, -248.56235)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool4" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6474.5635, 101.809715)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool5" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6123.104, 438.42374)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool6" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6126.955, 103.64412)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool7" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6465.8975, 443.00967)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool8" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(5481.8096, 2898.3662)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool9" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(5625.282, 2689.2437)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Trash_can7" parent="." instance=ExtResource("20_qvxb0")]
+position = Vector2(6129.844, 2481.9553)
+
+[node name="Stool10" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(6686.402, 2724.0974)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Window(leftSide)" type="Sprite2D" parent="."]
+position = Vector2(1421.2457, -941.969)
+scale = Vector2(6.990793, 7.9738803)
+texture = ExtResource("22_s6eej")
+
+[node name="Window(rightSide)" type="Sprite2D" parent="."]
+position = Vector2(1482.8716, -941.96906)
+scale = Vector2(8.415066, 8.040821)
+texture = ExtResource("23_vcgfo")
+
+[node name="Window(leftSide)2" type="Sprite2D" parent="."]
+position = Vector2(1024.6853, -945.3932)
+scale = Vector2(6.990793, 7.9738803)
+texture = ExtResource("22_s6eej")
+
+[node name="Window(rightSide)2" type="Sprite2D" parent="."]
+position = Vector2(1086.3112, -945.39325)
+scale = Vector2(8.415066, 8.040821)
+texture = ExtResource("23_vcgfo")
+
+[node name="Window(leftSide)3" type="Sprite2D" parent="."]
+position = Vector2(1421.2457, -941.969)
+scale = Vector2(6.990793, 7.9738803)
+texture = ExtResource("22_s6eej")
+
+[node name="Window(rightSide)3" type="Sprite2D" parent="."]
+position = Vector2(1482.8716, -941.96906)
+scale = Vector2(8.415066, 8.040821)
+texture = ExtResource("23_vcgfo")

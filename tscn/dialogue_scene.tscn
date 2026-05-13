@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://btog7c323d1r4"]
+[gd_scene load_steps=6 format=3 uid="uid://btog7c323d1r4"]
 
 [ext_resource type="Script" uid="uid://bc0oogshbsmsh" path="res://Scripts/dialogue_scene.gd" id="1_dlg"]
 [ext_resource type="Texture2D" uid="uid://cri4i0begsnng" path="res://texture/classroomBackground.jpg" id="2_bg"]
-[ext_resource type="Texture2D" uid="uid://cvgc4pamc6flh" path="res://texture/killercrushtalking.png" id="3_oo87j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.08, 0.04, 0.1, 0.97)
@@ -104,20 +103,15 @@ horizontal_alignment = 2
 
 [node name="SkipButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 2785.0
-offset_top = 1680.3723
-offset_right = 2856.81
-offset_bottom = 1704.3723
+offset_left = 2785.0002
+offset_top = 1677.9999
+offset_right = 2856.8103
+offset_bottom = 1701.9999
 scale = Vector2(3.120339, 5.0465555)
 theme_override_colors/font_color = Color(0.9, 0.5, 0.5, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_skip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_skip_hover")
 text = "Skip ▶▶"
-
-[node name="AntagonistSprite" type="Sprite2D" parent="."]
-position = Vector2(439, 876)
-scale = Vector2(8.321327, 7.357162)
-texture = ExtResource("3_oo87j")
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

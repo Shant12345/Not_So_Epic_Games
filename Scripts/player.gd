@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 @export var max_speed := 1400.0
 @export var sprint_speed := 1700.0
-@export var acceleration := 2500.0
-@export var deceleration := 2500.0
 @export var max_stamina := 100.0
 @export var stamina_consumption := 10.0 
 @export var stamina_recovery := 5.0
@@ -44,7 +42,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Block all movement while stunned
 	if is_stunned:
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		velocity = Vector2.ZERO
 		move_and_slide()
 		_update_danger_flash(delta)
 		return
@@ -74,13 +72,13 @@ func _physics_process(delta: float) -> void:
 	var skin = get_node_or_null("Hitbox/Skin")
 	
 	if has_input_direction:
-		velocity = velocity.move_toward(target_velocity, acceleration * delta)
+		velocity = target_velocity
 		if anim_player and anim_player.current_animation != "walk":
 			anim_player.play("walk")
 		if skin and direction.x != 0:
 			skin.flip_h = direction.x < 0
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		velocity = Vector2.ZERO
 		if anim_player and anim_player.current_animation != "idle":
 			anim_player.play("idle")
 		

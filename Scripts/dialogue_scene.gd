@@ -77,6 +77,8 @@ const LINES := [
 @onready var bg_overlay     : ColorRect      = $BgOverlay
 @onready var skip_btn       : Button         = $SkipButton
 @onready var antag_sprite   : Sprite2D       = $AntagonistSprite
+@onready var talk_tex       := preload("res://texture/KillercrushTalking.png")
+@onready var idle_tex       := preload("res://texture/killercrushnottalking.png")
 
 
 # ── state ────────────────────────────────────────────────────────────────────
@@ -86,6 +88,7 @@ var _full_text      := ""
 var _tween          : Tween
 var _is_talking     := false
 var _anim_timer     := 0.0
+var _current_frame  := 0
 
 const ANIM_SPEED   := 0.1
 const CHAR_DELAY   := 0.03   # seconds per character
@@ -103,6 +106,16 @@ func _ready() -> void:
 	
 	_show_line(_current_line)
 
+func _process(delta: float) -> void:
+	if _is_talking:
+		_anim_timer += delta
+		if _anim_timer >= ANIM_SPEED:
+			_anim_timer = 0.0
+			_current_frame = (_current_frame + 1) % antag_sprite.hframes
+			antag_sprite.frame = _current_frame
+	else:
+		antag_sprite.frame = 0
+
 
 func _show_line(idx: int) -> void:
 	if idx >= LINES.size():
@@ -118,9 +131,17 @@ func _show_line(idx: int) -> void:
 	speaker_label.modulate   = data["color"]
 	text_label.text          = ""
 
-	# Handle antagonist visibility
-	var is_crush = data["speaker"] == "Killer Crush"
-	antag_sprite.visible = is_crush
+	# Handle antagonist texture and animation
+	if data["speaker"] == "Killer Crush":
+		antag_sprite.texture = talk_tex
+		antag_sprite.hframes = 4 # Assuming 4 frames for now, adjust if needed
+		_is_talking = true
+	else:
+		antag_sprite.texture = idle_tex
+		antag_sprite.hframes = 1
+		_is_talking = false
+	
+	antag_sprite.visible = true
 
 	# Type out text
 	for i in _full_text.length():
@@ -131,6 +152,7 @@ func _show_line(idx: int) -> void:
 
 	text_label.text = _full_text
 	_typing = false
+	_is_talking = false
 	continue_hint.modulate.a = 1.0
 
 func _advance() -> void:
