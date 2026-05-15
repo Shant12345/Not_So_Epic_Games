@@ -122,6 +122,7 @@ texture = ExtResource("3_kace1")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ruf55"]
 texture = ExtResource("4_bjdfh")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_q305i"]
 physics_layer_0/collision_layer = 1
@@ -157,7 +158,7 @@ position = Vector2(-88, 104)
 scale = Vector2(0.20206086, 0.21955407)
 
 [node name="Walls" type="TileMap" parent="."]
-position = Vector2(3456.8784, -1386.9991)
+position = Vector2(3454.4048, -1384.6248)
 scale = Vector2(10.47125, 10.47125)
 tile_set = SubResource("TileSet_q305i")
 format = 2
@@ -214,7 +215,7 @@ point_a = Vector2(13899, 3481)
 point_b = Vector2(13899, 2052)
 
 [node name="Security2" parent="." instance=ExtResource("8_kace1")]
-position = Vector2(3111.8767, 525.0642)
+position = Vector2(3132.7195, 532.89844)
 scale = Vector2(1.9760568, 1.9760568)
 point_a = Vector2(7806, 500)
 point_b = Vector2(3111, 500)

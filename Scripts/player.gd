@@ -122,7 +122,11 @@ func set_health(new_health: int) -> void:
 	if health <= 0:
 		die()
 
-func die() -> void:
+func die(force: bool = false) -> void:
+	# Only die if health is actually depleted or forced (Killer Crush contact)
+	if not force and health > 0:
+		return
+	
 	# Ignore if already dead (to prevent multiple death screens)
 	if get_tree().paused and get_node_or_null("CanvasLayer/DeathScreen"):
 		return
@@ -135,8 +139,6 @@ func die() -> void:
 			canvas.add_child(death_screen)
 		else:
 			get_tree().root.add_child(death_screen)
-	else:
-		get_tree().reload_current_scene()
 
 
 

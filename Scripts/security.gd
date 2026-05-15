@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var slow_duration: float = 1.0  # seconds to stay slowed after hitting player
 @export var chase_speed: float = 350.0
 @export var damage_cooldown: float = 1.5
+@export var start_at_b: bool = false  # If true, guard starts at point_b and patrols toward point_a first
 var health := 70
 
 var going_to_b := true
@@ -30,7 +31,13 @@ func _ready():
 		# If point_b was default, make it relative to current position to avoid huge jumps
 		point_b = position + (point_b - Vector2(173, 339))
 	
-	position = point_a
+	# Allow starting at either end of the patrol
+	if start_at_b:
+		position = point_b
+		going_to_b = false
+	else:
+		position = point_a
+		going_to_b = true
 	
 	var hit_box = get_node_or_null("HitBox")
 	if hit_box:
@@ -132,9 +139,7 @@ func _deal_damage(body: Node2D) -> void:
 	
 	if body.has_method("take_damage"):
 		body.take_damage(10)
-	else:
-		# Fallback
-		get_tree().reload_current_scene()
+	# No fallback — only damage through the health system
 	
 	# Stun the player
 	if body.has_method("stun"):
@@ -149,6 +154,7 @@ func _deal_damage(body: Node2D) -> void:
 	# Damage cooldown
 	await get_tree().create_timer(damage_cooldown).timeout
 	_can_damage = true
+	_already_hit_player = false # Allow chasing again after cooldown
 
 func _apply_slow():
 	_is_slowed = true

@@ -67,10 +67,24 @@ func _generate_loot() -> void:
 	if loot_table.is_empty():
 		return
 	
-	# Generate 1-4 random items
-	var item_count = randi_range(MIN_ITEMS, MAX_ITEMS)
+	# Always guarantee one key in the cabinet
+	var key_scene = load("res://tscn/key.tscn")
+	if key_scene:
+		var temp_key = key_scene.instantiate()
+		var key_data := {
+			"name": temp_key.get("item_name") if temp_key.get("item_name") else "Key",
+			"description": temp_key.get("item_description") if temp_key.get("item_description") else "A key.",
+			"type": temp_key.get("item_type") if temp_key.get("item_type") else "key",
+			"icon": temp_key.get("item_icon") if temp_key.get("item_icon") else null,
+			"quantity": 1
+		}
+		temp_key.queue_free()
+		cabinet_items.append(key_data)
 	
-	for i in item_count:
+	# Generate 0-3 additional random items (total max stays at 4)
+	var extra_count = randi_range(0, MAX_ITEMS - 1)
+	
+	for i in extra_count:
 		var random_index = randi() % loot_table.size()
 		var item_scene = loot_table[random_index]
 		if item_scene == null:

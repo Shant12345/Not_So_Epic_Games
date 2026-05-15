@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://y2l3akammfp"
+path="res://.godot/imported/Pause screen menu toon.wav-43fd9dcd4fc51cf1ed96a2c0358d0f10.sample"
+
+[deps]
+
+source_file="res://Sounds/Pause screen menu toon.wav"
+dest_files=["res://.godot/imported/Pause screen menu toon.wav-43fd9dcd4fc51cf1ed96a2c0358d0f10.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

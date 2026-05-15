@@ -50,9 +50,8 @@ func _update_label() -> void:
 	text = "%02d:%02d %s" % [display_h, m, am_pm]
 
 func _game_over() -> void:
-	# Trigger death screen when time is up
+	# Time is up — deal lethal damage through the health system
 	var player = get_tree().get_first_node_in_group("Player")
-	if player and player.has_method("die"):
-		player.die()
-	else:
-		get_tree().reload_current_scene()
+	if player and player.has_method("take_damage"):
+		player.take_damage(100)
+	# Don't call die() or reload directly — let health system handle it

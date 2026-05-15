@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://btog7c323d1r4"]
+[gd_scene load_steps=7 format=3 uid="uid://btog7c323d1r4"]
 
 [ext_resource type="Script" uid="uid://bc0oogshbsmsh" path="res://Scripts/dialogue_scene.gd" id="1_dlg"]
 [ext_resource type="Texture2D" uid="uid://cri4i0begsnng" path="res://texture/classroomBackground.jpg" id="2_bg"]
@@ -41,6 +41,8 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sgb84"]
+
 [node name="DialogueScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -72,11 +74,11 @@ color = Color(0, 0, 0, 0.65)
 
 [node name="DialogueBox" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = -5.0
-offset_top = 219.0
-offset_right = 1027.0
-offset_bottom = 399.0
-scale = Vector2(1.7211797, 2.368072)
+offset_left = -11.0
+offset_top = 443.0
+offset_right = 1021.0
+offset_bottom = 623.0
+scale = Vector2(2.6411796, 1.848073)
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="VBox" type="VBoxContainer" parent="DialogueBox"]
@@ -102,16 +104,33 @@ text = "Click or press [Space] to continue ▼"
 horizontal_alignment = 2
 
 [node name="SkipButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2785.0002
-offset_top = 1677.9999
-offset_right = 2856.8103
-offset_bottom = 1701.9999
-scale = Vector2(3.120339, 5.0465555)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -164.0
+offset_right = -18.0
+offset_bottom = -104.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 2.3600001)
 theme_override_colors/font_color = Color(0.9, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_skip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_skip_hover")
 text = "Skip ▶▶"
+
+[node name="AntagonistSprite" type="Sprite2D" parent="."]
+position = Vector2(435, 688)
+scale = Vector2(8, 8)
+texture = SubResource("CompressedTexture2D_sgb84")
+
+[node name="YumingSprite" type="Sprite2D" parent="."]
+position = Vector2(2265, 819)
+scale = Vector2(8, 8)
+flip_h = true
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

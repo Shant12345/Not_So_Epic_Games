@@ -77,8 +77,10 @@ const LINES := [
 @onready var bg_overlay     : ColorRect      = $BgOverlay
 @onready var skip_btn       : Button         = $SkipButton
 @onready var antag_sprite   : Sprite2D       = $AntagonistSprite
+@onready var yuming_sprite  : Sprite2D       = $YumingSprite
 @onready var talk_tex       := preload("res://texture/KillercrushTalking.png")
 @onready var idle_tex       := preload("res://texture/killercrushnottalking.png")
+@onready var yuming_talk_tex := preload("res://texture/Yumingtalkinganimation-Sheet.png")
 
 
 # ── state ────────────────────────────────────────────────────────────────────
@@ -89,6 +91,13 @@ var _tween          : Tween
 var _is_talking     := false
 var _anim_timer     := 0.0
 var _current_frame  := 0
+var _sprite_locked_position := Vector2.ZERO
+
+# Yuming animation state
+var _yuming_talking     := false
+var _yuming_anim_timer  := 0.0
+var _yuming_frame       := 0
+var _yuming_locked_position := Vector2.ZERO
 
 const ANIM_SPEED   := 0.1
 const CHAR_DELAY   := 0.03   # seconds per character
@@ -100,21 +109,56 @@ func _ready() -> void:
 	continue_hint.modulate.a = 1.0
 	
 	antag_sprite.modulate.a = 1.0
+	yuming_sprite.modulate.a = 1.0
 	
 	# Position dialogue box
-	dialogue_box.position.y = get_viewport_rect().size.y - dialogue_box.size.y - 40.0
+	# Position dialogue box at the bottom, accounting for its scale
+	var scaled_height = dialogue_box.size.y * dialogue_box.scale.y
+	dialogue_box.position.y = get_viewport_rect().size.y - scaled_height - 20.0
+	
+	# Ensure antagonist sprite is visible on screen
+	if antag_sprite.position.y > get_viewport_rect().size.y:
+		antag_sprite.position.y = get_viewport_rect().size.y - 100.0
+	
+	# Ensure Yuming sprite is visible on screen
+	if yuming_sprite.position.y > get_viewport_rect().size.y:
+		yuming_sprite.position.y = get_viewport_rect().size.y - 100.0
+	
+	# Lock sprite positions so frame changes don't shift their perceived location
+	antag_sprite.centered = true
+	_sprite_locked_position = antag_sprite.position
+	
+	yuming_sprite.centered = true
+	_yuming_locked_position = yuming_sprite.position
 	
 	_show_line(_current_line)
 
 func _process(delta: float) -> void:
+	# Killer Crush animation
 	if _is_talking:
 		_anim_timer += delta
 		if _anim_timer >= ANIM_SPEED:
 			_anim_timer = 0.0
-			_current_frame = (_current_frame + 1) % antag_sprite.hframes
+			var frames = max(1, antag_sprite.hframes)
+			_current_frame = (_current_frame + 1) % frames
 			antag_sprite.frame = _current_frame
+		antag_sprite.position = _sprite_locked_position
 	else:
 		antag_sprite.frame = 0
+		antag_sprite.position = _sprite_locked_position
+	
+	# Yuming animation
+	if _yuming_talking:
+		_yuming_anim_timer += delta
+		if _yuming_anim_timer >= ANIM_SPEED:
+			_yuming_anim_timer = 0.0
+			var yframes = max(1, yuming_sprite.hframes)
+			_yuming_frame = (_yuming_frame + 1) % yframes
+			yuming_sprite.frame = _yuming_frame
+		yuming_sprite.position = _yuming_locked_position
+	else:
+		yuming_sprite.frame = 0
+		yuming_sprite.position = _yuming_locked_position
 
 
 func _show_line(idx: int) -> void:
@@ -131,17 +175,32 @@ func _show_line(idx: int) -> void:
 	speaker_label.modulate   = data["color"]
 	text_label.text          = ""
 
-	# Handle antagonist texture and animation
+	# Handle character textures and animation
 	if data["speaker"] == "Killer Crush":
+		# Killer Crush is talking — animate her, idle Yuming
 		antag_sprite.texture = talk_tex
-		antag_sprite.hframes = 4 # Assuming 4 frames for now, adjust if needed
+		antag_sprite.hframes = 3  # 3 frames in KillercrushTalking.png
+		_current_frame = 0
 		_is_talking = true
+		
+		yuming_sprite.texture = yuming_talk_tex
+		yuming_sprite.hframes = 4
+		_yuming_frame = 0
+		_yuming_talking = false  # Yuming is idle while Killer Crush talks
 	else:
+		# Yuming is talking — animate him, idle Killer Crush
 		antag_sprite.texture = idle_tex
 		antag_sprite.hframes = 1
+		_current_frame = 0
 		_is_talking = false
+		
+		yuming_sprite.texture = yuming_talk_tex
+		yuming_sprite.hframes = 4  # 4 frames in Yumingtalkinganimation-Sheet.png
+		_yuming_frame = 0
+		_yuming_talking = true  # Yuming is talking
 	
 	antag_sprite.visible = true
+	yuming_sprite.visible = true
 
 	# Type out text
 	for i in _full_text.length():
@@ -153,12 +212,15 @@ func _show_line(idx: int) -> void:
 	text_label.text = _full_text
 	_typing = false
 	_is_talking = false
+	_yuming_talking = false
 	continue_hint.modulate.a = 1.0
 
 func _advance() -> void:
 	if _typing:
 		# Skip typing – show full text immediately
 		_typing = false
+		_is_talking = false
+		_yuming_talking = false
 		text_label.text = _full_text
 		return
 

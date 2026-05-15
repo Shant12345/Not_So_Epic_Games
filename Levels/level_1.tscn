@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkyd8xjfs6t7t"]
+[gd_scene load_steps=5 format=3 uid="uid://bkyd8xjfs6t7t"]
 
 [ext_resource type="PackedScene" uid="uid://cljxa44wmhn7y" path="res://tscn/player.tscn" id="1_77x7w"]
 [ext_resource type="PackedScene" uid="uid://pj5cgkq6lpg0" path="res://Levels/layout_1.tscn" id="3_f4pg2"]
-[ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="4_rf6l5"]
 [ext_resource type="PackedScene" uid="uid://dfpmub1gvy55y" path="res://enemy/Killer_Crush.tscn" id="7_2hkqn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
@@ -17,9 +16,11 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(2237, 1773.0002)
+position = Vector2(6504.0005, 3431)
 scale = Vector2(1.0895953, 0.92527544)
 collision_layer = 3
+max_speed = 800.0
+sprint_speed = 1300.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -29,12 +30,9 @@ scale = Vector2(1.6455185, 1.658297)
 navigation_polygon = SubResource("NavigationPolygon_game")
 
 [node name="layout_1" parent="NavigationRegion2D" instance=ExtResource("3_f4pg2")]
+position = Vector2(1544.8018, 1379.1256)
 scale = Vector2(0.6084318, 0.6011691)
 
 [node name="killercrush" parent="." instance=ExtResource("7_2hkqn")]
-position = Vector2(3815.0002, 4148)
-scale = Vector2(0.6278179, 0.54848915)
-
-[node name="Security" parent="." instance=ExtResource("4_rf6l5")]
-position = Vector2(3765.0002, 1773)
-scale = Vector2(0.68169796, 0.65625286)
+position = Vector2(3815, 4153.0005)
+scale = Vector2(0.6278179, 0.92627674)

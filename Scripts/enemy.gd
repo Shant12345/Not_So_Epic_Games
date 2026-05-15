@@ -12,7 +12,9 @@ func _ready() -> void:
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":
-		get_tree().reload_current_scene()
+		if body.has_method("die"):
+			body.die(true)
+		# Killer Crush contact = instant death (no fallback reload)
 
 func get_global_player_position() -> Vector2:
 	var player = get_tree().get_first_node_in_group("Player")

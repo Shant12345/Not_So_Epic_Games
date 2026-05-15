@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp8a245q6pdn1"
+path="res://.godot/imported/Main character footsteps.mp3-3ec8cadbe62e704ab06ef5563ee52f12.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Main character footsteps.mp3"
+dest_files=["res://.godot/imported/Main character footsteps.mp3-3ec8cadbe62e704ab06ef5563ee52f12.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
