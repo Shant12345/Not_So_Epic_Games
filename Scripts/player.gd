@@ -70,6 +70,7 @@ func _physics_process(delta: float) -> void:
 	
 	var anim_player = get_node_or_null("AnimationPlayer")
 	var skin = get_node_or_null("Hitbox/Skin")
+	var footstep_sound = get_node_or_null("Footsteps")
 	
 	if has_input_direction:
 		velocity = target_velocity
@@ -77,10 +78,18 @@ func _physics_process(delta: float) -> void:
 			anim_player.play("walk")
 		if skin and direction.x != 0:
 			skin.flip_h = direction.x < 0
+		
+		if footstep_sound:
+			if not footstep_sound.playing:
+				footstep_sound.play()
+			footstep_sound.pitch_scale = 1.4 if is_sprinting else 1.0
 	else:
 		velocity = Vector2.ZERO
 		if anim_player and anim_player.current_animation != "idle":
 			anim_player.play("idle")
+		
+		if footstep_sound:
+			footstep_sound.stop()
 		
 	move_and_slide()
 	_update_danger_flash(delta)

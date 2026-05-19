@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" path="res://tscn/bookshelf.tscn" id="13_5b4ew"]
 [ext_resource type="Texture2D" uid="uid://cmg2no5un3l5d" path="res://texture/Classroom 32x32/Speaker Box.png" id="14_uvvhr"]
 [ext_resource type="PackedScene" path="res://tscn/bookshelf_2.tscn" id="15_p1jqa"]
-[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/nextLevel.tscn" id="16_p1jqa"]
+[ext_resource type="PackedScene" uid="uid://crur1qf5w5qre" path="res://tscn/Finsihline.tscn" id="16_p1jqa"]
 [ext_resource type="PackedScene" uid="uid://b1bkxnwicktop" path="res://tscn/Woodencabinet.tscn" id="18_b73ag"]
 [ext_resource type="PackedScene" uid="uid://bpj2yfi01xx4i" path="res://tscn/Side Cabinet.tscn" id="19_x3lju"]
 [ext_resource type="PackedScene" path="res://tscn/trash_can.tscn" id="20_qvxb0"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cgwjn2wsattyl" path="res://texture/Classroom 32x32/Window (Right Side).png" id="23_vcgfo"]
 [ext_resource type="PackedScene" uid="uid://d0rvrp0m6pcj7" path="res://tscn/security.tscn" id="24_vcgfo"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5yll"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6eej"]
 texture = ExtResource("2_ndbud")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -154,7 +154,7 @@ texture = ExtResource("2_ndbud")
 7:7/0 = 0
 7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nb3us"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcgfo"]
 texture = ExtResource("2_irvs6")
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -217,7 +217,7 @@ texture = ExtResource("2_irvs6")
 1:6/0 = 0
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aamnn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uynl"]
 texture = ExtResource("3_aawp7")
 0:0/0 = 0
 1:0/0 = 0
@@ -236,26 +236,26 @@ texture = ExtResource("3_aawp7")
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxdrj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcjv5"]
 resource_name = "Wall"
 texture = ExtResource("3_b3kf3")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b73ag"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkpqk"]
 resource_name = "topviewLocker"
 texture = ExtResource("5_o8kdj")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_l0eo7"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_q5yll")
-sources/1 = SubResource("TileSetAtlasSource_nb3us")
-sources/3 = SubResource("TileSetAtlasSource_rxdrj")
-sources/2 = SubResource("TileSetAtlasSource_aamnn")
-sources/4 = SubResource("TileSetAtlasSource_b73ag")
+sources/0 = SubResource("TileSetAtlasSource_s6eej")
+sources/1 = SubResource("TileSetAtlasSource_vcgfo")
+sources/3 = SubResource("TileSetAtlasSource_vcjv5")
+sources/2 = SubResource("TileSetAtlasSource_1uynl")
+sources/4 = SubResource("TileSetAtlasSource_jkpqk")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18h4u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rbxvk"]
 texture = ExtResource("3_aawp7")
 0:0/0 = 0
 1:0/0 = 0
@@ -275,7 +275,7 @@ texture = ExtResource("3_aawp7")
 3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_oqfve"]
-sources/0 = SubResource("TileSetAtlasSource_18h4u")
+sources/0 = SubResource("TileSetAtlasSource_rbxvk")
 
 [node name="layout_1" type="Node2D"]
 position = Vector2(1540, 1379)
@@ -321,58 +321,58 @@ position = Vector2(3287.3525, 228.38391)
 scale = Vector2(3.4355228, 1.8052729)
 
 [node name="Chalkboard(leftSide)" type="Sprite2D" parent="."]
-position = Vector2(-165.61948, -846.5797)
+position = Vector2(-165.61948, -846.12115)
 scale = Vector2(14.462101, 9.6593075)
 texture = ExtResource("8_aawp7")
 
 [node name="Chalkboard(rightSide)" type="Sprite2D" parent="."]
-position = Vector2(196.43228, -846.5796)
+position = Vector2(196.43228, -846.12103)
 scale = Vector2(16.619366, 9.515996)
 texture = ExtResource("9_aamnn")
 
 [node name="BulletinBoard(leftSide)" type="Sprite2D" parent="."]
-position = Vector2(-651.2196, -891.2679)
+position = Vector2(-651.2196, -890.8093)
 scale = Vector2(5.314516, 6.461829)
 texture = ExtResource("10_18h4u")
 
 [node name="BulletinBoard(rightSide)" type="Sprite2D" parent="."]
-position = Vector2(-501.00662, -891.2679)
+position = Vector2(-501.00662, -890.8093)
 scale = Vector2(4.1108875, 6.461829)
 texture = ExtResource("11_oqfve")
 
 [node name="Table" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-373.60666, -200.86781)
+position = Vector2(-373.60666, -200.40924)
 
 [node name="Table2" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(3.85155, -200.86781)
+position = Vector2(3.85155, -200.40924)
 
 [node name="Table3" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-735.6583, -200.86778)
+position = Vector2(-735.6583, -200.40921)
 
 [node name="Table4" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-735.6583, -435.6721)
+position = Vector2(-735.6583, -435.2135)
 
 [node name="Table5" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-735.6583, -663.1388)
+position = Vector2(-735.6583, -662.68024)
 
 [node name="Table6" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-373.60663, -435.67212)
+position = Vector2(-373.60663, -435.21353)
 
 [node name="Table7" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-3.8514948, -443.0098)
+position = Vector2(-3.8514948, -442.5512)
 
 [node name="Table8" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-381.3097, -670.47644)
+position = Vector2(-381.3097, -670.0179)
 
 [node name="Table9" parent="." instance=ExtResource("12_oqfve")]
-position = Vector2(-3.8515596, -670.47644)
+position = Vector2(-3.8515596, -670.0179)
 
 [node name="Cabinet2" parent="." instance=ExtResource("6_aawp7")]
-position = Vector2(-689.43896, -560.4119)
+position = Vector2(-689.43896, -559.95337)
 scale = Vector2(1.324657, 1.309765)
 
 [node name="Cabinet3" parent="." instance=ExtResource("6_aawp7")]
-position = Vector2(681.7358, -567.7495)
+position = Vector2(681.7358, -567.29095)
 scale = Vector2(1.2202419, 1.3505521)
 
 [node name="Bookshelf" parent="." instance=ExtResource("13_5b4ew")]
@@ -438,10 +438,10 @@ position = Vector2(-1097.7102, 3596.3586)
 scale = Vector2(7.3814936, 7.331403)
 
 [node name="Trash_can" parent="." instance=ExtResource("20_qvxb0")]
-position = Vector2(-812.6906, -985.99475)
+position = Vector2(-812.6906, -985.5362)
 
 [node name="Trash_can2" parent="." instance=ExtResource("20_qvxb0")]
-position = Vector2(208.95007, -984.16034)
+position = Vector2(208.95007, -983.7018)
 
 [node name="Table10" parent="." instance=ExtResource("12_oqfve")]
 position = Vector2(6080.7363, 33.936523)
@@ -662,3 +662,23 @@ position = Vector2(4101.969, 305.42908)
 scale = Vector2(0.6230803, 0.5955399)
 point_b = Vector2(173, 1600)
 move_time = 5.0
+
+[node name="Stool11" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(450.63867, 1149.2572)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool12" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(50.071014, 1251.9841)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool13" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(365.90338, 760.3625)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool14" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(-566.1873, 1281.3347)
+scale = Vector2(2.0117111, 1.9365705)
+
+[node name="Stool15" parent="." instance=ExtResource("21_6fwnl")]
+position = Vector2(365.90338, 760.3625)
+scale = Vector2(2.0117111, 1.9365705)

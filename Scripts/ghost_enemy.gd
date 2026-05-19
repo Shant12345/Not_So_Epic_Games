@@ -22,11 +22,15 @@ func _ready() -> void:
 		# Give it a ghostly semi-transparent look
 		sprite.modulate.a = 0.7 
 
+@onready var stab_sound = $StabSound
+
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":
-		if body.has_method("take_damage"):
-			body.take_damage(25)
-		# Don't call die() or reload — let health system handle death
+		if body.has_method("die"):
+			if stab_sound:
+				stab_sound.play()
+			body.die(true)
+		# Killer Crush contact = instant death
 
 func get_global_player_position() -> Vector2:
 	var player = get_tree().get_first_node_in_group("Player")

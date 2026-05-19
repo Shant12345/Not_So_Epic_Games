@@ -27,12 +27,11 @@ scale = Vector2(4.992075, 3.5700006)
 
 [node name="Player" parent="." instance=ExtResource("2_s1mjy")]
 unique_name_in_owner = true
-position = Vector2(2778.0002, 15081)
+position = Vector2(7778, 2594.001)
 scale = Vector2(5.249121, 4.402427)
+collision_layer = 3
 max_speed = 10000.0
 sprint_speed = 7000.0
-acceleration = 5500.0
-deceleration = 5500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(54.104294, 14.310287)

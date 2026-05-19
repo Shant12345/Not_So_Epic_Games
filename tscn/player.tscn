@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cr7v2caxiearf" path="res://texture/PlayerWalking.png" id="4_u4c7w"]
 [ext_resource type="Script" uid="uid://bp8i3cxj04ex4" path="res://Scripts/game_timer.gd" id="5_timer"]
 [ext_resource type="Texture2D" path="res://texture/Main Character Idlet.png" id="6_idle"]
+[ext_resource type="AudioStream" uid="uid://bp8a245q6pdn1" path="res://Sounds/Main character footsteps.mp3" id="7_footsteps"]
 
 [sub_resource type="Animation" id="Animation_idle"]
 resource_name = "idle"
@@ -269,3 +270,7 @@ shape = SubResource("RectangleShape2D_u4c7w")
 libraries = {
 "": SubResource("AnimationLibrary_player")
 }
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_footsteps")
+volume_db = -5.0

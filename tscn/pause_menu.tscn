@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c16oa15yc8koe" path="res://texture/Playbutton (1).png" id="3_udlf0"]
 [ext_resource type="Texture2D" uid="uid://cpi5ehq1i1fdg" path="res://texture/JustMainMenubutton.png" id="3_ydsj6"]
 [ext_resource type="Texture2D" uid="uid://bq26l7wcltpjj" path="res://texture/JustRestartbutton.png" id="4_udlf0"]
+[ext_resource type="AudioStream" uid="uid://y2l3akammfp" path="res://Sounds/Pause screen menu.wav" id="5_audio"]
 
 [sub_resource type="Theme" id="Theme_g31w0"]
 
@@ -84,3 +85,7 @@ texture = ExtResource("3_ydsj6")
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+
+[node name="PauseMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_audio")
