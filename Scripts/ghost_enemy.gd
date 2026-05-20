@@ -23,6 +23,7 @@ func _ready() -> void:
 		sprite.modulate.a = 0.7 
 
 @onready var stab_sound = $StabSound
+@onready var footstep_sound = get_node_or_null("FootstepSound")
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":
@@ -66,14 +67,41 @@ func _physics_process(delta: float) -> void:
 			if anim_player.current_animation != "crush":
 				# print("Playing crush animation")
 				anim_player.play("crush")
+			# Stop footsteps during crush
+			if footstep_sound and footstep_sound.playing:
+				footstep_sound.stop()
 		elif velocity.length() > 10:
 			if anim_player.current_animation != "walk":
 				# print("Playing walk animation")
 				anim_player.play("walk")
+			# Play footsteps while walking (only if visible on screen)
+			if is_on_screen():
+				if footstep_sound and not footstep_sound.playing:
+					footstep_sound.play()
+			else:
+				if footstep_sound and footstep_sound.playing:
+					footstep_sound.stop()
 		else:
 			if anim_player.is_playing():
 				anim_player.stop()
+			# Stop footsteps when idle
+			if footstep_sound and footstep_sound.playing:
+				footstep_sound.stop()
 			if sprite:
 				sprite.frame = 0
 				sprite.position = _original_sprite_pos
 				sprite.scale = _original_sprite_scale
+
+func is_on_screen() -> bool:
+	var player = get_tree().get_first_node_in_group("Player")
+	if not player:
+		return false
+	var camera = player.get_node_or_null("Camera2D")
+	if not camera:
+		return false
+	var viewport_size = get_viewport_rect().size
+	var zoom = camera.zoom
+	var visible_size = viewport_size / zoom
+	var camera_center = camera.global_position
+	var view_rect = Rect2(camera_center - visible_size / 2.0, visible_size)
+	return view_rect.has_point(global_position)

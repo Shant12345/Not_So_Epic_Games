@@ -42,6 +42,11 @@ func open_cabinet() -> void:
 	is_open = true
 	_update_visuals()
 	
+	# Play cabinet opening sound
+	var opening_sound = get_node_or_null("opening")
+	if opening_sound:
+		opening_sound.play()
+	
 	if not has_generated_loot:
 		_generate_loot()
 	

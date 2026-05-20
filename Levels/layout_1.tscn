@@ -246,6 +246,7 @@ texture = ExtResource("3_b3kf3")
 resource_name = "topviewLocker"
 texture = ExtResource("5_o8kdj")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_l0eo7"]
 physics_layer_0/collision_layer = 1
@@ -278,7 +279,7 @@ texture = ExtResource("3_aawp7")
 sources/0 = SubResource("TileSetAtlasSource_rbxvk")
 
 [node name="layout_1" type="Node2D"]
-position = Vector2(1540, 1379)
+position = Vector2(1543, 1379)
 scale = Vector2(1.0385256, 1.0902694)
 
 [node name="walls" type="TileMap" parent="."]

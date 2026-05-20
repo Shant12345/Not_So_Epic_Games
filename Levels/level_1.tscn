@@ -16,7 +16,7 @@ position = Vector2(-69, 58.999996)
 
 [node name="Player" parent="." instance=ExtResource("1_77x7w")]
 unique_name_in_owner = true
-position = Vector2(9073, 5015)
+position = Vector2(1968.0015, 2162.0002)
 scale = Vector2(1.0895953, 0.92527544)
 collision_layer = 3
 max_speed = 800.0
@@ -35,4 +35,4 @@ scale = Vector2(0.6084318, 0.6011691)
 
 [node name="killercrush" parent="." instance=ExtResource("7_2hkqn")]
 position = Vector2(6167, 3988)
-scale = Vector2(0.6278179, 0.92627674)
+scale = Vector2(0.6357101, 0.67057705)

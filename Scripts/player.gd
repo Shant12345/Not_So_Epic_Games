@@ -21,6 +21,11 @@ func _ready() -> void:
 	if hitbox:
 		hitbox.area_entered.connect(_on_area_entered)
 	
+	if GameState.checkpoint_pending:
+		GameState.save_level_checkpoint()
+	else:
+		GameState.load_level_checkpoint()
+	
 	set_health(health)
 	
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -80,9 +85,13 @@ func _physics_process(delta: float) -> void:
 			skin.flip_h = direction.x < 0
 		
 		if footstep_sound:
-			if not footstep_sound.playing:
-				footstep_sound.play()
-			footstep_sound.pitch_scale = 1.4 if is_sprinting else 1.0
+			if ghost_visible:
+				if footstep_sound.playing:
+					footstep_sound.stop()
+			else:
+				if not footstep_sound.playing:
+					footstep_sound.play()
+				footstep_sound.pitch_scale = 1.4 if is_sprinting else 1.0
 	else:
 		velocity = Vector2.ZERO
 		if anim_player and anim_player.current_animation != "idle":

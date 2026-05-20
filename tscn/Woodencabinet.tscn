@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1bkxnwicktop"]
+[gd_scene load_steps=8 format=3 uid="uid://b1bkxnwicktop"]
 
 [ext_resource type="Script" uid="uid://m0tpvutrrdrs" path="res://Scripts/cabinet.gd" id="1_hojvc"]
 [ext_resource type="Texture2D" uid="uid://dfia7ltektagl" path="res://texture/Classroom 32x32/Wooden Cabinet (Front).png" id="2_hojvc"]
+[ext_resource type="AudioStream" uid="uid://bcxyt31l5syrl" path="res://Sounds/cabinet opening .wav" id="3_im0qr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(128, 128)
@@ -57,6 +58,9 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4.7178564, 4.6879005)
 texture = ExtResource("2_hojvc")
+
+[node name="opening" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_im0qr")
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

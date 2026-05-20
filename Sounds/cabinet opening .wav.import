@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcxyt31l5syrl"
+path="res://.godot/imported/cabinet opening .wav-91fd35722461415ef191ba0e0ceecf98.sample"
+
+[deps]
+
+source_file="res://Sounds/cabinet opening .wav"
+dest_files=["res://.godot/imported/cabinet opening .wav-91fd35722461415ef191ba0e0ceecf98.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

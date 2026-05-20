@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://coattb0cvr2j6"]
+[gd_scene load_steps=8 format=3 uid="uid://coattb0cvr2j6"]
 
 [ext_resource type="Script" uid="uid://m0tpvutrrdrs" path="res://Scripts/cabinet.gd" id="1_cabinet"]
 [ext_resource type="Texture2D" uid="uid://d37s10ltfprx5" path="res://texture/Metal Lockers 32x32.png" id="2_lkqy4"]
+[ext_resource type="AudioStream" uid="uid://bcxyt31l5syrl" path="res://Sounds/cabinet opening .wav" id="3_audio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(128, 128)
@@ -57,6 +58,9 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4.7178564, 4.6879005)
 texture = ExtResource("2_lkqy4")
+
+[node name="opening" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_audio")
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

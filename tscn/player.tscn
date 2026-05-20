@@ -1,12 +1,58 @@
-[gd_scene load_steps=15 format=3 uid="uid://cljxa44wmhn7y"]
+[gd_scene load_steps=16 format=3 uid="uid://cljxa44wmhn7y"]
 
 [ext_resource type="Script" uid="uid://bo7t3ps7h4mt2" path="res://Scripts/player.gd" id="1_7omxl"]
 [ext_resource type="PackedScene" uid="uid://d3h7qk3w5x2c" path="res://tscn/pause_menu.tscn" id="3_pause"]
 [ext_resource type="PackedScene" uid="uid://b3656vmxvbcq6" path="res://tscn/inventory_ui.tscn" id="4_inv"]
 [ext_resource type="Texture2D" uid="uid://cr7v2caxiearf" path="res://texture/PlayerWalking.png" id="4_u4c7w"]
 [ext_resource type="Script" uid="uid://bp8i3cxj04ex4" path="res://Scripts/game_timer.gd" id="5_timer"]
-[ext_resource type="Texture2D" path="res://texture/Main Character Idlet.png" id="6_idle"]
+[ext_resource type="Texture2D" uid="uid://crwbfmjsrbj5v" path="res://texture/Main Character Idlet.png" id="6_idle"]
 [ext_resource type="AudioStream" uid="uid://bp8a245q6pdn1" path="res://Sounds/Main character footsteps.mp3" id="7_footsteps"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0, 0.8, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stamina"]
+bg_color = Color(0, 0.6, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
+size = Vector2(35.30513, 80.43573)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4c7w"]
+size = Vector2(57, 133)
 
 [sub_resource type="Animation" id="Animation_idle"]
 resource_name = "idle"
@@ -92,54 +138,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
 _data = {
-"idle": SubResource("Animation_idle"),
-"walk": SubResource("Animation_walk")
+&"idle": SubResource("Animation_idle"),
+&"walk": SubResource("Animation_walk")
 }
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
-bg_color = Color(0, 0.8, 0.4, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 0.3)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stamina"]
-bg_color = Color(0, 0.6, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 0.3)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
-size = Vector2(35.30513, 80.43573)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4c7w"]
-size = Vector2(57, 133)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 7)
@@ -268,7 +269,7 @@ shape = SubResource("RectangleShape2D_u4c7w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_player")
+&"": SubResource("AnimationLibrary_player")
 }
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
