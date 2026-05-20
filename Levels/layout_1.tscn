@@ -561,7 +561,7 @@ position = Vector2(3553.1143, 908.03235)
 scale = Vector2(3.8654652, 3.6562448)
 
 [node name="Stool" parent="." instance=ExtResource("21_6fwnl")]
-position = Vector2(5975.7793, 2868.0984)
+position = Vector2(5980.594, 2902.9521)
 scale = Vector2(2.0117111, 1.9365705)
 
 [node name="Stool2" parent="." instance=ExtResource("21_6fwnl")]
